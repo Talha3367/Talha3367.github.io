@@ -130,6 +130,211 @@
             width: 100%;
         }
 
+/* ====================== HORIZONTAL SKILLS & EDUCATION ====================== */
+/* TRUE HORIZONTAL SKILLS – 1 CARD PER ROW + GLOWING BORDER + MULTIPLE SKILLS PER LINE */
+.horizontal-skills-flow {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    margin-top: 4rem;
+    padding: 0 3rem;
+    max-width: 1600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.horizontal-skills-flow .skill-card {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 2.8rem 3rem;
+    border-radius: 32px;
+    box-shadow: 0 20px 70px rgba(0, 0, 0, 0.8);
+    position: relative;
+    overflow: hidden;
+    border: 3px solid transparent;
+    transition: all 0.6s ease;
+}
+
+/* GLOWING RAINBOW BORDER ON HOVER */
+.horizontal-skills-flow .skill-card::before {
+    content: '';
+    position: absolute;
+    inset: -6px;
+    border-radius: 38px;
+    background: conic-gradient(from 0deg, #A855F7, #EC4899, #F43F5E, #22d3ee, #7C3AED, #A855F7);
+    z-index: -1;
+    opacity: 0;
+    filter: blur(3.5px);
+    transition: opacity 0.7s ease;
+}
+
+.horizontal-skills-flow .skill-card:hover::before {
+    opacity: 1;
+}
+
+.horizontal-skills-flow .skill-card:hover {
+    transform: translateY(-20px);
+    box-shadow: 0 45px 130px rgba(236, 72, 153, 0.7);
+}
+
+/* Title */
+.horizontal-skills-flow .skill-card h3 {
+    font-size: 1.8rem;
+    color: #E879F9;
+    margin-bottom: 1.8rem;
+    text-align: center;
+    font-weight: 800;
+}
+
+/* MULTIPLE SKILLS PER LINE – CLEAN & SPACED */
+.horizontal-skills-flow .skill-list.multi-line {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+    font-size: 1.18rem;
+    line-height: 2.3;
+    color: #E5E7EB;
+}
+
+.horizontal-skills-flow .skill-list.multi-line li {
+    margin: 0.6rem 0;
+    display: inline; /* Allows multiple per line */
+}
+
+
+
+/* Optional: Add separator between groups if needed */
+.horizontal-skills-flow .skill-list.multi-line li + li {
+    margin-left: 1.2rem;
+}
+
+/* Mobile – Slightly smaller & tighter */
+@media (max-width: 768px) {
+    .horizontal-skills-flow {
+        padding: 0 1.5rem;
+        gap: 2.5rem;
+    }
+    .horizontal-skills-flow .skill-card {
+        padding: 2.5rem 2rem;
+    }
+    .horizontal-skills-flow .skill-card h3 {
+        font-size: 1.6rem;
+    }
+    .horizontal-skills-flow .skill-list.multi-line {
+        font-size: 1.05rem;
+        line-height: 2;
+    }
+    .horizontal-skills-flow .skill-list.multi-line li {
+        display: block;
+        margin: 0.7rem 0;
+    }
+    .horizontal-skills-flow .skill-list.multi-line li + li {
+        margin-left: 0;
+    }
+}
+
+
+
+/*===============================================*/
+
+/* Container - Ensures 1 box per row with plenty of space */
+.education-grid-with-space {
+    display: flex;             /* Changed to Flex for better vertical spacing control */
+    flex-direction: column;    /* Stacks them vertically */
+    align-items: center;       /* Centers the cards */
+    gap: 3.5rem;               /* HUGE SPACE between boxes */
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+    padding: 0 2rem;
+}
+
+/* Individual Card Styling */
+.skill-card.card-3d {
+    width: 100%;               /* Full width of the container */
+    max-width: 800px;          /* Keeps boxes from getting too wide */
+    margin-bottom: 1rem;       /* Extra safety space */
+    display: block;            /* Ensures it stays as a block */
+}
+
+/* HOBBIES: 2 columns inside the card */
+.hobby-list-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    list-style: none;
+    padding: 0;
+    margin-top: 1.5rem;
+}
+
+/* EDUCATION: Remove bullet from uni line */
+.no-bullet {
+    list-style: none !important;
+    padding-left: 0 !important;
+    margin-top: -5px;
+    margin-bottom: 20px;
+    font-size: 0.95rem;
+    opacity: 0.8;
+}
+.no-bullet::before { content: none !important; } /* Removes arrow icons */
+
+/* Mobile spacing */
+@media (max-width: 768px) {
+    .education-grid-with-space {
+        gap: 2.5rem;
+        padding: 0 1.5rem;
+    }
+    .hobby-list-grid {
+        grid-template-columns: 1fr; /* 1 per line on mobile */
+    }
+}
+
+
+
+/* --- HOVER EFFECT FOR EDUCATION BOXES --- */
+
+.skill-card.card-3d {
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Smooth, springy animation */
+    border: 2px solid transparent; /* Reserve space for the border */
+    position: relative;
+}
+
+.skill-card.card-3d:hover {
+    transform: translateY(-10px) scale(1.02); /* Lifts the box up and grows slightly */
+    
+    /* Neon Pink/Purple Border */
+    border-color: #ff007f; 
+    
+    /* Glowing Effect (Shadow) */
+    box-shadow: 0 15px 40px rgba(255, 0, 127, 0.4), 
+                0 0 15px rgba(138, 43, 226, 0.3); 
+    
+    cursor: pointer;
+}
+
+/* Optional: Make the title color change on hover too */
+.skill-card.card-3d:hover h3 {
+    color: #ff007f; /* Title turns pink */
+    transition: color 0.3s ease;
+}
+
+/* Adds a subtle reflection or 'shine' inside the card */
+.skill-card.card-3d::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+    transform: translateX(-100%);
+    transition: 0.6s;
+    pointer-events: none;
+}
+
+.skill-card.card-3d:hover::after {
+    transform: translateX(100%); /* Shine sweeps across when you hover */
+}
+
+
 /* Hero Section - Reddish Purple Theme */
 .hero {
     min-height: 100vh;
@@ -632,49 +837,130 @@
         }
 
         /* Recommendations */
+                      /* RECOMMENDATIONS – SAME LAYOUT + GLOWING COLORFUL BORDERS */
         .recommendations-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 1.75rem;
+            grid-template-columns: 1fr;
+            gap: 2rem;
             margin-top: 2.5rem;
+            padding: 0 1rem;
         }
 
         .recommendation-card {
-            padding: 1.9rem 1.75rem 1.6rem;
+    contain: layout style !important;
+            position: relative;
+            padding: 2rem 1.8rem;
+            background: linear-gradient(145deg, rgba(15, 23, 42, 0.97), rgba(30, 27, 75, 0.98));
+            border-radius: 18px;
+            box-shadow: 0 14px 40px rgba(0, 0, 0, 0.65);
+            overflow: visible !important;
+            transform: translateZ(0);
+            backface-visibility: visible;
+            contain: layout style;
+            z-index: 1;
+        }
+
+        /* GLOWING CONIC BORDER – SUPER PREMIUM */
+        .recommendation-card::before {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            border-radius: 22px;
+            background: conic-gradient(
+                from 0deg,
+                #A855F7,     /* Purple */
+                #EC4899,     /* Pink */
+                #F43F5E,     /* Red */
+                #BE185D,     /* Deep Pink */
+                #7C3AED,     /* Dark Purple */
+                #A855F7      /* Back to Purple */
+            );
+            z-index: -1;
+            animation: rotateBorder 8s linear infinite;
+            filter: blur(1px);
+            opacity: 0.9;
+        }
+
+        .recommendation-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 18px;
+            background: inherit;
+            z-index: -1;
+        }
+
+        /* Hover = faster glow + lift */
+        .recommendation-card:hover {
+            transform: translateY(-10px) translateZ(0);
+            box-shadow: 0 25px 70px rgba(236, 72, 153, 0.5);
+        }
+
+        .recommendation-card:hover::before {
+            animation-duration: 2.5s;
+        }
+
+        @keyframes rotateBorder {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
 
         .quote-icon {
             position: absolute;
             top: 1rem;
             right: 1.2rem;
-            font-size: 3rem;
+            font-size: 3.5rem;
             color: var(--accent-pink);
-            opacity: 0.18;
+            opacity: 0.15;
+            pointer-events: none;
         }
 
         .recommendation-text {
             font-style: italic;
             color: var(--text-dark);
-            line-height: 1.7;
-            margin-bottom: 1.4rem;
-            font-size: 0.97rem;
+            line-height: 1.75;
+            margin-bottom: 1.6rem;
+            font-size: 1rem;
+            word-break: break-word;
         }
 
         .recommender {
             display: flex;
             align-items: center;
-            gap: 0.75rem;
+            gap: 0.9rem;
+            margin-top: 0.5rem;
         }
 
         .recommender-info h4 {
             color: var(--text-dark);
             margin-bottom: 0.2rem;
-            font-size: 1rem;
+            font-size: 1.05rem;
         }
 
         .recommender-info p {
             color: var(--text-light);
-            font-size: 0.88rem;
+            font-size: 0.9rem;
+        }
+
+        /* Mobile – same as before (100% working) */
+        @media (max-width: 768px) {
+            .recommendations-container {
+                grid-template-columns: 1fr;
+                gap: 2.2rem;
+                padding: 0 1.5rem;
+            }
+
+            .recommendation-card {
+                padding: 2.2rem 2rem;
+                transform: none !important;
+            }
+        }
+
+        /* Desktop: 2-column grid (optional – looks better than 1fr on big screens) */
+        @media (min-width: 992px) {
+            .recommendations-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
 
         /* Footer */
@@ -914,118 +1200,83 @@
         </div>
     </section>
 
-    <!-- Skills Section -->
-    <section id="skills">
-        <h2 class="section-title">Skills & Technical Toolkit</h2>
-        <div class="skills-grid">
-            <div class="skill-card card-3d">
-                <h3><i class="fas fa-vial"></i> Testing Expertise</h3>
-                <ul class="skill-list">
-                    <li>Manual Testing</li>
-                    <li>Test Automation</li>
-                    <li>Mobile Testing (Android/iOS)</li>
-                    <li>API Testing</li>
-                    <li>Regression Testing</li>
-                    <li>Smoke & Sanity Testing</li>
-                    <li>UAT & Exploratory Testing</li>
-                    <li>Integration Testing</li>
-                    <li>Performance Testing</li>
-                    <li>Database & ETL Testing</li>
-                    <li>Data Pipeline Validation</li>
-                    <li>Power BI Testing</li>
-                    <li>End-to-End Testing</li>
-                    <li>AI/ML Application Testing</li>
-                    <li>Automotive HMI Testing</li>
-                </ul>
-            </div>
-            <div class="skill-card card-3d">
-                <h3><i class="fas fa-robot"></i> Automation & Frameworks</h3>
-                <ul class="skill-list">
-                    <li>Playwright</li>
-                    <li>Selenium</li>
-                    <li>Cypress</li>
-                    <li>Appium</li>
-                    <li>REST Assured</li>
-                    <li>Page Object Model (POM)</li>
-                    <li>BrowserStack</li>
-                    <li>Sauce Labs</li>
-                    <li>TestRail</li>
-                </ul>
-            </div>
-            <div class="skill-card card-3d">
-                <h3><i class="fas fa-plug"></i> API & Backend Testing</h3>
-                <ul class="skill-list">
-                    <li>REST Assured</li>
-                    <li>Postman</li>
-                    <li>Insomnia</li>
-                </ul>
-            </div>
-            <div class="skill-card card-3d">
-                <h3><i class="fas fa-tachometer-alt"></i> Performance Tools</h3>
-                <ul class="skill-list">
-                    <li>Apache JMeter</li>
-                </ul>
-            </div>
-            <div class="skill-card card-3d">
-                <h3><i class="fas fa-code-branch"></i> CI/CD & DevOps</h3>
-                <ul class="skill-list">
-                    <li>Jenkins</li>
-                    <li>GitHub Actions</li>
-                    <li>Azure DevOps</li>
-                    <li>Git</li>
-                    <li>GitHub</li>
-                    <li>Power Automate</li>
-                </ul>
-            </div>
-            <div class="skill-card card-3d">
-                <h3><i class="fas fa-clipboard-check"></i> Project Management</h3>
-                <ul class="skill-list">
-                    <li>Jira</li>
-                    <li>Azure DevOps</li>
-                    <li>Agile & Scrum</li>
-                    <li>Kanban</li>
-                    <li>SDLC</li>
-                    <li>Test Planning</li>
-                    <li>Defect Lifecycle Management</li>
-                </ul>
-            </div>
-            <div class="skill-card card-3d">
-                <h3><i class="fas fa-code"></i> Programming & Querying</h3>
-                <ul class="skill-list">
-                    <li>Java</li>
-                    <li>JavaScript</li>
-                    <li>Python</li>
-                    <li>SQL</li>
-                    <li>HTML5</li>
-                    <li>CSS3</li>
-                </ul>
-            </div>
-            <div class="skill-card card-3d">
-                <h3><i class="fas fa-database"></i> Databases & Platforms</h3>
-                <ul class="skill-list">
-                    <li>Snowflake</li>
-                    <li>MySQL</li>
-                    <li>Cosmos DB</li>
-                    <li>SSMS</li>
-                    <li>Azure Data Factory</li>
-                    <li>Power BI</li>
-                    <li>Tableau</li>
-                </ul>
-            </div>
-            <div class="skill-card card-3d">
-                <h3><i class="fas fa-mobile-alt"></i> Mobile Testing Tools</h3>
-                <ul class="skill-list">
-                    <li>Appium</li>
-                    <li>Android Studio</li>
-                    <li>TestFlight</li>
-                    <li>iOS Simulator</li>
-                    <li>BrowserStack</li>
-                </ul>
-            </div>
-        </div>
-    </section>
+    <!-- Skills Section – Horizontal Wrap + Neon Glowing Border -->
 
-    <!-- Experience Section -->
+
+
+<!-- SKILLS – FINAL: ONE LINE PER CATEGORY + AUTO-WRAP + PERFECT LOOK -->
+<section id="skills">
+    <h2 class="section-title">Skills & Technical Toolkit</h2>
+
+    <div class="horizontal-skills-flow">
+
+        <div class="skill-card card-3d">
+            <h3><i class="fas fa-vial"></i> Testing Expertise</h3>
+            <p class="single-line-skills">
+                • Manual Testing • Automated Testing • Mobile Testing (Android/iOS) • API Testing • Regression Testing • Smoke & Sanity Testing • UAT • Exploratory Testing • Integration Testing • Performance Testing • Database & ETL Testing • Data Pipeline Validation • Power BI Testing • End-to-End Testing • AI/ML Application Testing • Automotive HMI Testing
+            </p>
+        </div>
+
+        <div class="skill-card card-3d">
+            <h3><i class="fas fa-robot"></i> Automation & Frameworks</h3>
+            <p class="single-line-skills">
+                • Playwright • Selenium • Cypress • Appium • REST Assured • Page Object Model (POM) • BrowserStack • Sauce Labs • TestRail
+            </p>
+        </div>
+
+        <div class="skill-card card-3d">
+            <h3><i class="fas fa-plug"></i> API & Backend Testing</h3>
+            <p class="single-line-skills">
+                • REST Assured • Postman • Insomnia
+            </p>
+        </div>
+
+        <div class="skill-card card-3d">
+            <h3><i class="fas fa-tachometer-alt"></i> Performance Tools</h3>
+            <p class="single-line-skills">
+                • Apache JMeter
+            </p>
+        </div>
+
+        <div class="skill-card card-3d">
+            <h3><i class="fas fa-code-branch"></i> CI/CD & DevOps</h3>
+            <p class="single-line-skills">
+                • Jenkins • GitHub Actions • Azure DevOps • Git • GitHub • Power Automate
+            </p>
+        </div>
+
+        <div class="skill-card card-3d">
+            <h3><i class="fas fa-clipboard-check"></i> Project Management</h3>
+            <p class="single-line-skills">
+                • Jira • Agile & Scrum • Kanban • SDLC • Test Planning • Defect Lifecycle Management
+            </p>
+        </div>
+
+        <div class="skill-card card-3d">
+            <h3><i class="fas fa-code"></i> Programming & Querying</h3>
+            <p class="single-line-skills">
+                • Java • JavaScript • TypeScript • Python • SQL • HTML5 • CSS3
+            </p>
+        </div>
+
+        <div class="skill-card card-3d">
+            <h3><i class="fas fa-database"></i> Databases & Platforms</h3>
+            <p class="single-line-skills">
+               • Snowflake • MySQL • Azure Cosmos DB • SSMS • Power BI • Tableau • Azure Data Factory
+            </p>
+        </div>
+
+        <div class="skill-card card-3d">
+            <h3><i class="fas fa-mobile-alt"></i> Mobile Testing Tools</h3>
+            <p class="single-line-skills">
+                • Appium • Android Studio • TestFlight • iOS Simulator • BrowserStack
+            </p>
+        </div>
+
+    </div>
+</section>
+
+</section>    <!-- Experience Section -->
     <section id="experience">
         <h2 class="section-title">Professional Experience</h2>
         <div class="timeline">
@@ -1203,6 +1454,13 @@
         </div>
     </section>
 
+
+
+
+
+
+
+
     <!-- Awards Section -->
     <section id="awards">
         <h2 class="section-title">Certifications & Awards</h2>
@@ -1240,47 +1498,61 @@
         </div>
     </section>
 
-    <!-- Education, Certifications, Extras -->
-    <section id="education">
-        <h2 class="section-title">Education & More</h2>
-        <div class="skills-grid">
-            <div class="skill-card card-3d">
-                <h3><i class="fas fa-graduation-cap"></i> Education</h3>
-                <ul class="skill-list">
-                    <li><strong>Bachelor of Science in Information Technology</strong></li>
-                    <li>University of the Punjab (2019–2023), Lahore</li>
-                    <br>
-                    <li><strong>Intermediate in Pre-Engineering</strong></li>
-                    <li>Punjab College of Science (2017–2019), Lahore</li>
-                </ul>
-            </div>
-            <div class="skill-card card-3d">
-                <h3><i class="fas fa-language"></i> Languages</h3>
-                <ul class="skill-list">
-                    <li><strong>English:</strong> Professional Fluency</li>
-                    <li><strong>Urdu:</strong> Native</li>
-                </ul>
-            </div>
-            <div class="skill-card card-3d">
-                <h3><i class="fas fa-hands-helping"></i> Volunteering & Leadership</h3>
-                <ul class="skill-list">
-                    <li>Mentored 10+ QA interns across multiple cohorts, helping several launch successful careers</li>
-                    <li>Event Manager for Stewart Title's "Bring Your Child to Workplace" event (130+ participants)</li>
-                    <li>Brand Ambassador at University of Punjab Job Fair, guiding 300+ students on career pathways</li>
-                </ul>
-            </div>
-            <div class="skill-card card-3d">
-                <h3><i class="fas fa-heart"></i> Hobbies & Interests</h3>
-                <ul class="skill-list">
-                    <li>Hiking & Nature Exploration</li>
-                    <li>Traveling & Photography</li>
-                    <li>Gardening</li>
-                    <li>Movies & Cinema</li>
-                    <li>Tech Webinars & Online Trainings</li>
-                </ul>
-            </div>
+
+   <!-- Education Section – Horizontal Wrap + PROPER SPACING BETWEEN CARDS -->
+
+
+
+
+<section id="education">
+    <h2 class="section-title">Education & More</h2>
+
+    <div class="education-grid-with-space">
+        <!-- Education Card -->
+        <div class="skill-card card-3d">
+            <h3>Education</h3>
+            <ul class="skill-list">
+                <li><strong>Bachelor of Science in Information Technology</strong></li>
+                <li class="no-bullet">University of the Punjab (2019–2023), Lahore</li>
+                
+                <li><strong>Intermediate in Pre-Engineering</strong></li>
+                <li class="no-bullet">Punjab College of Science (2017–2019), Lahore</li>
+            </ul>
         </div>
-    </section>
+
+        <!-- Languages Card -->
+        <div class="skill-card card-3d">
+            <h3>Languages</h3>
+            <ul class="skill-list">
+                <li><strong>English:</strong> Professional Fluency</li>
+                <li><strong>Urdu:</strong> Native</li>
+            </ul>
+        </div>
+
+        <!-- Volunteering Card -->
+        <div class="skill-card card-3d">
+            <h3>Volunteering & Leadership</h3>
+            <ul class="skill-list">
+                <li>Mentored 10+ QA interns across multiple cohorts</li>
+                <li>Event Manager for "Bring Your Child to Workplace"</li>
+                <li>Brand Ambassador at University Job Fair</li>
+            </ul>
+        </div>
+
+        <!-- Hobbies Card (Now 2 items per line) -->
+        <div class="skill-card card-3d">
+            <h3>Hobbies & Interests</h3>
+            <ul class="hobby-list-grid">
+                <li>• Hiking & Nature</li>
+                <li>• Traveling & Photo</li>
+                <li>• Gardening</li>
+                <li>• Movies & Cinema</li>
+                <li>• Tech Webinars</li>
+                <li>• Online Trainings</li>
+            </ul>
+        </div>
+    </div>
+</section>
 
     <!-- Recommendations Section -->
     <section id="recommendations">
