@@ -130,7 +130,6 @@
             width: 100%;
         }
 
-/* ====================== HORIZONTAL SKILLS & EDUCATION ====================== */
 /* TRUE HORIZONTAL SKILLS – 1 CARD PER ROW + GLOWING BORDER + MULTIPLE SKILLS PER LINE */
 .horizontal-skills-flow {
     display: flex;
@@ -203,37 +202,33 @@
     display: inline; /* Allows multiple per line */
 }
 
-
-
 /* Optional: Add separator between groups if needed */
 .horizontal-skills-flow .skill-list.multi-line li + li {
     margin-left: 1.2rem;
 }
 
-/* Mobile – Slightly smaller & tighter */
 @media (max-width: 768px) {
-    .horizontal-skills-flow {
-        padding: 0 1.5rem;
-        gap: 2.5rem;
-    }
-    .horizontal-skills-flow .skill-card {
-        padding: 2.5rem 2rem;
-    }
     .horizontal-skills-flow .skill-card h3 {
-        font-size: 1.6rem;
+        font-size: 1.6rem; /* mobile heading size */
+        text-align: left; /* left align */
+        display: flex; /* icon + text inline */
+        align-items: center;
+        gap: 0.5rem; /* space between icon and first word */
+        flex-wrap: wrap; /* allow wrapping */
     }
-    .horizontal-skills-flow .skill-list.multi-line {
-        font-size: 1.05rem;
-        line-height: 2;
+
+    .horizontal-skills-flow .skill-card h3 i {
+        flex-shrink: 0; /* keep icon size fixed */
+        margin-top: 0.1rem;
     }
-    .horizontal-skills-flow .skill-list.multi-line li {
-        display: block;
-        margin: 0.7rem 0;
-    }
-    .horizontal-skills-flow .skill-list.multi-line li + li {
-        margin-left: 0;
+
+    /* Make each word wrap individually */
+    .horizontal-skills-flow .skill-card h3 span {
+        white-space: nowrap; /* prevent word from breaking mid-word */
     }
 }
+
+
 
 
 
@@ -603,50 +598,52 @@
             color: var(--accent-pink);
         }
 
-        /* Skills Section */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 1.75rem;
-            margin-top: 2.5rem;
-        }
+/* Skills Section */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.75rem;
+    margin-top: 2.5rem;
+}
 
-        .skill-card {
-            padding: 1.75rem 1.75rem 1.5rem;
-        }
+.skill-card {
+    padding: 1.75rem 1.75rem 1.5rem;
+}
 
-        .skill-card h3 {
-            color: var(--light-purple);
-            margin-bottom: 1rem;
-            font-size: 1.15rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
+.skill-card h3 {
+    color: var(--light-purple);
+    margin-bottom: 1rem;
+    font-size: 1.25rem !important; /* Heading text made smaller, using !important */
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
 
-        .skill-card h3 i {
-            color: var(--accent-pink);
-        }
+.skill-card h3 i {
+    color: var(--accent-pink);
+    font-size: 1.2rem !important; /* Icon size adjusted to stay visible and balanced */
+}
 
-        .skill-list {
-            list-style: none;
-            font-size: 0.97rem;
-        }
+.skill-list {
+    list-style: none;
+    font-size: 0.97rem;
+}
 
-        .skill-list li {
-            padding: 0.35rem 0;
-            color: var(--text-light);
-            display: flex;
-            align-items: flex-start;
-            gap: 0.5rem;
-        }
+.skill-list li {
+    padding: 0.35rem 0;
+    color: var(--text-light);
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+}
 
-        .skill-list li::before {
-            content: '▸';
-            color: var(--accent-pink);
-            font-weight: 700;
-            margin-top: 0.05rem;
-        }
+.skill-list li::before {
+    content: '▸';
+    color: var(--accent-pink);
+    font-weight: 700;
+    margin-top: 0.05rem;
+}
+
 
         /* Experience Section */
         .timeline {
@@ -835,133 +832,155 @@
             color: var(--text-light);
             font-size: 0.9rem;
         }
+/* Recommendations – Full Layout + Glowing Borders */
+.recommendations-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin-top: 2.5rem;
+    padding: 0 1rem;
+}
 
-        /* Recommendations */
-                      /* RECOMMENDATIONS – SAME LAYOUT + GLOWING COLORFUL BORDERS */
-        .recommendations-container {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 2rem;
-            margin-top: 2.5rem;
-            padding: 0 1rem;
-        }
+/* Individual Recommendation Card */
+.recommendation-card {
+    position: relative;
+    padding: 2rem 1.8rem;
+    background: linear-gradient(145deg, rgba(15, 23, 42, 0.97), rgba(30, 27, 75, 0.98));
+    border-radius: 18px;
+    box-shadow: 0 14px 40px rgba(0, 0, 0, 0.65);
+    overflow: visible;
+    transform: translateZ(0);
+    backface-visibility: visible;
+    z-index: 1;
+    will-change: transform, opacity; /* help mobile browsers render properly */
+}
 
-        .recommendation-card {
-    contain: layout style !important;
-            position: relative;
-            padding: 2rem 1.8rem;
-            background: linear-gradient(145deg, rgba(15, 23, 42, 0.97), rgba(30, 27, 75, 0.98));
-            border-radius: 18px;
-            box-shadow: 0 14px 40px rgba(0, 0, 0, 0.65);
-            overflow: visible !important;
-            transform: translateZ(0);
-            backface-visibility: visible;
-            contain: layout style;
-            z-index: 1;
-        }
+/* Glowing Conic Border */
+.recommendation-card::before {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    border-radius: 22px;
+    background: conic-gradient(
+        from 0deg,
+        #A855F7,
+        #EC4899,
+        #F43F5E,
+        #BE185D,
+        #7C3AED,
+        #A855F7
+    );
+    z-index: -1;
+    animation: rotateBorder 8s linear infinite;
+    filter: blur(1px);
+    opacity: 0.9;
+}
 
-        /* GLOWING CONIC BORDER – SUPER PREMIUM */
-        .recommendation-card::before {
-            content: '';
-            position: absolute;
-            inset: -4px;
-            border-radius: 22px;
-            background: conic-gradient(
-                from 0deg,
-                #A855F7,     /* Purple */
-                #EC4899,     /* Pink */
-                #F43F5E,     /* Red */
-                #BE185D,     /* Deep Pink */
-                #7C3AED,     /* Dark Purple */
-                #A855F7      /* Back to Purple */
-            );
-            z-index: -1;
-            animation: rotateBorder 8s linear infinite;
-            filter: blur(1px);
-            opacity: 0.9;
-        }
+.recommendation-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 18px;
+    background: inherit;
+    z-index: -1;
+}
 
-        .recommendation-card::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            border-radius: 18px;
-            background: inherit;
-            z-index: -1;
-        }
+.recommendation-card:hover {
+    transform: translateY(-10px) translateZ(0);
+    box-shadow: 0 25px 70px rgba(236, 72, 153, 0.5);
+}
 
-        /* Hover = faster glow + lift */
-        .recommendation-card:hover {
-            transform: translateY(-10px) translateZ(0);
-            box-shadow: 0 25px 70px rgba(236, 72, 153, 0.5);
-        }
+.recommendation-card:hover::before {
+    animation-duration: 2.5s;
+}
 
-        .recommendation-card:hover::before {
-            animation-duration: 2.5s;
-        }
+@keyframes rotateBorder {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
 
-        @keyframes rotateBorder {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
+.quote-icon {
+    position: absolute;
+    top: 1rem;
+    right: 1.2rem;
+    font-size: 3.5rem;
+    color: var(--accent-pink);
+    opacity: 0.15;
+    pointer-events: none;
+}
 
-        .quote-icon {
-            position: absolute;
-            top: 1rem;
-            right: 1.2rem;
-            font-size: 3.5rem;
-            color: var(--accent-pink);
-            opacity: 0.15;
-            pointer-events: none;
-        }
+.recommendation-text {
+    font-style: italic;
+    color: var(--text-dark);
+    line-height: 1.75;
+    margin-bottom: 1.6rem;
+    font-size: 1rem;
+    word-break: break-word;
+}
 
-        .recommendation-text {
-            font-style: italic;
-            color: var(--text-dark);
-            line-height: 1.75;
-            margin-bottom: 1.6rem;
-            font-size: 1rem;
-            word-break: break-word;
-        }
+.recommender {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    margin-top: 0.5rem;
+}
 
-        .recommender {
-            display: flex;
-            align-items: center;
-            gap: 0.9rem;
-            margin-top: 0.5rem;
-        }
+.recommender-info h4 {
+    color: var(--text-dark);
+    margin-bottom: 0.2rem;
+    font-size: 1.05rem;
+}
 
-        .recommender-info h4 {
-            color: var(--text-dark);
-            margin-bottom: 0.2rem;
-            font-size: 1.05rem;
-        }
+.recommender-info p {
+    color: var(--text-light);
+    font-size: 0.9rem;
+}
 
-        .recommender-info p {
-            color: var(--text-light);
-            font-size: 0.9rem;
-        }
+/* Mobile Fix – Recommendations & Burger Menu */
+@media (max-width: 768px) {
+    .recommendations-container {
+        grid-template-columns: 1fr;
+        gap: 2.2rem;
+        padding: 0 1.5rem;
+        visibility: visible !important; /* force render */
+        opacity: 1 !important;
+    }
 
-        /* Mobile – same as before (100% working) */
-        @media (max-width: 768px) {
-            .recommendations-container {
-                grid-template-columns: 1fr;
-                gap: 2.2rem;
-                padding: 0 1.5rem;
-            }
+    .recommendation-card {
+        padding: 2.2rem 2rem;
+        transform: none !important; /* remove stacking issues */
+        contain: none !important; /* disable containment to force proper render */
+    }
 
-            .recommendation-card {
-                padding: 2.2rem 2rem;
-                transform: none !important;
-            }
-        }
+    /* Force mobile browsers to render pseudo-elements */
+    .recommendation-card::before,
+    .recommendation-card::after {
+        backface-visibility: hidden;
+        transform: translateZ(0);
+        will-change: transform, opacity;
+    }
+}
 
-        /* Desktop: 2-column grid (optional – looks better than 1fr on big screens) */
-        @media (min-width: 992px) {
-            .recommendations-container {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
+/* Desktop: 2-column grid */
+@media (min-width: 992px) {
+    .recommendations-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Burger Menu – Always on top */
+.mobile-navbar,
+.burger-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9999;
+}
+
+
+
+
 
         /* Footer */
         footer {
@@ -1211,63 +1230,63 @@
     <div class="horizontal-skills-flow">
 
         <div class="skill-card card-3d">
-            <h3><i class="fas fa-vial"></i> Testing Expertise</h3>
+            <h3><i class="fas fa-vial"></i> <span>Testing</span> <span>Expertise</span></h3> 
             <p class="single-line-skills">
                 • Manual Testing • Automated Testing • Mobile Testing (Android/iOS) • API Testing • Regression Testing • Smoke & Sanity Testing • UAT • Exploratory Testing • Integration Testing • Performance Testing • Database & ETL Testing • Data Pipeline Validation • Power BI Testing • End-to-End Testing • AI/ML Application Testing • Automotive HMI Testing
             </p>
         </div>
 
         <div class="skill-card card-3d">
-            <h3><i class="fas fa-robot"></i> Automation & Frameworks</h3>
+            <h3><i class="fas fa-robot"></i> <span>Automation</span> <span>& <span><span>Frameworks</span></h3>
             <p class="single-line-skills">
                 • Playwright • Selenium • Cypress • Appium • REST Assured • Page Object Model (POM) • BrowserStack • Sauce Labs • TestRail
             </p>
         </div>
 
         <div class="skill-card card-3d">
-            <h3><i class="fas fa-plug"></i> API & Backend Testing</h3>
+            <h3><i class="fas fa-plug"></i> <span>API</span> <span>&<span><span> Backend<span> Testing</span></h3>
             <p class="single-line-skills">
                 • REST Assured • Postman • Insomnia
             </p>
         </div>
 
         <div class="skill-card card-3d">
-            <h3><i class="fas fa-tachometer-alt"></i> Performance Tools</h3>
+            <h3><i class="fas fa-tachometer-alt"></i> <span>Performance</span> <span>Tools</span></h3>
             <p class="single-line-skills">
                 • Apache JMeter
             </p>
         </div>
 
         <div class="skill-card card-3d">
-            <h3><i class="fas fa-code-branch"></i> CI/CD & DevOps</h3>
+            <h3><i class="fas fa-code-branch"></i> <span>CI/CD</span> <span>&<span><span> DevOps</span></h3>
             <p class="single-line-skills">
                 • Jenkins • GitHub Actions • Azure DevOps • Git • GitHub • Power Automate
             </p>
         </div>
 
         <div class="skill-card card-3d">
-            <h3><i class="fas fa-clipboard-check"></i> Project Management</h3>
+            <h3><i class="fas fa-clipboard-check"></i> <span>Project</span> <span>Management</span></h3>
             <p class="single-line-skills">
                 • Jira • Agile & Scrum • Kanban • SDLC • Test Planning • Defect Lifecycle Management
             </p>
         </div>
 
         <div class="skill-card card-3d">
-            <h3><i class="fas fa-code"></i> Programming & Querying</h3>
+            <h3><i class="fas fa-code"></i> <span>Programming</span> <span>&<span><span> Querying</span></h3>
             <p class="single-line-skills">
                 • Java • JavaScript • TypeScript • Python • SQL • HTML5 • CSS3
             </p>
         </div>
 
         <div class="skill-card card-3d">
-            <h3><i class="fas fa-database"></i> Databases & Platforms</h3>
+            <h3><i class="fas fa-database"></i> <span>Databases</span> <span>&<span><span> Platforms</span></h3>
             <p class="single-line-skills">
                • Snowflake • MySQL • Azure Cosmos DB • SSMS • Power BI • Tableau • Azure Data Factory
             </p>
         </div>
 
         <div class="skill-card card-3d">
-            <h3><i class="fas fa-mobile-alt"></i> Mobile Testing Tools</h3>
+            <h3><i class="fas fa-mobile-alt"></i> <span>Mobile</span> <span>Testing<span><span> Tools</span></h3>
             <p class="single-line-skills">
                 • Appium • Android Studio • TestFlight • iOS Simulator • BrowserStack
             </p>
