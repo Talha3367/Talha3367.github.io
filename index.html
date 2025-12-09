@@ -138,13 +138,14 @@ html, body {
         }
 
 /* TRUE HORIZONTAL SKILLS – 1 CARD PER ROW + GLOWING BORDER + MULTIPLE SKILLS PER LINE */
+/* TRUE HORIZONTAL SKILLS – 1 CARD PER ROW + GLOWING BORDER + MATCHES EDUCATION BOX SIZE */
 .horizontal-skills-flow {
     display: flex;
     flex-direction: column;
-    gap: 3rem;
+    gap: 3.5rem; /* Matches Education section spacing */
     margin-top: 4rem;
-    padding: 0 3rem;
-    max-width: 1600px;
+    padding: 0 1rem; /* Matches other section padding */
+    max-width: 1200px; /* Matches your portfolio's global max-width */
     margin-left: auto;
     margin-right: auto;
 }
@@ -153,21 +154,21 @@ html, body {
     width: 100%;
     max-width: 100%;
     margin: 0 auto;
-    padding: 2.8rem 3rem;
-    border-radius: 32px;
-    box-shadow: 0 20px 70px rgba(0, 0, 0, 0.8);
+    padding: 2.5rem 2.5rem; /* INCREASED PADDING FOR LARGER BOXES (matches Education section) */
+    border-radius: 18px; /* Matches all other card borders */
+    box-shadow: 0 14px 40px rgba(0, 0, 0, 0.65); /* Matches Education card shadows */
     position: relative;
     overflow: hidden;
-    border: 3px solid transparent;
-    transition: all 0.6s ease;
+    border: 2px solid rgba(236, 72, 153, 0.35); /* Matches Education card borders */
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Matches Education hover animation */
 }
 
-/* GLOWING RAINBOW BORDER ON HOVER */
+/* GLOWING RAINBOW BORDER ON HOVER (matches Education card hover) */
 .horizontal-skills-flow .skill-card::before {
     content: '';
     position: absolute;
     inset: -6px;
-    border-radius: 38px;
+    border-radius: 24px;
     background: conic-gradient(from 0deg, #A855F7, #EC4899, #F43F5E, #22d3ee, #7C3AED, #A855F7);
     z-index: -1;
     opacity: 0;
@@ -180,61 +181,63 @@ html, body {
 }
 
 .horizontal-skills-flow .skill-card:hover {
-    transform: translateY(-20px);
-    box-shadow: 0 45px 130px rgba(236, 72, 153, 0.7);
+    transform: translateY(-10px) scale(1.02); /* Matches Education card hover effect */
+    box-shadow: 0 15px 40px rgba(255, 0, 127, 0.4), 
+                0 0 15px rgba(138, 43, 226, 0.3); /* Matches Education card glow */
+    border-color: #ff007f; /* Matches Education card hover border */
 }
 
-/* Title */
+/* Title - Matches Education section styling */
 .horizontal-skills-flow .skill-card h3 {
-    font-size: 1.8rem;
+    font-size: 1.5rem; /* Matches Education card heading size */
     color: #E879F9;
     margin-bottom: 1.8rem;
-    text-align: center;
-    font-weight: 800;
+    font-weight: 700; /* Matches Education card heading weight */
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
 }
 
-/* MULTIPLE SKILLS PER LINE – CLEAN & SPACED */
-.horizontal-skills-flow .skill-list.multi-line {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    text-align: left;
-    font-size: 1.18rem;
-    line-height: 2.3;
+.horizontal-skills-flow .skill-card h3 i {
+    color: var(--accent-pink);
+    font-size: 1.2rem; /* Matches all other section icons */
+}
+
+/* LARGER SKILL TEXT TO FILL THE BIGGER BOX */
+.single-line-skills {
+    font-size: 1.05rem; /* Increased text size */
+    line-height: 1.8; /* More vertical spacing for better readability */
     color: #E5E7EB;
+    word-break: break-word;
+    overflow-wrap: break-word;
 }
 
-.horizontal-skills-flow .skill-list.multi-line li {
-    margin: 0.6rem 0;
-    display: inline; /* Allows multiple per line */
-}
-
-/* Optional: Add separator between groups if needed */
-.horizontal-skills-flow .skill-list.multi-line li + li {
-    margin-left: 1.2rem;
-}
-
+/* Mobile adjustments */
 @media (max-width: 768px) {
+    .horizontal-skills-flow {
+        padding: 0 1.2rem;
+        gap: 2.5rem;
+    }
+
+    .horizontal-skills-flow .skill-card {
+        padding: 1.8rem 1.6rem; /* Mobile-friendly padding */
+    }
+
     .horizontal-skills-flow .skill-card h3 {
-        font-size: 1.6rem; /* mobile heading size */
-        text-align: left; /* left align */
-        display: flex; /* icon + text inline */
-        align-items: center;
-        gap: 0.5rem; /* space between icon and first word */
-        flex-wrap: wrap; /* allow wrapping */
+        font-size: 1.35rem;
+        text-align: left;
+        flex-wrap: wrap;
     }
 
-    .horizontal-skills-flow .skill-card h3 i {
-        flex-shrink: 0; /* keep icon size fixed */
-        margin-top: 0.1rem;
-    }
-
-    /* Make each word wrap individually */
     .horizontal-skills-flow .skill-card h3 span {
-        white-space: nowrap; /* prevent word from breaking mid-word */
+        white-space: nowrap;
+    }
+
+    .single-line-skills {
+        font-size: 0.95rem;
+        line-height: 1.7;
     }
 }
-
 
 
 
@@ -1554,13 +1557,14 @@ html, body {
 
 
 
+<!-- Education Section – WITH ICONS MATCHING SKILLS SECTION -->
 <section id="education">
     <h2 class="section-title">Education & More</h2>
 
     <div class="education-grid-with-space">
-        <!-- Education Card -->
+        <!-- Education Card with Graduation Cap Icon -->
         <div class="skill-card card-3d">
-            <h3>Education</h3>
+            <h3><i class="fas fa-graduation-cap"></i> Education</h3>
             <ul class="skill-list">
                 <li><strong>Bachelor of Science in Information Technology</strong></li>
                 <li class="no-bullet">University of the Punjab (2019–2023), Lahore</li>
@@ -1570,18 +1574,18 @@ html, body {
             </ul>
         </div>
 
-        <!-- Languages Card -->
+        <!-- Languages Card with Language Icon -->
         <div class="skill-card card-3d">
-            <h3>Languages</h3>
+            <h3><i class="fas fa-language"></i> Languages</h3>
             <ul class="skill-list">
                 <li><strong>English:</strong> Professional Fluency</li>
                 <li><strong>Urdu:</strong> Native</li>
             </ul>
         </div>
 
-        <!-- Volunteering Card -->
+        <!-- Volunteering Card with Users Icon -->
         <div class="skill-card card-3d">
-            <h3>Volunteering & Leadership</h3>
+            <h3><i class="fas fa-users"></i> Volunteering & Leadership</h3>
             <ul class="skill-list">
                 <li>Mentored 10+ QA interns across multiple cohorts</li>
                 <li>Event Manager for "Bring Your Child to Workplace"</li>
@@ -1589,9 +1593,9 @@ html, body {
             </ul>
         </div>
 
-        <!-- Hobbies Card (Now 2 items per line) -->
+        <!-- Hobbies Card with Heart Icon -->
         <div class="skill-card card-3d">
-            <h3>Hobbies & Interests</h3>
+            <h3><i class="fas fa-heart"></i> Hobbies & Interests</h3>
             <ul class="hobby-list-grid">
                 <li>• Hiking & Nature</li>
                 <li>• Traveling & Photo</li>
@@ -1603,7 +1607,6 @@ html, body {
         </div>
     </div>
 </section>
-
     <!-- Recommendations Section -->
     <section id="recommendations">
         <h2 class="section-title">Recommendations</h2>
