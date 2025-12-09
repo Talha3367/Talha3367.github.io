@@ -2,8 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Talha Sharif - SQA Engineer Portfolio</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">    <title>Talha Sharif - SQA Engineer Portfolio</title>
 
 <link rel="icon" href="talha.jpg" type="image/jpeg">
     <link rel="apple-touch-icon" href="talha.jpg">
@@ -14,6 +13,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
+/* GLOBAL FIX - NO UNWANTED SCROLL BARS EVER */
+html, body {
+    overflow-x: hidden !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
         * {
             margin: 0;
             padding: 0;
@@ -832,62 +839,79 @@
             color: var(--text-light);
             font-size: 0.9rem;
         }
-/* Recommendations – Full Layout + Glowing Borders */
+/* FINAL RECOMMENDATIONS CSS - NO SCROLL BARS, PERFECT MOBILE + DESKTOP */
+#recommendations {
+    padding: 5rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    overflow: hidden !important; /* KILLS ALL SCROLL BARS HERE */
+}
+
 .recommendations-container {
     display: grid;
     grid-template-columns: 1fr;
     gap: 2rem;
     margin-top: 2.5rem;
-    padding: 0 1rem;
+    width: 100%;
+    box-sizing: border-box;
+    overflow: hidden !important; /* NO SCROLL BARS EVER */
 }
 
-/* Individual Recommendation Card */
+/* Individual Recommendation Card - COMPLETELY SAFE, NO OVERFLOW */
 .recommendation-card {
     position: relative;
     padding: 2rem 1.8rem;
-    background: linear-gradient(145deg, rgba(15, 23, 42, 0.97), rgba(30, 27, 75, 0.98));
+    background: 
+        linear-gradient(145deg, rgba(15, 23, 42, 0.97), rgba(30, 27, 75, 0.98)),
+        linear-gradient(135deg, rgba(168, 85, 247, 0.08) 0%, rgba(236, 72, 153, 0.08) 100%);
     border-radius: 18px;
     box-shadow: 0 14px 40px rgba(0, 0, 0, 0.65);
-    overflow: visible;
-    transform: translateZ(0);
-    backface-visibility: visible;
-    z-index: 1;
-    will-change: transform, opacity; /* help mobile browsers render properly */
+    overflow: hidden; /* Locks all effects INSIDE the card */
+    border: 2px solid rgba(236, 72, 153, 0.35);
+    transition: all 0.35s ease;
+    max-width: 100%;
+    width: 100%;
 }
 
-/* Glowing Conic Border */
-.recommendation-card::before {
-    content: '';
-    position: absolute;
-    inset: -4px;
-    border-radius: 22px;
-    background: conic-gradient(
-        from 0deg,
-        #A855F7,
-        #EC4899,
-        #F43F5E,
-        #BE185D,
-        #7C3AED,
-        #A855F7
-    );
-    z-index: -1;
-    animation: rotateBorder 8s linear infinite;
-    filter: blur(1px);
-    opacity: 0.9;
+/* Desktop Glowing Conic Border (SAFE - never goes outside card bounds) */
+@media (min-width: 992px) {
+    .recommendation-card::before {
+        content: '';
+        position: absolute;
+        inset: 0; /* Changed from -4px to 0 so it never overflows */
+        border-radius: 18px;
+        background: conic-gradient(
+            from 0deg,
+            #A855F7,
+            #EC4899,
+            #F43F5E,
+            #BE185D,
+            #7C3AED,
+            #A855F7
+        );
+        z-index: -1;
+        animation: rotateBorder 8s linear infinite;
+        filter: blur(0.8px);
+        opacity: 0.8;
+    }
+
+    .recommendation-card::after {
+        content: '';
+        position: absolute;
+        inset: 2px; /* Creates a clean inner border */
+        border-radius: 16px;
+        background: linear-gradient(145deg, rgba(15, 23, 42, 0.97), rgba(30, 27, 75, 0.98));
+        z-index: -1;
+    }
 }
 
-.recommendation-card::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: 18px;
-    background: inherit;
-    z-index: -1;
-}
-
+/* Safe Hover Effects (no overflow) */
 .recommendation-card:hover {
-    transform: translateY(-10px) translateZ(0);
-    box-shadow: 0 25px 70px rgba(236, 72, 153, 0.5);
+    transform: translateY(-10px);
+    box-shadow: 
+        0 25px 70px rgba(236, 72, 153, 0.5),
+        0 0 20px rgba(168, 85, 247, 0.25);
+    border-color: rgba(236, 72, 153, 0.9);
 }
 
 .recommendation-card:hover::before {
@@ -907,6 +931,7 @@
     color: var(--accent-pink);
     opacity: 0.15;
     pointer-events: none;
+    filter: drop-shadow(0 0 8px rgba(236, 72, 153, 0.2));
 }
 
 .recommendation-text {
@@ -916,6 +941,8 @@
     margin-bottom: 1.6rem;
     font-size: 1rem;
     word-break: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
 }
 
 .recommender {
@@ -923,12 +950,15 @@
     align-items: center;
     gap: 0.9rem;
     margin-top: 0.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(236, 72, 153, 0.2);
 }
 
 .recommender-info h4 {
-    color: var(--text-dark);
+    color: var(--accent-pink);
     margin-bottom: 0.2rem;
     font-size: 1.05rem;
+    font-weight: 600;
 }
 
 .recommender-info p {
@@ -936,53 +966,54 @@
     font-size: 0.9rem;
 }
 
-/* Mobile Fix – Recommendations & Burger Menu */
+/* MOBILE VIEW - NO HACKS, PERFECT ALIGNMENT */
 @media (max-width: 768px) {
+    #recommendations {
+        padding: 5rem 1.2rem; /* Matches all other mobile sections */
+    }
+
     .recommendations-container {
-        grid-template-columns: 1fr;
-        gap: 2.2rem;
-        padding: 0 1.5rem;
-        visibility: visible !important; /* force render */
-        opacity: 1 !important;
+        gap: 1.8rem;
     }
 
     .recommendation-card {
-        padding: 2.2rem 2rem;
-        transform: none !important; /* remove stacking issues */
-        contain: none !important; /* disable containment to force proper render */
+        padding: 1.6rem 1.4rem;
+        border: 2px solid rgba(236, 72, 153, 0.4);
+        /* Mobile-safe glow without overflow */
+        box-shadow: 
+            0 10px 30px rgba(0, 0, 0, 0.65),
+            0 0 12px rgba(236, 72, 153, 0.3);
     }
 
-    /* Force mobile browsers to render pseudo-elements */
+    /* Remove desktop pseudo-elements on mobile to avoid any possible overflow */
     .recommendation-card::before,
     .recommendation-card::after {
-        backface-visibility: hidden;
-        transform: translateZ(0);
-        will-change: transform, opacity;
+        display: none !important;
+    }
+
+    .recommendation-text {
+        font-size: 0.95rem;
+        line-height: 1.65;
+    }
+
+    .quote-icon {
+        font-size: 2.8rem;
+        top: 0.8rem;
+        right: 0.8rem;
+    }
+
+    .recommender {
+        flex-wrap: wrap;
+        gap: 0.6rem;
     }
 }
 
-/* Desktop: 2-column grid */
+/* Desktop 2-column layout */
 @media (min-width: 992px) {
     .recommendations-container {
         grid-template-columns: repeat(2, 1fr);
     }
-}
-
-/* Burger Menu – Always on top */
-.mobile-navbar,
-.burger-menu {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 9999;
-}
-
-
-
-
-
-        /* Footer */
+}       /* Footer */
         footer {
             background: radial-gradient(circle at top, #7C3AED 0, #EC4899 30%, #020617 70%, #000000 100%);
             color: var(--white);
@@ -1295,7 +1326,7 @@
     </div>
 </section>
 
-</section>    <!-- Experience Section -->
+    <!-- Experience Section -->
     <section id="experience">
         <h2 class="section-title">Professional Experience</h2>
         <div class="timeline">
@@ -1917,27 +1948,37 @@
             }
         });
 
-        // Intersection Observer for Fade In Animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -40px 0px'
-        };
+// Intersection Observer for Fade In Animations - FIXED FOR MOBILE
+const observerOptions = {
+    threshold: 0.05, // Trigger earlier
+    rootMargin: '0px 0px -10px 0px' // Less strict margin for mobile
+};
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+            observer.unobserve(entry.target); // Stop observing after animation
+        }
+    });
+}, observerOptions);
 
-        document.querySelectorAll('section:not(.hero), .skill-card, .project-card, .recommendation-card, .timeline-item, .about-content, .award-card').forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(24px)';
-            el.style.transition = 'all 0.7s ease';
-            observer.observe(el);
-        });
+// Explicitly observe recommendation cards first
+document.querySelectorAll('.recommendation-card').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(24px)';
+    el.style.transition = 'all 0.7s ease';
+    observer.observe(el);
+});
+
+// Observe other elements as before
+document.querySelectorAll('section:not(.hero):not(#recommendations), .skill-card, .project-card, .timeline-item, .about-content, .award-card').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(24px)';
+    el.style.transition = 'all 0.7s ease';
+    observer.observe(el);
+});
 
         // Typing effect for hero title
         const heroTitle = document.querySelector('.hero-text h1');
