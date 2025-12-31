@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -144,8 +145,8 @@ html, body {
     flex-direction: column;
     gap: 3.5rem; /* Matches Education section spacing */
     margin-top: 4rem;
-    padding: 0 1rem; /* Matches other section padding */
-    max-width: 1200px; /* Matches your portfolio's global max-width */
+    padding: 0; /* REMOVE extra inner padding so width matches Professional Overview */
+    max-width: 1200px; /* Same as section */
     margin-left: auto;
     margin-right: auto;
 }
@@ -215,7 +216,7 @@ html, body {
 /* Mobile adjustments */
 @media (max-width: 768px) {
     .horizontal-skills-flow {
-        padding: 0 1.2rem;
+        padding: 0; /* Use only section padding so width matches Professional Overview on mobile */
         gap: 2.5rem;
     }
 
@@ -248,17 +249,17 @@ html, body {
 .education-grid-with-space {
     display: flex;             /* Changed to Flex for better vertical spacing control */
     flex-direction: column;    /* Stacks them vertically */
-    align-items: center;       /* Centers the cards */
+    align-items: center;       /* Cards will still look nice vertically */
     gap: 3.5rem;               /* HUGE SPACE between boxes */
     margin-top: 4rem;
     margin-bottom: 4rem;
-    padding: 0 2rem;
+    padding: 0; /* REMOVE extra inner padding so width matches Professional Overview */
 }
 
 /* Individual Card Styling */
 .skill-card.card-3d {
-    width: 100%;               /* Full width of the container */
-    max-width: 800px;          /* Keeps boxes from getting too wide */
+    width: 100%;               /* Full width of the container (same as Professional Overview card) */
+    max-width: 100%;           /* REMOVE 800px cap so it matches section width */
     margin-bottom: 1rem;       /* Extra safety space */
     display: block;            /* Ensures it stays as a block */
 }
@@ -288,7 +289,7 @@ html, body {
 @media (max-width: 768px) {
     .education-grid-with-space {
         gap: 2.5rem;
-        padding: 0 1.5rem;
+        padding: 0; /* Use only section padding so width matches Professional Overview on mobile */
     }
     .hobby-list-grid {
         grid-template-columns: 1fr; /* 1 per line on mobile */
@@ -1153,6 +1154,118 @@ html, body {
                 height: 230px;
             }
         }
+
+/* ===== EXTRA ANIMATIONS & 3D EFFECTS (THEME & LAYOUT UNCHANGED) ===== */
+
+/* Animated gradient movement for section titles */
+.section-title {
+    background-size: 220% 220%;
+    animation: sectionGradient 14s ease infinite;
+}
+@keyframes sectionGradient {
+    0%   { background-position: 0% 50%;   filter: drop-shadow(0 0 0 rgba(236,72,153,0)); }
+    50%  { background-position: 100% 50%; filter: drop-shadow(0 0 18px rgba(236,72,153,0.45)); }
+    100% { background-position: 0% 50%;   filter: drop-shadow(0 0 0 rgba(236,72,153,0)); }
+}
+
+/* Hero badges – soft floating animation */
+.hero-badge {
+    position: relative;
+    animation: badgeFloat 6s ease-in-out infinite;
+}
+.hero-badge:nth-child(2n) {
+    animation-delay: 0.7s;
+}
+.hero-badge:nth-child(3n) {
+    animation-delay: 1.3s;
+}
+@keyframes badgeFloat {
+    0%,100% { transform: translateY(0); }
+    50%     { transform: translateY(-4px); }
+}
+
+/* Hero photo container gentle float (stops when hovered) */
+.hero-photo {
+    animation: heroFloat 9s ease-in-out infinite;
+}
+.hero-photo:hover {
+    animation-play-state: paused;
+}
+@keyframes heroFloat {
+    0%,100% { transform: translateY(0); }
+    50%     { transform: translateY(-10px); }
+}
+
+/* Timeline dot – pulsing glow */
+.timeline-dot {
+    animation: dotPulse 2.6s ease-out infinite;
+}
+@keyframes dotPulse {
+    0%   { box-shadow: 0 0 0 4px rgba(236,72,153,0.45); }
+    60%  { box-shadow: 0 0 0 16px rgba(236,72,153,0); }
+    100% { box-shadow: 0 0 0 4px rgba(236,72,153,0); }
+}
+
+/* Awards icons – 3D pop on hover */
+.award-card i {
+    transition: transform 0.35s ease, text-shadow 0.35s ease;
+}
+.award-card:hover i {
+    transform: translateY(-6px) scale(1.1);
+    text-shadow: 0 12px 30px rgba(0,0,0,0.8);
+}
+
+/* Project headers – sweeping shine on hover */
+.project-header {
+    position: relative;
+    overflow: hidden;
+}
+.project-header::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -40%;
+    width: 40%;
+    height: 100%;
+    background: linear-gradient(120deg,
+        rgba(255,255,255,0),
+        rgba(255,255,255,0.7),
+        rgba(255,255,255,0)
+    );
+    transform: skewX(-25deg);
+    opacity: 0;
+    transition: transform 0.6s ease, opacity 0.6s ease;
+}
+.project-card:hover .project-header::after {
+    transform: translateX(260%) skewX(-25deg);
+    opacity: 1;
+}
+
+/* Project tech chips – mini float on hover */
+.project-tech span {
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.project-tech span:hover {
+    transform: translateY(-2px) scale(1.04);
+    box-shadow: 0 10px 22px rgba(0,0,0,0.6);
+}
+
+/* Recommendations quote icon – slow float */
+.quote-icon {
+    animation: quoteFloat 9s ease-in-out infinite;
+}
+@keyframes quoteFloat {
+    0%,100% { transform: translateY(0); }
+    50%     { transform: translateY(-6px); }
+}
+
+/* Footer icons – extra glow on hover */
+.social-links a {
+    text-shadow: 0 0 0 rgba(236,72,153,0);
+}
+.social-links a:hover {
+    text-shadow: 0 0 18px rgba(236,72,153,0.8);
+}
     </style>
 </head>
 <body>
@@ -1254,10 +1367,6 @@ html, body {
     </section>
 
     <!-- Skills Section – Horizontal Wrap + Neon Glowing Border -->
-
-
-
-<!-- SKILLS – FINAL: ONE LINE PER CATEGORY + AUTO-WRAP + PERFECT LOOK -->
 <section id="skills">
     <h2 class="section-title">Skills & Technical Toolkit</h2>
 
@@ -1507,13 +1616,6 @@ html, body {
         </div>
     </section>
 
-
-
-
-
-
-
-
     <!-- Awards Section -->
     <section id="awards">
         <h2 class="section-title">Certifications & Awards</h2>
@@ -1551,13 +1653,7 @@ html, body {
         </div>
     </section>
 
-
-   <!-- Education Section – Horizontal Wrap + PROPER SPACING BETWEEN CARDS -->
-
-
-
-
-<!-- Education Section – WITH ICONS MATCHING SKILLS SECTION -->
+    <!-- Education Section -->
 <section id="education">
     <h2 class="section-title">Education & More</h2>
 
@@ -1607,6 +1703,7 @@ html, body {
         </div>
     </div>
 </section>
+
     <!-- Recommendations Section -->
     <section id="recommendations">
         <h2 class="section-title">Recommendations</h2>
@@ -1901,7 +1998,7 @@ html, body {
             <a href="tel:+923104506164" title="Phone"><i class="fas fa-phone"></i></a>
         </div>
         <p style="margin-top: 2rem; opacity: 0.8; font-size: 0.85rem;">
-            © 2025 Talha Sharif. All rights reserved.
+            © 2026 Talha Sharif. All rights reserved.
         </p>
     </div>
 </footer>
@@ -2003,3 +2100,4 @@ document.querySelectorAll('section:not(.hero):not(#recommendations), .skill-card
     </script>
 </body>
 </html>
+```
