@@ -1036,6 +1036,78 @@
             text-shadow: 0 0 18px rgba(236,72,153,0.8);
         }
 
+
+
+.back-to-top-wrapper {
+    position: fixed;
+    bottom: 3rem;
+    right: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+.back-to-top-wrapper.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top {
+    width: 50px;
+    height: 50px;
+    background: var(----dark-purple);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+    border: 3px solid var(--accent-pink);
+    transition: all 0.3s ease;
+}
+
+.back-to-top:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 12px 35px rgba(236, 72, 153, 0.4);
+    background: var(--accent-pink);
+}
+
+.back-to-top:hover i {
+    color: var(--white);
+}
+
+.back-to-top i {
+    font-size: 1.5rem;
+    color: var(--accent-pink);
+    transition: color 0.3s ease;
+}
+
+.back-to-top-text {
+    color: var(--white);
+    font-size: 0.8rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-top: 0.5rem;
+    text-align: center;
+    white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+    .back-to-top-wrapper {
+        right: 1rem;
+        bottom: 1rem;
+    }
+    .back-to-top {
+        width: 35px;
+        height: 35px;
+    }
+}
+
         /* ===== NEW ANIMATION ELEMENTS - ADDED BELOW ===== */
 
         /* Particle Canvas - completely non-intrusive background layer */
@@ -1050,28 +1122,28 @@
             opacity: 0.4;
         }
 
-        /* Parallax Background - separate animated gradient layer */
-        #parallaxBackground {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -5;
-            background: 
-                radial-gradient(circle at 0% 0%, var(--mid-purple) 0, transparent 50%),
-                radial-gradient(circle at 100% 0%, var(--accent-pink) 0, transparent 55%),
-                radial-gradient(circle at 50% 100%, var(--dark-purple-2) 0, #020617 70%);
-            animation: backgroundParallax 30s ease-in-out infinite;
-            pointer-events: none;
-        }
+/* Parallax Background - STATIC (no movement) */
+#parallaxBackground {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -5;
+    background: 
+        radial-gradient(circle at 0% 0%, var(--mid-purple) 0, transparent 50%),
+        radial-gradient(circle at 100% 0%, var(--accent-pink) 0, transparent 55%),
+        radial-gradient(circle at 50% 100%, var(--dark-purple-2) 0, #020617 70%);
+    pointer-events: none;
+}
 
-        @keyframes backgroundParallax {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            25% { transform: translate(-2%, -1%) scale(1.02); }
-            50% { transform: translate(2%, -2%) scale(1); }
-            75% { transform: translate(-1%, 1%) scale(1.01); }
-        }
+/* DELETE THIS ENTIRE BLOCK */
+@keyframes backgroundParallax {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    25% { transform: translate(-2%, -1%) scale(1.02); }
+    50% { transform: translate(2%, -2%) scale(1); }
+    75% { transform: translate(-1%, 1%) scale(1.01); }
+}
 
         /* Mouse Spotlight - subtle flashlight effect */
         #mouseSpotlight {
@@ -1882,6 +1954,15 @@
         </div>
     </section>
 
+
+  <!-- BACK TO TOP BUTTON - FIXED POSITION -->
+    <div class="back-to-top-wrapper" id="backToTopWrapper">
+        <div class="back-to-top" id="backToTop" onclick="scrollToTop()">
+            <i class="fas fa-arrow-up"></i>
+        </div>
+        <span class="back-to-top-text">Back to Top</span>
+    </div>
+
     <footer id="contact">
         <div class="footer-content">
             <h2>Let's Connect</h2>
@@ -2156,6 +2237,24 @@
             customCursor.classList.remove('active');
             document.getElementById('mouseSpotlight').classList.remove('active');
         });
+
+// BACK TO TOP BUTTON FUNCTIONALITY
+function scrollToTop() {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+}
+
+// Show/hide button based on scroll position
+const backToTopWrapper = document.getElementById('backToTopWrapper');
+window.addEventListener('scroll', () => {
+    if (window.pageYOffset > 200) {
+        backToTopWrapper.classList.add('visible');
+    } else {
+        backToTopWrapper.classList.remove('visible');
+    }
+});
     </script>
 </body>
 </html>
