@@ -1090,7 +1090,6 @@
     color: var(--white);
     font-size: 0.8rem;
     font-weight: 500;
-    text-transform: uppercase;
     letter-spacing: 0.05em;
     margin-top: 0.5rem;
     text-align: center;
@@ -1107,6 +1106,84 @@
         height: 35px;
     }
 }
+
+/* ==============================================
+   FULL FIXED WHATSAPP FLOATING BUTTON
+   No purple underline, official WhatsApp theme by default
+   ============================================== */
+.whatsapp-wrapper {
+    position: fixed;
+    bottom: 3rem;
+    left: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* PERMANENTLY REMOVE PURPLE UNDERLINE - OVERRIDES GLOBAL LINK STYLING */
+.whatsapp-wrapper a {
+    text-decoration: none !important;
+    position: relative;
+}
+.whatsapp-wrapper a::after {
+    display: none !important;
+}
+
+/* OFFICIAL WHATSAPP BRAND THEME ACTIVE BY DEFAULT */
+.whatsapp-btn {
+    width: 50px;
+    height: 50px;
+    background: #25D366; /* Official WhatsApp brand green */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 8px 25px rgba(37, 211, 102, 0.35);
+    border: 3px solid rgba(255, 255, 255, 0.15);
+    transition: all 0.3s ease;
+}
+
+/* Subtle hover enhancement with darker official WhatsApp green */
+.whatsapp-btn:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 12px 35px rgba(37, 211, 102, 0.55);
+    background: #128C7E; /* Darker official WhatsApp green for hover state */
+}
+
+/* White WhatsApp icon visible at all times */
+.whatsapp-btn i {
+    font-size: 1.5rem;
+    color: #FFFFFF;
+    transition: none !important;
+}
+
+.whatsapp-text {
+    color: var(--white);
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    margin-top: 0.5rem;
+    text-align: center;
+    white-space: nowrap;
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 768px) {
+    .whatsapp-wrapper {
+        left: 1rem;
+        bottom: 1rem;
+    }
+    .whatsapp-btn {
+        width: 35px;
+        height: 35px;
+    }
+    .whatsapp-btn i {
+        font-size: 1.2rem;
+    }
+}
+
 
         /* ===== NEW ANIMATION ELEMENTS - ADDED BELOW ===== */
 
@@ -1954,6 +2031,15 @@
         </div>
     </section>
 
+<!-- ==============================================
+     WHATSAPP FLOATING BUTTON - FULL WORKING CODE
+     ============================================== -->
+<div class="whatsapp-wrapper">
+    <a href="https://wa.me/923104506164" target="_blank" rel="noopener noreferrer" class="whatsapp-btn">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+    <span class="whatsapp-text">WhatsApp</span>
+</div>
 
   <!-- BACK TO TOP BUTTON - FIXED POSITION -->
     <div class="back-to-top-wrapper" id="backToTopWrapper">
