@@ -1,2346 +1,1302 @@
-<!DOCTYPE html>
-<html lang="en">
+﻿<!DOCTYPE html>
+<html lang="en" data-theme="dark">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Talha Sharif - SQA Engineer Portfolio</title>
-    <link rel="icon" href="talha.jpg" type="image/jpeg">
-    <link rel="apple-touch-icon" href="talha.jpg">
-    <link rel="icon" href="https://res.cloudinary.com/dj5iihhbf/image/upload/v1729135000/ts-purple-favicon.png" type="image/png" sizes="32x32">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <style>
-        /* GLOBAL FIX - NO UNWANTED SCROLL BARS EVER */
-        html, body {
-            overflow-x: hidden !important;
-            width: 100% !important;
-            max-width: 100% !important;
-            margin: 0 !important;
-            padding: 0 !important;
-        }
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        :root {
-            --primary-purple: #A855F7;
-            --dark-purple: #120926;
-            --dark-purple-2: #1D1035;
-            --mid-purple: #7C3AED;
-            --light-purple: #C084FC;
-            --accent-pink: #EC4899;
-            --accent-red: #F43F5E;
-            --accent-magenta: #E879F9;
-            --text-dark: #F9FAFB;
-            --text-light: #E5E7EB;
-            --white: #FFFFFF;
-            --gradient: linear-gradient(135deg, #A855F7 0%, #EC4899 50%, #F43F5E 100%);
-            --gradient-subtle: linear-gradient(135deg, #7C3AED 0%, #A855F7 40%, #EC4899 100%);
-        }
-        body {
-            font-family: 'Inter', sans-serif;
-            line-height: 1.6;
-            color: var(--text-dark);
-            overflow-x: hidden;
-            background:
-                radial-gradient(circle at 0% 0%, #7C3AED 0, transparent 50%),
-                radial-gradient(circle at 100% 0%, #EC4899 0, transparent 55%),
-                radial-gradient(circle at 50% 100%, #1D1035 0, #020617 70%);
-        }
-        .progress-bar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            height: 3px;
-            background: var(--gradient);
-            z-index: 1001;
-            transition: width 0.2s ease;
-        }
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(12, 8, 30, 0.95);
-            backdrop-filter: blur(12px);
-            z-index: 1000;
-            box-shadow: 0 3px 20px rgba(10, 10, 30, 0.75);
-            transition: all 0.3s ease;
-        }
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0.75rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 800;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 1.75rem;
-        }
-        .nav-links a {
-            text-decoration: none;
-            color: var(--light-purple);
-            font-weight: 500;
-            font-size: 0.95rem;
-            letter-spacing: 0.03em;
-            text-transform: uppercase;
-            transition: color 0.3s ease, transform 0.2s ease;
-            position: relative;
-        }
-        .nav-links a:hover {
-            color: var(--accent-pink);
-            transform: translateY(-1px);
-        }
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -6px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--gradient);
-            transition: width 0.3s ease;
-        }
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-        .horizontal-skills-flow {
-            display: flex;
-            flex-direction: column;
-            gap: 3.5rem;
-            margin-top: 4rem;
-            padding: 0;
-            max-width: 1200px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        .horizontal-skills-flow .skill-card {
-            width: 100%;
-            max-width: 100%;
-            margin: 0 auto;
-            padding: 2.5rem 2.5rem;
-            border-radius: 18px;
-            box-shadow: 0 14px 40px rgba(0, 0, 0, 0.65);
-            position: relative;
-            overflow: hidden;
-            border: 2px solid transparent;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-        .horizontal-skills-flow .skill-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            border-color: #ff007f;
-            box-shadow: 0 15px 40px rgba(255, 0, 127, 0.4), 
-                        0 0 15px rgba(138, 43, 226, 0.3);
-        }
-        .horizontal-skills-flow .skill-card h3 {
-            font-size: 1.5rem;
-            color: #E879F9;
-            margin-bottom: 1.8rem;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        .horizontal-skills-flow .skill-card h3 i {
-            color: var(--accent-pink);
-            font-size: 1.2rem;
-        }
-        .single-line-skills {
-            font-size: 1.05rem;
-            line-height: 1.8;
-            color: #E5E7EB;
-            word-break: break-word;
-            overflow-wrap: break-word;
-        }
-        @media (max-width: 768px) {
-            .horizontal-skills-flow {
-                padding: 0;
-                gap: 2.5rem;
-            }
-            .horizontal-skills-flow .skill-card {
-                padding: 1.8rem 1.6rem;
-            }
-            .horizontal-skills-flow .skill-card h3 {
-                font-size: 1.35rem;
-                text-align: left;
-                flex-wrap: wrap;
-            }
-            .horizontal-skills-flow .skill-card h3 span {
-                white-space: nowrap;
-            }
-            .single-line-skills {
-                font-size: 0.95rem;
-                line-height: 1.7;
-            }
-        }
-        .education-grid-with-space {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 3.5rem;
-            margin-top: 4rem;
-            margin-bottom: 4rem;
-            padding: 0;
-        }
-        .skill-card.card-3d {
-            width: 100%;
-            max-width: 100%;
-            margin-bottom: 1rem;
-            display: block;
-        }
-        .hobby-list-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-            list-style: none;
-            padding: 0;
-            margin-top: 1.5rem;
-        }
-        .no-bullet {
-            list-style: none !important;
-            padding-left: 0 !important;
-            margin-top: -5px;
-            margin-bottom: 20px;
-            font-size: 0.95rem;
-            opacity: 0.8;
-        }
-        .no-bullet::before {
-            content: none !important;
-        }
-        @media (max-width: 768px) {
-            .education-grid-with-space {
-                gap: 2.5rem;
-                padding: 0;
-            }
-            .hobby-list-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-        .skill-card.card-3d {
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            border: 2px solid transparent;
-            position: relative;
-        }
-        .skill-card.card-3d:hover {
-            transform: translateY(-10px) scale(1.02);
-            border-color: #ff007f;
-            box-shadow: 0 15px 40px rgba(255, 0, 127, 0.4), 
-                        0 0 15px rgba(138, 43, 226, 0.3);
-            cursor: pointer;
-        }
-        .skill-card.card-3d:hover h3 {
-            color: #ff007f;
-            transition: color 0.3s ease;
-        }
-        .skill-card.card-3d::after {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.05), transparent);
-            transform: translateX(-100%);
-            transition: 0.6s;
-            pointer-events: none;
-        }
-        .skill-card.card-3d:hover::after {
-            transform: translateX(100%);
-        }
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
-        }
-        .hero::before {
-            content: '';
-            position: absolute;
-            inset: -20%;
-            background:
-                radial-gradient(circle at 0% 0%, rgba(168, 85, 247, 0.2), transparent 55%),
-                radial-gradient(circle at 100% 0%, rgba(219, 39, 119, 0.2), transparent 55%),
-                radial-gradient(circle at 50% 100%, rgba(190, 24, 93, 0.15), transparent 55%);
-            opacity: 0.9;
-            mix-blend-mode: screen;
-            pointer-events: none;
-        }
-        .hero-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 5rem 2rem 3rem;
-            position: relative;
-            z-index: 1;
-        }
-        .hero-layout {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 3.5rem;
-            flex-wrap: wrap;
-        }
-        .hero-text {
-            flex: 1 1 340px;
-            animation: fadeInUp 1s ease;
-        }
-        .hero-text h1 {
-            font-size: 3.5rem;
-            font-weight: 800;
-            margin-bottom: 0.75rem;
-            line-height: 1.1;
-            letter-spacing: -0.04em;
-            color: #FFFFFF;
-        }
-        .hero-text .title {
-            font-size: 1.25rem;
-            font-weight: 400;
-            margin-bottom: 1rem;
-            color: #FFFFFF;
-        }
-        .hero-text .tagline {
-            font-size: 1.05rem;
-            margin-bottom: 1.75rem;
-            max-width: 580px;
-            color: var(--text-light);
-        }
-        .hero-badges {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.75rem;
-            margin-bottom: 1.75rem;
-        }
-        .hero-badge {
-            font-size: 0.8rem;
-            padding: 0.3rem 0.8rem;
-            border-radius: 999px;
-            border: 1px solid rgba(244, 114, 182, 0.5);
-            background: radial-gradient(circle at top left, rgba(190, 24, 93, 0.3), rgba(30, 27, 75, 0.9));
-            backdrop-filter: blur(10px);
-            display: inline-flex;
-            align-items: center;
-            gap: 0.4rem;
-            color: var(--text-light);
-        }
-        .hero-badge i {
-            font-size: 0.75rem;
-            color: #F9A8D4;
-        }
-        .contact-info {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.75rem;
-        }
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: var(--white);
-            text-decoration: none;
-            padding: 0.55rem 1.1rem;
-            background: linear-gradient(135deg, rgba(168, 85, 247, 0.7), rgba(190, 24, 93, 0.7));
-            border-radius: 999px;
-            backdrop-filter: blur(12px);
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.7);
-            transition: all 0.25s ease;
-            font-size: 0.9rem;
-        }
-        .contact-item i {
-            font-size: 0.9rem;
-        }
-        .contact-item:hover {
-            transform: translateY(-2px) scale(1.02);
-            box-shadow: 0 18px 45px rgba(15, 23, 42, 0.9);
-            background: linear-gradient(135deg, rgba(244, 114, 182, 0.9), rgba(219, 39, 119, 0.9));
-        }
-        .hero-photo {
-            flex: 0 0 260px;
-            display: flex;
-            justify-content: center;
-            position: relative;
-        }
-        .hero-photo::before {
-            content: '';
-            position: absolute;
-            inset: -18%;
-            border-radius: 999px;
-            background:
-                radial-gradient(circle at 20% 0%, rgba(255, 255, 255, 0.5), transparent 50%),
-                conic-gradient(from 210deg at 50% 50%, #A855F7, #DB2777, #BE185D, #7C3AED, #A855F7);
-            opacity: 0.45;
-            filter: blur(8px);
-            transform: translateZ(-1px);
-            animation: rotateGlow 8s linear infinite;
-        }
-        .hero-photo::after {
-            content: '';
-            position: absolute;
-            inset: -12%;
-            border-radius: 999px;
-            background: conic-gradient(from 0deg at 50% 50%, transparent, rgba(244, 114, 182, 0.4), transparent, rgba(168, 85, 247, 0.4), transparent);
-            opacity: 0.6;
-            filter: blur(4px);
-            animation: rotateGlow 6s linear infinite reverse;
-        }
-        .hero-photo img {
-            width: 260px;
-            height: 260px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 4px solid rgba(248, 250, 252, 0.9);
-            box-shadow: 
-                0 20px 55px rgba(0, 0, 0, 0.9),
-                0 0 40px rgba(219, 39, 119, 0.3),
-                0 0 80px rgba(168, 85, 247, 0.2);
-            position: relative;
-            z-index: 1;
-            transition: transform 0.5s ease, box-shadow 0.5s ease;
-        }
-        .hero-photo:hover img {
-            transform: translateY(-8px) rotateZ(-1.5deg) scale(1.04);
-            box-shadow: 
-                0 28px 80px rgba(0, 0, 0, 1),
-                0 0 60px rgba(219, 39, 119, 0.5),
-                0 0 100px rgba(168, 85, 247, 0.3);
-        }
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        @keyframes rotateGlow {
-            from {
-                transform: rotate(0deg);
-            }
-            to {
-                transform: rotate(360deg);
-            }
-        }
-        section {
-            padding: 5rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        .section-title {
-            font-size: 2.2rem;
-            font-weight: 800;
-            margin-bottom: 3rem;
-            text-align: center;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            letter-spacing: -0.03em;
-        }
-        .card-3d {
-            position: relative;
-            background:
-                radial-gradient(circle at 0% 0%, rgba(168, 85, 247, 0.15), transparent 60%),
-                linear-gradient(145deg, rgba(15, 23, 42, 0.97), rgba(30, 27, 75, 0.98));
-            border-radius: 18px;
-            box-shadow: 0 14px 40px rgba(0, 0, 0, 0.65);
-            transform-style: preserve-3d;
-            perspective: 1000px;
-            overflow: hidden;
-            border: 1px solid rgba(236, 72, 153, 0.35);
-            transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
-        }
-        .card-3d::before {
-            content: '';
-            position: absolute;
-            inset: -40%;
-            background:
-                radial-gradient(circle at 0% 0%, rgba(168, 85, 247, 0.25), transparent 55%),
-                radial-gradient(circle at 100% 100%, rgba(236, 72, 153, 0.25), transparent 55%);
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.45s ease;
-        }
-        .card-3d:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.9);
-            border-color: rgba(236, 72, 153, 0.9);
-        }
-        .card-3d:hover::before {
-            opacity: 1;
-        }
-        .about-content {
-            padding: 2.5rem 2.5rem 2.25rem;
-        }
-        .about-text {
-            font-size: 1.02rem;
-            line-height: 1.8;
-            color: var(--text-dark);
-        }
-        .about-text strong {
-            font-weight: 700;
-            color: var(--accent-pink);
-        }
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 1.75rem;
-            margin-top: 2.5rem;
-        }
-        .skill-card {
-            padding: 1.75rem 1.75rem 1.5rem;
-        }
-        .skill-card h3 {
-            color: var(--light-purple);
-            margin-bottom: 1rem;
-            font-size: 1.25rem !important;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        .skill-card h3 i {
-            color: var(--accent-pink);
-            font-size: 1.2rem !important;
-        }
-        .skill-list {
-            list-style: none;
-            font-size: 0.97rem;
-        }
-        .skill-list li {
-            padding: 0.35rem 0;
-            color: var(--text-light);
-            display: flex;
-            align-items: flex-start;
-            gap: 0.5rem;
-        }
-        .skill-list li::before {
-            content: '▸';
-            color: var(--accent-pink);
-            font-weight: 700;
-            margin-top: 0.05rem;
-        }
-        .timeline {
-            position: relative;
-            padding: 2rem 0;
-        }
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 2px;
-            height: 100%;
-            background: var(--gradient);
-            opacity: 0.7;
-        }
-        .timeline-item {
-            position: relative;
-            margin: 3rem 0;
-        }
-        .timeline-item:nth-child(even) .timeline-content {
-            margin-left: auto;
-            margin-right: 0;
-        }
-        .timeline-content {
-            width: calc(50% - 2.5rem);
-            padding: 1.9rem 1.75rem 1.6rem;
-        }
-        .timeline-dot {
-            position: absolute;
-            left: 50%;
-            top: 2.1rem;
-            transform: translateX(-50%);
-            width: 19px;
-            height: 19px;
-            background: var(--gradient);
-            border-radius: 50%;
-            border: 4px solid var(--dark-purple-2);
-            box-shadow: 0 0 0 4px rgba(236, 72, 153, 0.45);
-        }
-        .timeline-date {
-            color: var(--accent-pink);
-            font-weight: 600;
-            margin-bottom: 0.35rem;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-        }
-        .timeline-title {
-            font-size: 1.25rem;
-            font-weight: 700;
-            margin-bottom: 0.2rem;
-        }
-        .timeline-company {
-            color: var(--text-light);
-            margin-bottom: 0.9rem;
-            font-size: 0.9rem;
-        }
-        .timeline-description {
-            color: var(--text-dark);
-            line-height: 1.6;
-            font-size: 0.97rem;
-        }
-        .achievements {
-            margin-top: 0.9rem;
-            padding-top: 0.9rem;
-            border-top: 1px solid rgba(236, 72, 153, 0.4);
-        }
-        .achievements ul {
-            list-style: none;
-            padding-left: 0;
-        }
-        .achievements li {
-            padding: 0.28rem 0;
-            color: var(--text-dark);
-            position: relative;
-            padding-left: 1.4rem;
-            font-size: 0.95rem;
-        }
-        .achievements li::before {
-            content: '✓';
-            position: absolute;
-            left: 0;
-            top: 0.18rem;
-            color: var(--accent-pink);
-            font-weight: 700;
-        }
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 1.9rem;
-            margin-top: 2.5rem;
-        }
-        .project-card {
-            overflow: hidden;
-        }
-        .project-header {
-            background: var(--gradient);
-            padding: 1.4rem 1.6rem;
-            color: var(--white);
-        }
-        .project-title {
-            font-size: 1.2rem;
-            font-weight: 700;
-            margin-bottom: 0.15rem;
-        }
-        .project-type {
-            opacity: 0.9;
-            font-size: 0.9rem;
-        }
-        .project-content {
-            padding: 1.4rem 1.6rem 1.4rem;
-            font-size: 0.97rem;
-            color: var(--text-dark);
-            background:
-                radial-gradient(circle at 0% 0%, rgba(168, 85, 247, 0.25), transparent 60%),
-                linear-gradient(145deg, rgba(24, 24, 59, 0.98), rgba(46, 16, 101, 0.98));
-        }
-        .project-tech {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-top: 1rem;
-            padding-top: 1rem;
-            border-top: 1px solid rgba(236, 72, 153, 0.3);
-        }
-        .project-tech span {
-            font-size: 0.75rem;
-            padding: 0.25rem 0.6rem;
-            background: rgba(236, 72, 153, 0.2);
-            border: 1px solid rgba(236, 72, 153, 0.4);
-            border-radius: 999px;
-            color: var(--accent-pink);
-        }
-        .awards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-        .award-card {
-            padding: 1.5rem;
-            text-align: center;
-        }
-        .award-card i {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .award-card h4 {
-            color: var(--light-purple);
-            margin-bottom: 0.5rem;
-            font-size: 1.1rem;
-        }
-        .award-card p {
-            color: var(--text-light);
-            font-size: 0.9rem;
-        }
-        #recommendations {
-            padding: 5rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-            overflow: hidden !important;
-        }
-        .recommendations-container {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 2rem;
-            margin-top: 2.5rem;
-            width: 100%;
-            box-sizing: border-box;
-            overflow: hidden !important;
-        }
-        .recommendation-card {
-            position: relative;
-            padding: 2rem 1.8rem;
-            background: 
-                linear-gradient(145deg, rgba(15, 23, 42, 0.97), rgba(30, 27, 75, 0.98)),
-                linear-gradient(135deg, rgba(168, 85, 247, 0.08) 0%, rgba(236, 72, 153, 0.08) 100%);
-            border-radius: 18px;
-            box-shadow: 0 14px 40px rgba(0, 0, 0, 0.65);
-            overflow: hidden;
-            border: 2px solid rgba(236, 72, 153, 0.35);
-            transition: all 0.35s ease;
-            max-width: 100%;
-            width: 100%;
-        }
-        @media (min-width: 992px) {
-            .recommendation-card::before {
-                content: '';
-                position: absolute;
-                inset: 0;
-                border-radius: 18px;
-                background: conic-gradient(
-                    from 0deg,
-                    #A855F7,
-                    #EC4899,
-                    #F43F5E,
-                    #BE185D,
-                    #7C3AED,
-                    #A855F7
-                );
-                z-index: -1;
-                animation: rotateBorder 8s linear infinite;
-                filter: blur(0.8px);
-                opacity: 0.8;
-            }
-            .recommendation-card::after {
-                content: '';
-                position: absolute;
-                inset: 2px;
-                border-radius: 16px;
-                background: linear-gradient(145deg, rgba(15, 23, 42, 0.97), rgba(30, 27, 75, 0.98));
-                z-index: -1;
-            }
-        }
-        .recommendation-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 
-                0 25px 70px rgba(236, 72, 153, 0.5),
-                0 0 20px rgba(168, 85, 247, 0.25);
-            border-color: rgba(236, 72, 153, 0.9);
-        }
-        .recommendation-card:hover::before {
-            animation-duration: 2.5s;
-        }
-        @keyframes rotateBorder {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        .quote-icon {
-            position: absolute;
-            top: 1rem;
-            right: 1.2rem;
-            font-size: 3.5rem;
-            color: var(--accent-pink);
-            opacity: 0.15;
-            pointer-events: none;
-            filter: drop-shadow(0 0 8px rgba(236, 72, 153, 0.2));
-        }
-        .recommendation-text {
-            font-style: italic;
-            color: var(--text-dark);
-            line-height: 1.75;
-            margin-bottom: 1.6rem;
-            font-size: 1rem;
-            word-break: break-word;
-            overflow-wrap: break-word;
-            white-space: normal;
-        }
-        .recommender {
-            display: flex;
-            align-items: center;
-            gap: 0.9rem;
-            margin-top: 0.5rem;
-            padding-top: 1rem;
-            border-top: 1px solid rgba(236, 72, 153, 0.2);
-        }
-        .recommender-info h4 {
-            color: var(--accent-pink);
-            margin-bottom: 0.2rem;
-            font-size: 1.05rem;
-            font-weight: 600;
-        }
-        .recommender-info p {
-            color: var(--text-light);
-            font-size: 0.9rem;
-        }
-        @media (max-width: 768px) {
-            #recommendations {
-                padding: 5rem 1.2rem;
-            }
-            .recommendations-container {
-                gap: 1.8rem;
-            }
-            .recommendation-card {
-                padding: 1.6rem 1.4rem;
-                border: 2px solid rgba(236, 72, 153, 0.4);
-                box-shadow: 
-                    0 10px 30px rgba(0, 0, 0, 0.65),
-                    0 0 12px rgba(236, 72, 153, 0.3);
-            }
-            .recommendation-card::before,
-            .recommendation-card::after {
-                display: none !important;
-            }
-            .recommendation-text {
-                font-size: 0.95rem;
-                line-height: 1.65;
-            }
-            .quote-icon {
-                font-size: 2.8rem;
-                top: 0.8rem;
-                right: 0.8rem;
-            }
-            .recommender {
-                flex-wrap: wrap;
-                gap: 0.6rem;
-            }
-        }
-        @media (min-width: 992px) {
-            .recommendations-container {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-        footer {
-            background: radial-gradient(circle at top, #7C3AED 0, #EC4899 30%, #020617 70%, #000000 100%);
-            color: var(--white);
-            padding: 3.5rem 2rem 2.5rem;
-            text-align: center;
-            margin-top: 3rem;
-        }
-        .footer-content {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-        .footer-content h2 {
-            font-size: 1.7rem;
-            margin-bottom: 0.5rem;
-            font-weight: 700;
-            color: #FFFFFF !important;
-        }
-        .footer-content p {
-            opacity: 0.85;
-            font-size: 0.98rem;
-        }
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-top: 1.9rem;
-        }
-        .social-links a {
-            color: var(--white);
-            font-size: 1.5rem;
-            transition: transform 0.25s ease, color 0.25s ease;
-        }
-        .social-links a:hover {
-            transform: translateY(-3px) scale(1.05);
-            color: var(--accent-pink);
-        }
-        .mobile-menu-toggle {
-            display: none;
-            flex-direction: column;
-            gap: 4px;
-            cursor: pointer;
-        }
-        .mobile-menu-toggle span {
-            width: 24px;
-            height: 2.5px;
-            background: var(--gradient);
-            border-radius: 999px;
-            transition: all 0.3s ease;
-        }
-        @media (max-width: 1024px) {
-            .hero-text h1 {
-                font-size: 3rem;
-            }
-        }
-        @media (max-width: 768px) {
-            .nav-container {
-                padding-inline: 1.2rem;
-            }
-            .nav-links {
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background: rgba(16, 10, 40, 0.98);
-                flex-direction: column;
-                padding: 0.9rem 1.2rem 1.2rem;
-                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
-            }
-            .nav-links li {
-                padding: 0.4rem 0;
-            }
-            .nav-links.active {
-                display: flex;
-            }
-            .mobile-menu-toggle {
-                display: flex;
-            }
-            .hero-content {
-                padding-top: 5.5rem;
-            }
-            .hero-layout {
-                flex-direction: column-reverse;
-                text-align: center;
-            }
-            .hero-text .tagline {
-                margin-inline: auto;
-            }
-            .contact-info {
-                justify-content: center;
-            }
-            .timeline::before {
-                left: 1.2rem;
-            }
-            .timeline-content {
-                width: calc(100% - 3rem);
-                margin-left: 3rem !important;
-            }
-            .timeline-dot {
-                left: 1.2rem;
-            }
-        }
-        @media (max-width: 640px) {
-            section {
-                padding-inline: 1.2rem;
-            }
-            .hero-photo img {
-                width: 230px;
-                height: 230px;
-            }
-        }
-        .section-title {
-            background-size: 220% 220%;
-            animation: sectionGradient 14s ease infinite;
-        }
-        @keyframes sectionGradient {
-            0%   { background-position: 0% 50%;   filter: drop-shadow(0 0 0 rgba(236,72,153,0)); }
-            50%  { background-position: 100% 50%; filter: drop-shadow(0 0 18px rgba(236,72,153,0.45)); }
-            100% { background-position: 0% 50%;   filter: drop-shadow(0 0 0 rgba(236,72,153,0)); }
-        }
-        .hero-badge {
-            position: relative;
-            animation: badgeFloat 6s ease-in-out infinite;
-        }
-        .hero-badge:nth-child(2n) {
-            animation-delay: 0.7s;
-        }
-        .hero-badge:nth-child(3n) {
-            animation-delay: 1.3s;
-        }
-        @keyframes badgeFloat {
-            0%,100% { transform: translateY(0); }
-            50%     { transform: translateY(-4px); }
-        }
-        .hero-photo {
-            animation: heroFloat 9s ease-in-out infinite;
-        }
-        .hero-photo:hover {
-            animation-play-state: paused;
-        }
-        @keyframes heroFloat {
-            0%,100% { transform: translateY(0); }
-            50%     { transform: translateY(-10px); }
-        }
-        .timeline-dot {
-            animation: dotPulse 2.6s ease-out infinite;
-        }
-        @keyframes dotPulse {
-            0%   { box-shadow: 0 0 0 4px rgba(236,72,153,0.45); }
-            60%  { box-shadow: 0 0 0 16px rgba(236,72,153,0); }
-            100% { box-shadow: 0 0 0 4px rgba(236,72,153,0); }
-        }
-        .award-card i {
-            transition: transform 0.35s ease, text-shadow 0.35s ease;
-        }
-        .award-card:hover i {
-            transform: translateY(-6px) scale(1.1);
-            text-shadow: 0 12px 30px rgba(0,0,0,0.8);
-        }
-        .project-header {
-            position: relative;
-            overflow: hidden;
-        }
-        .project-header::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -40%;
-            width: 40%;
-            height: 100%;
-            background: linear-gradient(120deg,
-                rgba(255,255,255,0),
-                rgba(255,255,255,0.7),
-                rgba(255,255,255,0)
-            );
-            transform: skewX(-25deg);
-            opacity: 0;
-            transition: transform 0.6s ease, opacity 0.6s ease;
-        }
-        .project-card:hover .project-header::after {
-            transform: translateX(260%) skewX(-25deg);
-            opacity: 1;
-        }
-        .project-tech span {
-            transition: transform 0.25s ease, box-shadow 0.25s ease;
-        }
-        .project-tech span:hover {
-            transform: translateY(-2px) scale(1.04);
-            box-shadow: 0 10px 22px rgba(0,0,0,0.6);
-        }
-        .quote-icon {
-            animation: quoteFloat 9s ease-in-out infinite;
-        }
-        @keyframes quoteFloat {
-            0%,100% { transform: translateY(0); }
-            50%     { transform: translateY(-6px); }
-        }
-        .social-links a {
-            text-shadow: 0 0 0 rgba(236,72,153,0);
-        }
-        .social-links a:hover {
-            text-shadow: 0 0 18px rgba(236,72,153,0.8);
-        }
-
-
-
-.back-to-top-wrapper {
-    position: fixed;
-    bottom: 3rem;
-    right: 3rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s ease;
-    z-index: 1000;
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Talha Sharif — SQA Engineer</title>
+<meta name="description" content="ISTQB-Certified Senior SQA Engineer with 4.5+ years building test automation frameworks, data pipelines, and AI/ML testing strategies.">
+<link rel="icon" href="talha.jpg" type="image/jpeg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js" async></script>
+<style>
+:root{
+  --bg:#020b18;--bg2:#051423;--bg3:#071e34;
+  --card:rgba(5,22,42,0.82);--glass:rgba(4,18,36,0.65);
+  --e:#00d4ff;--e2:#0099bb;--cyan:#00fff7;--blue:#0066ff;
+  --w:#e8f4fd;--w2:#7aaac8;--muted:#2e5068;
+  --faint:rgba(0,212,255,0.10);--cb:rgba(0,212,255,0.16);--cbh:rgba(0,212,255,0.50);
+  --gm:linear-gradient(135deg,#00d4ff 0%,#0066ff 55%,#00fff7 100%);
+  --gc:linear-gradient(145deg,rgba(0,212,255,0.09),rgba(0,102,255,0.04));
+  --nav:rgba(2,11,24,0.94);--sh:0 8px 32px rgba(0,0,0,.65);
+  --r:16px;--pill:999px;--tr:0.3s cubic-bezier(0.4,0,0.2,1);
 }
-
-.back-to-top-wrapper.visible {
-    opacity: 1;
-    visibility: visible;
+[data-theme="light"]{
+  --bg:#eef4fb;--bg2:#e0ecf8;--bg3:#d4e4f5;
+  --card:rgba(255,255,255,0.92);--glass:rgba(220,235,255,0.75);
+  --e:#0055aa;--e2:#003d88;--cyan:#006688;--blue:#0033cc;
+  --w:#071424;--w2:#1a3a5c;--muted:#4a6a88;
+  --faint:rgba(0,60,150,0.07);--cb:rgba(0,60,150,0.18);--cbh:rgba(0,60,150,0.45);
+  --gm:linear-gradient(135deg,#0055aa 0%,#0033cc 55%,#006688 100%);
+  --gc:linear-gradient(145deg,rgba(0,80,200,0.07),rgba(0,40,150,0.03));
+  --nav:rgba(238,244,251,0.96);--sh:0 8px 32px rgba(0,40,100,.10);
 }
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--w);overflow-x:hidden;line-height:1.65}
+::selection{background:rgba(0,212,255,.28);color:var(--w)}
+a{text-decoration:none;color:inherit}
+img{display:block;max-width:100%}
+ul{list-style:none}
+button{border:none;background:none;cursor:pointer;font-family:inherit}
+::-webkit-scrollbar{width:3px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--e2);border-radius:2px}
 
-.back-to-top {
-    width: 50px;
-    height: 50px;
-    background: var(----dark-purple);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
-    border: 3px solid var(--accent-pink);
-    transition: all 0.3s ease;
+/* ── BLOBS ── */
+.blob{position:fixed;border-radius:50%;pointer-events:none;z-index:-2;filter:blur(90px);opacity:.25;transition:opacity .5s}
+[data-theme="light"] .blob{opacity:.15}
+.blob1{width:650px;height:650px;background:radial-gradient(circle,#0066ff,transparent 70%);top:-120px;left:-180px;animation:blobA 18s ease-in-out infinite}
+.blob2{width:550px;height:550px;background:radial-gradient(circle,#00d4ff,transparent 70%);top:30%;right:-120px;animation:blobB 22s ease-in-out infinite}
+.blob3{width:500px;height:500px;background:radial-gradient(circle,#0033aa,transparent 70%);bottom:-100px;left:30%;animation:blobC 20s ease-in-out infinite}
+@keyframes blobA{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(60px,40px) scale(1.12)}66%{transform:translate(-40px,80px) scale(.96)}}
+@keyframes blobB{0%,100%{transform:translate(0,0) scale(1)}40%{transform:translate(-70px,30px) scale(1.10)}70%{transform:translate(40px,-60px) scale(.97)}}
+@keyframes blobC{0%,100%{transform:translate(0,0) scale(1)}30%{transform:translate(50px,-40px) scale(1.06)}65%{transform:translate(-30px,50px) scale(1.12)}}
+
+/* ── CANVAS ── */
+#bgCanvas{position:fixed;inset:0;z-index:-1;pointer-events:none}
+
+/* ── PRELOADER ── */
+#preloader{position:fixed;inset:0;background:var(--bg);z-index:9999;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:2rem;transition:opacity .7s,visibility .7s}
+#preloader.out{opacity:0;visibility:hidden;pointer-events:none}
+.pl-logo{font-family:'Space Mono',monospace;font-size:3.5rem;font-weight:700;background:var(--gm);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;letter-spacing:.08em}
+.pl-bar{width:220px;height:2px;background:var(--faint);border-radius:1px;overflow:hidden}
+.pl-fill{height:100%;width:0;background:var(--gm);animation:plFill 1.8s ease forwards}
+@keyframes plFill{to{width:100%}}
+.pl-txt{font-family:'Space Mono',monospace;font-size:.7rem;letter-spacing:.3em;color:var(--muted);text-transform:uppercase}
+
+/* ── PROGRESS BAR ── */
+#bar{position:fixed;top:0;left:0;height:2px;width:0;background:var(--gm);z-index:10000;box-shadow:0 0 10px var(--e);transition:width .1s linear}
+
+/* ── CURSOR ── */
+.cur{position:fixed;width:10px;height:10px;background:var(--e);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);mix-blend-mode:difference}
+.cur-r{position:fixed;width:32px;height:32px;border:1px solid var(--e);border-radius:50%;pointer-events:none;z-index:9997;transform:translate(-50%,-50%);opacity:.45;transition:width .25s,height .25s,opacity .25s}
+.cur.big{width:18px;height:18px}.cur-r.big{width:55px;height:55px;opacity:.2}
+@media(hover:none){.cur,.cur-r{display:none}}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;height:66px;background:var(--nav);backdrop-filter:blur(22px) saturate(160%);border-bottom:1px solid var(--faint);z-index:1000;transition:var(--tr)}
+nav.sc{height:58px;box-shadow:0 4px 30px rgba(0,0,0,.4)}
+.nav-i{max-width:1320px;margin:0 auto;height:100%;padding:0 2rem;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-family:'Space Mono',monospace;font-size:1.15rem;font-weight:700;background:var(--gm);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.nav-links{display:flex;gap:.2rem}
+.nav-links a{padding:.42rem .85rem;font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;color:var(--w2);font-weight:500;border-radius:var(--pill);transition:var(--tr)}
+.nav-links a:hover,.nav-links a.active{color:var(--e);background:rgba(0,212,255,.08)}
+.nav-acts{display:flex;align-items:center;gap:.7rem}
+.theme-btn{width:40px;height:40px;border-radius:50%;border:1px solid var(--cb);background:var(--glass);color:var(--w2);display:flex;align-items:center;justify-content:center;font-size:.95rem;transition:var(--tr);cursor:pointer}
+.theme-btn:hover{border-color:var(--e);color:var(--e);background:rgba(0,212,255,.08)}
+.nav-cta{padding:.48rem 1.2rem;background:var(--gm);color:#000 !important;border-radius:var(--pill);font-size:.8rem;font-weight:700;letter-spacing:.05em;transition:var(--tr);box-shadow:0 0 22px rgba(0,212,255,.28)}
+.nav-cta:hover{transform:translateY(-1px);box-shadow:0 0 35px rgba(0,212,255,.5)}
+.hbg{display:none;flex-direction:column;gap:5px;align-items:center;justify-content:center;width:36px;height:36px;cursor:pointer}
+.hbg span{display:block;width:22px;height:2px;background:var(--e);border-radius:1px;transition:var(--tr)}
+.hbg.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.hbg.open span:nth-child(2){opacity:0}
+.hbg.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.mob-nav{display:none;position:fixed;top:66px;left:0;right:0;background:var(--nav);backdrop-filter:blur(22px);border-bottom:1px solid var(--faint);padding:1rem 1.5rem 1.5rem;flex-direction:column;gap:.2rem;z-index:999}
+.mob-nav.open{display:flex}
+.mob-nav a{padding:.7rem 1rem;color:var(--w2);font-size:.88rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;border-radius:var(--r);transition:var(--tr)}
+.mob-nav a:hover{background:rgba(0,212,255,.08);color:var(--e)}
+
+/* ── LAYOUT ── */
+.wrap{max-width:1320px;margin:0 auto;padding:0 2rem}
+.sec{padding:7rem 0}
+.lbl{display:inline-flex;align-items:center;gap:.6rem;font-family:'Space Mono',monospace;font-size:.7rem;letter-spacing:.25em;text-transform:uppercase;color:var(--e);margin-bottom:1.2rem}
+.lbl::before{content:'';width:2rem;height:1px;background:var(--gm)}
+.stitle{font-family:'Space Grotesk',sans-serif;font-size:clamp(2rem,4vw,3rem);font-weight:700;line-height:1.1;letter-spacing:-.03em;color:var(--w)}
+.stitle span{background:var(--gm);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.ssub{font-size:1.05rem;color:var(--w2);max-width:560px;margin-top:1rem;line-height:1.7}
+
+/* ── REVEAL ── */
+.rv{opacity:0;transform:translateY(36px);transition:opacity .7s ease,transform .7s ease}
+.rv.in{opacity:1;transform:none}
+.rvl{opacity:0;transform:translateX(-36px);transition:opacity .7s ease,transform .7s ease}
+.rvl.in{opacity:1;transform:none}
+.rvr{opacity:0;transform:translateX(36px);transition:opacity .7s ease,transform .7s ease}
+.rvr.in{opacity:1;transform:none}
+
+/* ── HERO ── */
+.hero{min-height:100vh;display:flex;align-items:center;padding-top:66px;position:relative;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1fr auto;gap:5rem;align-items:center;width:100%;max-width:1320px;margin:0 auto;padding:4rem 2rem}
+.hero-tag{display:inline-flex;align-items:center;gap:.6rem;padding:.38rem 1rem;background:rgba(0,212,255,.08);border:1px solid rgba(0,212,255,.22);border-radius:var(--pill);font-family:'Space Mono',monospace;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--e);margin-bottom:1.4rem}
+.hero-dot{width:6px;height:6px;background:var(--e);border-radius:50%;animation:pulse 2s ease infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(0,212,255,.45)}50%{box-shadow:0 0 0 7px rgba(0,212,255,0)}}
+.hero-name{font-family:'Space Grotesk',sans-serif;font-size:clamp(3.5rem,7vw,6.5rem);font-weight:700;line-height:.95;letter-spacing:-.04em;color:var(--w);margin-bottom:.5rem}
+.hero-name .hl{background:var(--gm);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;display:block}
+.hero-role{font-family:'Space Mono',monospace;font-size:clamp(.85rem,1.5vw,1.05rem);color:var(--w2);letter-spacing:.08em;margin-bottom:1.6rem;min-height:1.6em}
+.hero-role .tc{color:var(--e)}.hero-role .tk{opacity:.7}
+.hero-desc{font-size:1.05rem;color:var(--w2);max-width:540px;line-height:1.78;margin-bottom:2.4rem}
+.hero-desc strong{color:var(--w)}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:1rem;margin-bottom:2.8rem}
+.btn-p{padding:.82rem 1.9rem;background:var(--gm);color:#000;font-weight:700;font-size:.88rem;letter-spacing:.05em;border-radius:var(--pill);transition:var(--tr);box-shadow:0 0 28px rgba(0,212,255,.32);display:inline-flex;align-items:center;gap:.5rem}
+.btn-p:hover{transform:translateY(-2px);box-shadow:0 0 45px rgba(0,212,255,.55)}
+[data-theme="light"] .btn-p{color:#fff!important}
+[data-theme="light"] .fsub{color:#fff!important}
+.btn-o{padding:.82rem 1.9rem;border:1px solid var(--cbh);color:var(--w);font-weight:500;font-size:.88rem;letter-spacing:.05em;border-radius:var(--pill);background:var(--glass);backdrop-filter:blur(10px);transition:var(--tr);display:inline-flex;align-items:center;gap:.5rem}
+.btn-o:hover{border-color:var(--e);color:var(--e);background:rgba(0,212,255,.06);transform:translateY(-2px)}
+.badges{display:flex;flex-wrap:wrap;gap:.55rem}
+.bdg{padding:.28rem .82rem;background:var(--faint);border:1px solid rgba(0,212,255,.14);border-radius:var(--pill);font-size:.77rem;color:var(--w2);display:inline-flex;align-items:center;gap:.4rem;transition:var(--tr)}
+.bdg:hover{border-color:var(--e);color:var(--e);background:rgba(0,212,255,.09)}
+.bdg i{font-size:.68rem;color:var(--e)}
+.photo-wrap{position:relative;flex-shrink:0}
+.photo-ring{position:absolute;inset:-22px;border-radius:50%;background:conic-gradient(from 0deg,transparent 55%,rgba(0,212,255,.65) 65%,rgba(0,102,255,.65) 78%,transparent 88%);animation:spin 8s linear infinite}
+.photo-ring2{position:absolute;inset:-12px;border-radius:50%;background:conic-gradient(from 180deg,transparent 68%,rgba(0,255,247,.45) 78%,transparent 88%);animation:spin 6s linear infinite reverse}
+@keyframes spin{to{transform:rotate(360deg)}}
+.photo-img{width:275px;height:275px;border-radius:50%;object-fit:cover;border:3px solid rgba(0,212,255,.3);box-shadow:0 0 45px rgba(0,212,255,.22),0 20px 65px rgba(0,0,0,.85);position:relative;z-index:1;animation:float 8s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+.photo-socials{display:flex;flex-direction:column;gap:.7rem;position:absolute;right:-4.2rem;top:50%;transform:translateY(-50%)}
+.ps-link{width:36px;height:36px;border-radius:50%;border:1px solid var(--cbh);background:rgba(0,212,255,.08);display:flex;align-items:center;justify-content:center;font-size:.85rem;color:var(--e);box-shadow:0 0 12px rgba(0,212,255,.18);transition:var(--tr)}
+.ps-link:hover{border-color:var(--e);color:var(--e);background:rgba(0,212,255,.2);transform:scale(1.13);box-shadow:0 0 24px rgba(0,212,255,.45)}
+.scroll-hint{position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.5rem;color:var(--muted);font-family:'Space Mono',monospace;font-size:.63rem;letter-spacing:.2em;text-transform:uppercase;animation:sb 2s ease infinite}
+.scroll-line{width:1px;height:38px;background:linear-gradient(to bottom,var(--e),transparent)}
+@keyframes sb{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(6px)}}
+
+/* ── STATS TICKER ── */
+.stats-ticker{background:var(--bg2);border-top:1px solid var(--faint);border-bottom:1px solid var(--faint);padding:0;overflow:hidden;-webkit-mask:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);mask:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent)}
+.stats-track{display:inline-flex;align-items:stretch;white-space:nowrap;animation:ixScroll 50s linear infinite}
+.stats-track:hover{animation-play-state:paused}
+.st-item{display:inline-flex;flex-direction:column;align-items:center;justify-content:center;padding:1.4rem 3.5rem;border-right:1px solid var(--faint);gap:.3rem;min-width:195px}
+.st-n{font-family:'Space Grotesk',sans-serif;font-size:2rem;font-weight:700;line-height:1;background:var(--gm);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.st-l{font-size:.65rem;color:var(--w);letter-spacing:.1em;text-transform:uppercase;text-align:center}
+[data-theme="light"] .st-l{color:var(--e)}
+
+/* ── ABOUT ── */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;margin-top:4rem}
+.about-p{font-size:1.03rem;color:var(--w2);line-height:1.82;margin-bottom:1.4rem}
+.about-p strong{color:var(--w)}
+.spec-list{margin-top:.5rem;margin-bottom:1.4rem}
+.spec-list li{padding:.32rem 0 .32rem 1.3rem;position:relative;font-size:.93rem;color:var(--w2);line-height:1.6}
+.spec-list li::before{content:'→';position:absolute;left:0;color:var(--e);font-size:.8rem;top:.38rem}
+.about-side{display:flex;flex-direction:column;gap:1.4rem}
+.ai-card{padding:1.6rem 1.75rem;background:var(--card);border:1px solid var(--cb);border-radius:var(--r);backdrop-filter:blur(22px)}
+.ai-card h4{font-family:'Space Grotesk',sans-serif;font-size:.93rem;font-weight:600;color:var(--e);margin-bottom:1rem;display:flex;align-items:center;gap:.5rem}
+.ai-list li{display:flex;align-items:flex-start;gap:.6rem;padding:.4rem 0;border-bottom:1px solid var(--faint);font-size:.85rem;color:var(--w2)}
+.ai-list li:last-child{border:none}
+.ai-list li i{color:var(--e);font-size:.72rem;margin-top:.25rem;flex-shrink:0}
+
+/* ── IX TICKER ── */
+.ix-ticker{margin-top:3rem;border-top:1px solid var(--faint);border-bottom:1px solid var(--faint);padding:.85rem 0;overflow:hidden;-webkit-mask:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+.ix-track{display:inline-flex;align-items:center;gap:1.4rem;white-space:nowrap;animation:ixScroll 30s linear infinite}
+.ix-track:hover{animation-play-state:paused}
+@keyframes ixScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.ix-word{font-family:'Space Grotesk',sans-serif;font-size:.88rem;font-weight:500;color:var(--w2);letter-spacing:.04em}
+.ix-sep{color:var(--e);font-size:1.2rem;font-weight:300;line-height:1;flex-shrink:0}
+
+/* ── ORBIT ── */
+.orbit-sec{display:grid;grid-template-columns:360px 1fr;gap:3.5rem;margin-top:4rem;align-items:center}
+.orbit-wrap{position:relative;width:320px;height:320px;flex-shrink:0}
+.orbit-ring-el{position:absolute;inset:0;border-radius:50%;border:1px dashed rgba(0,212,255,.18);pointer-events:none}
+.orbit-dot-btn{position:absolute;transform:translate(-50%,-50%);width:36px;height:36px;border-radius:50%;border:1px solid var(--cb);background:var(--glass);display:flex;align-items:center;justify-content:center;font-size:.78rem;color:var(--muted);cursor:pointer;transition:var(--tr);backdrop-filter:blur(8px)}
+.orbit-dot-btn:hover{border-color:var(--e);color:var(--e)}
+.orbit-dot-btn.active{border-color:var(--e);color:var(--e);background:rgba(0,212,255,.12);box-shadow:0 0 16px rgba(0,212,255,.4);transform:translate(-50%,-50%) scale(1.18)}
+.orbit-center{position:absolute;inset:72px;border-radius:50%;background:var(--card);border:1px solid var(--cb);backdrop-filter:blur(22px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5rem;padding:1rem;text-align:center;transition:var(--tr);cursor:default}
+.orbit-center:hover{border-color:var(--cbh)}
+.oc-icon{width:40px;height:40px;background:rgba(0,212,255,.1);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1rem;color:var(--e)}
+.oc-name{font-family:'Space Grotesk',sans-serif;font-size:.64rem;font-weight:600;color:var(--w);line-height:1.3;padding:0 .4rem}
+.od-hd{font-family:'Space Grotesk',sans-serif;font-size:1.3rem;font-weight:700;color:var(--w);margin-bottom:1rem}
+.tags{display:flex;flex-wrap:wrap;gap:.45rem}
+.tag{padding:.28rem .72rem;background:rgba(0,212,255,.06);border:1px solid rgba(0,212,255,.12);border-radius:var(--pill);font-size:.76rem;color:var(--w2);transition:var(--tr);cursor:default;opacity:0;transform:translateY(14px) scale(.92);animation:tagIn .5s cubic-bezier(.34,1.56,.64,1) forwards}
+@keyframes tagIn{to{opacity:1;transform:none}}
+.tag:hover{background:rgba(0,212,255,.13);border-color:var(--e);color:var(--e);transform:translateY(-2px) scale(1.04)}
+.od-nav{display:flex;align-items:center;gap:.7rem;margin-top:1.2rem}
+.od-count{font-family:'Space Mono',monospace;font-size:.7rem;color:var(--muted);white-space:nowrap}
+.od-prog{flex:1;height:2px;background:var(--faint);border-radius:1px;overflow:hidden}
+.od-prog-fill{height:100%;background:var(--gm);border-radius:1px;transition:width .5s ease}
+
+/* ── EXPERIENCE ── */
+.tl{position:relative;margin-top:4rem;padding-left:2rem}
+.tl::before{content:'';position:absolute;left:0;top:0;bottom:0;width:1px;background:linear-gradient(to bottom,transparent,var(--e),var(--blue),transparent)}
+.tl-item{position:relative;padding:0 0 3.5rem 3rem}
+.tl-item:last-child{padding-bottom:0}
+.tl-dot{position:absolute;left:-.45rem;top:.35rem;width:13px;height:13px;background:var(--bg);border:2px solid var(--e);border-radius:50%;box-shadow:0 0 14px rgba(0,212,255,.5);transition:var(--tr)}
+.tl-item:hover .tl-dot{background:var(--e);box-shadow:0 0 22px rgba(0,212,255,.8)}
+.tl-card{padding:1.9rem;background:var(--card);border:1px solid var(--cb);border-radius:var(--r);backdrop-filter:blur(22px);transition:var(--tr)}
+.tl-card:hover{border-color:var(--cbh);box-shadow:0 14px 45px rgba(0,0,0,.5)}
+.tl-meta{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.5rem;margin-bottom:1rem}
+.tl-date{font-family:'Space Mono',monospace;font-size:.68rem;letter-spacing:.12em;color:var(--e);padding:.22rem .7rem;background:rgba(0,212,255,.08);border:1px solid rgba(0,212,255,.2);border-radius:var(--pill)}
+.tl-badge{font-size:.68rem;padding:.22rem .7rem;background:rgba(0,102,255,.1);border:1px solid rgba(0,102,255,.2);border-radius:var(--pill);color:var(--w2)}
+.tl-role{font-family:'Space Grotesk',sans-serif;font-size:1.2rem;font-weight:700;color:var(--w);margin-bottom:.2rem}
+.tl-co{font-size:.88rem;color:var(--muted);margin-bottom:.7rem}
+.tl-desc{font-size:.9rem;color:var(--w2);line-height:1.7;margin-bottom:1.2rem}
+.tl-ach{border-top:1px solid var(--faint);padding-top:1rem}
+.tl-ach li{padding:.28rem 0 .28rem 1.2rem;position:relative;font-size:.85rem;color:var(--w2);line-height:1.6}
+.tl-ach li::before{content:'→';position:absolute;left:0;color:var(--e);font-size:.78rem}
+
+/* ── CAROUSEL ── */
+.carousel-wrap{margin-top:2.5rem;position:relative}
+.carousel-stage{position:relative;height:500px;perspective:1200px}
+.c-card{position:absolute;inset:0;background:var(--card);border:1px solid var(--cb);border-radius:var(--r);backdrop-filter:blur(22px);padding:1.8rem 2rem;display:flex;flex-direction:column;opacity:0;transform:translateX(70px) scale(.96);transition:opacity .6s cubic-bezier(.4,0,.2,1),transform .6s cubic-bezier(.4,0,.2,1);pointer-events:none;cursor:pointer}
+.c-body{display:grid;grid-template-columns:1fr 195px;gap:1.4rem;flex:1;overflow:hidden;margin-top:.9rem}
+.c-col-main{overflow-y:auto;padding-right:.4rem}
+.c-col-main::-webkit-scrollbar{width:2px}.c-col-main::-webkit-scrollbar-thumb{background:var(--cb);border-radius:1px}
+.c-col-side{overflow-y:auto;border-left:1px solid var(--faint);padding-left:1.2rem}
+.c-sh{font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--e);margin:.9rem 0 .45rem;padding-bottom:.3rem;border-bottom:1px solid var(--faint)}
+.c-sh:first-child{margin-top:0}
+.c-did{list-style:none;margin-bottom:.3rem}
+.c-did li{position:relative;padding:.22rem 0 .22rem 1.1rem;font-size:.83rem;color:var(--w2);line-height:1.6}
+.c-did li::before{content:'→';position:absolute;left:0;color:var(--e);font-size:.75rem;top:.28rem}
+.c-card.active{opacity:1;transform:none;pointer-events:all;border-color:var(--cbh)}
+.c-card.prev{opacity:0;transform:translateX(-70px) scale(.96)}
+.c-type{font-family:'Space Mono',monospace;font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--e);padding:.2rem .6rem;background:rgba(0,212,255,.08);border:1px solid rgba(0,212,255,.2);border-radius:var(--pill);display:inline-block;margin-bottom:.9rem}
+.c-name{font-family:'Space Grotesk',sans-serif;font-size:1.55rem;font-weight:700;color:var(--w);margin-bottom:.65rem}
+.c-desc{font-size:.9rem;color:var(--w2);line-height:1.75;flex:1}
+.c-stack{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:1.2rem;padding-top:1rem;border-top:1px solid var(--faint)}
+.c-stack span{font-size:.72rem;padding:.22rem .6rem;border-radius:var(--pill);background:rgba(0,102,255,.1);border:1px solid rgba(0,102,255,.2);color:var(--w2);transition:var(--tr)}
+.c-stack span:hover{background:rgba(0,212,255,.1);border-color:var(--e);color:var(--e)}
+.carousel-ctrl{display:flex;align-items:center;justify-content:space-between;margin-top:1.4rem}
+.c-dots{display:flex;gap:.5rem}
+.c-dot{width:6px;height:6px;border-radius:50%;background:var(--muted);transition:var(--tr);cursor:pointer;border:none;padding:0}
+.c-dot.on{background:var(--e);width:20px;border-radius:3px}
+.c-arrows{display:flex;gap:.6rem}
+.c-arr{width:38px;height:38px;border-radius:50%;border:1px solid var(--cb);background:var(--glass);color:var(--w2);display:flex;align-items:center;justify-content:center;font-size:.85rem;transition:var(--tr);cursor:pointer}
+.c-arr:hover{border-color:var(--e);color:var(--e);background:rgba(0,212,255,.08)}
+.c-pause-hint{font-family:'Space Mono',monospace;font-size:.65rem;letter-spacing:.12em;color:var(--muted);text-transform:uppercase}
+
+/* ── CERT BADGES (spinning border grid) ── */
+.cert-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.6rem;margin-top:3rem}
+.cert-badge-wrap{border-radius:22px;transition:transform .3s ease,box-shadow .3s ease}
+.cert-badge-wrap:hover{transform:translateY(-6px) scale(1.02)}
+.cert-badge{
+  position:relative;border-radius:22px;overflow:hidden;cursor:default;
 }
-
-.back-to-top:hover {
-    transform: translateY(-5px) scale(1.05);
-    box-shadow: 0 12px 35px rgba(236, 72, 153, 0.4);
-    background: var(--accent-pink);
+.cert-badge::before{
+  content:'';position:absolute;
+  width:200%;height:200%;top:-50%;left:-50%;
+  background:conic-gradient(#00d4ff 0deg,#0066ff 90deg,#00fff7 180deg,#00d4ff 360deg);
+  animation:rotBorder 3.5s linear infinite;
 }
-
-.back-to-top:hover i {
-    color: var(--white);
+.cert-badge::after{
+  content:'';position:absolute;inset:2px;border-radius:20px;background:var(--bg2);z-index:1;
 }
-
-.back-to-top i {
-    font-size: 1.5rem;
-    color: var(--accent-pink);
-    transition: color 0.3s ease;
+.cert-inner{position:relative;z-index:2;padding:2.2rem 1.6rem 2rem;text-align:center}
+.cert-badge-wrap:hover .cert-inner{background:rgba(0,212,255,.04)}
+@keyframes rotBorder{to{transform:rotate(360deg)}}
+.cert-ic{
+  width:64px;height:64px;margin:0 auto 1.2rem;border-radius:16px;
+  background:rgba(0,212,255,.12);border:1px solid rgba(0,212,255,.2);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.6rem;color:var(--e);
+  box-shadow:0 0 24px rgba(0,212,255,.25);
+  transition:var(--tr);
 }
-
-.back-to-top-text {
-    color: var(--white);
-    font-size: 0.8rem;
-    font-weight: 500;
-    letter-spacing: 0.05em;
-    margin-top: 0.5rem;
-    text-align: center;
-    white-space: nowrap;
+.cert-badge-wrap:hover .cert-ic{background:rgba(0,212,255,.2);box-shadow:0 0 40px rgba(0,212,255,.5);transform:scale(1.08)}
+.cert-nm{font-family:'Space Grotesk',sans-serif;font-size:1rem;font-weight:700;color:var(--w);margin-bottom:.3rem}
+.cert-og{font-size:.8rem;color:var(--e);margin-bottom:.5rem;font-family:'Space Mono',monospace;font-size:.7rem;letter-spacing:.05em}
+.cert-nt{font-size:.8rem;color:var(--muted);line-height:1.55}
+/* shimmer sweep on cert badges */
+.cert-inner::after{
+  content:'';position:absolute;inset:0;border-radius:20px;
+  background:linear-gradient(105deg,transparent 40%,rgba(255,255,255,.05) 50%,transparent 60%);
+  transform:translateX(-100%);
+  animation:certShimmer 4s ease-in-out infinite;
 }
+@keyframes certShimmer{0%,100%{transform:translateX(-100%)}50%{transform:translateX(200%)}}
 
-@media (max-width: 768px) {
-    .back-to-top-wrapper {
-        right: 1rem;
-        bottom: 1rem;
-    }
-    .back-to-top {
-        width: 35px;
-        height: 35px;
-    }
+/* ── VERTICAL CAROUSEL (contact) ── */
+.vc-wrap{position:relative;height:220px;margin-bottom:1.2rem}
+.vc-card{position:absolute;inset:0;background:var(--card);border:1px solid var(--cb);border-radius:var(--r);backdrop-filter:blur(22px);padding:1.8rem;display:flex;align-items:center;gap:1.4rem;opacity:0;transform:translateY(36px) scale(.97);transition:opacity .6s cubic-bezier(.4,0,.2,1),transform .6s cubic-bezier(.4,0,.2,1);pointer-events:none;cursor:pointer;text-decoration:none;color:inherit}
+.vc-card.active{opacity:1;transform:none;pointer-events:all;border-color:var(--cbh)}
+.vc-card.prev{opacity:0;transform:translateY(-36px) scale(.97)}
+.vc-icon{width:56px;height:56px;flex-shrink:0;background:rgba(0,212,255,.1);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;color:var(--e)}
+.vc-lbl{font-size:.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.22rem}
+.vc-val{font-family:'Space Grotesk',sans-serif;font-size:1rem;font-weight:600;color:var(--w);margin-bottom:.2rem}
+.vc-sub{font-size:.82rem;color:var(--w2);line-height:1.5}
+.vc-ctrl{display:flex;align-items:center;gap:.6rem}
+.vc-dots{display:flex;gap:.4rem}
+.vc-dot{width:6px;height:6px;border-radius:50%;background:var(--muted);border:none;cursor:pointer;padding:0;transition:var(--tr)}
+.vc-dot.on{background:var(--e);width:18px;border-radius:3px}
+.vc-hint{font-family:'Space Mono',monospace;font-size:.62rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-left:auto}
+
+/* ── MARQUEE ── */
+.marquee-sec{background:var(--bg2)}
+.marquee-wrap{margin-top:3.5rem;overflow:hidden;-webkit-mask:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.marquee-row{display:flex;gap:1.2rem;margin-bottom:1.2rem;width:max-content}
+.marquee-row.r1{animation:mLeft 45s linear infinite}
+.marquee-row.r2{animation:mRight 50s linear infinite}
+.marquee-row:hover{animation-play-state:paused}
+@keyframes mLeft{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes mRight{from{transform:translateX(-50%)}to{transform:translateX(0)}}
+.m-card{flex-shrink:0;width:380px;padding:1.6rem 1.8rem;background:var(--card);border:1px solid var(--cb);border-radius:var(--r);backdrop-filter:blur(22px);transition:var(--tr);cursor:default}
+.m-card:hover{border-color:var(--cbh);transform:translateY(-4px);box-shadow:0 14px 40px rgba(0,0,0,.5)}
+.m-quote{font-size:.88rem;color:var(--w2);line-height:1.76;font-style:italic;margin-bottom:1.2rem;position:relative;padding-left:1.2rem}
+.m-quote::before{content:'"';position:absolute;left:0;top:-.1rem;font-size:1.6rem;line-height:1;color:var(--e);opacity:.4;font-style:normal}
+.m-name{font-family:'Space Grotesk',sans-serif;font-size:.9rem;font-weight:600;color:var(--e);margin-bottom:.15rem}
+.m-role{font-size:.76rem;color:var(--muted)}
+
+/* ── CONTACT ── */
+.contact-grid{display:grid;grid-template-columns:1fr 1.5fr;gap:4rem;margin-top:4rem;align-items:center}
+.form-card{padding:2.4rem;background:var(--card);border:1px solid var(--cb);border-radius:var(--r);backdrop-filter:blur(22px)}
+.form-card h3{font-family:'Space Grotesk',sans-serif;font-size:1.35rem;font-weight:700;color:var(--w);margin-bottom:.4rem}
+.form-card>p{font-size:.88rem;color:var(--muted);margin-bottom:1.6rem}
+.fg{margin-bottom:1.15rem}
+.fg label{display:block;font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:.45rem}
+.fg input,.fg textarea{width:100%;padding:.82rem 1rem;background:var(--bg3);border:1px solid var(--cb);border-radius:9px;color:var(--w);font-family:'DM Sans',sans-serif;font-size:.9rem;outline:none;transition:var(--tr);resize:vertical}
+.fg input:focus,.fg textarea:focus{border-color:var(--e);box-shadow:0 0 0 3px rgba(0,212,255,.08)}
+.fg textarea{min-height:115px}
+.fg-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.fsub{width:100%;padding:.95rem;background:var(--gm);color:#000;font-weight:700;font-size:.92rem;letter-spacing:.05em;border-radius:var(--pill);cursor:pointer;transition:var(--tr);box-shadow:0 0 28px rgba(0,212,255,.3);border:none;font-family:'DM Sans',sans-serif;display:flex;align-items:center;justify-content:center;gap:.6rem}
+.fsub:hover{transform:translateY(-2px);box-shadow:0 0 45px rgba(0,212,255,.5)}
+.fsub:disabled{opacity:.6;cursor:not-allowed;transform:none}
+/* ── TOAST ── */
+.toast{position:fixed;top:1.6rem;right:1.6rem;z-index:9999;padding:.85rem 1.4rem .7rem 1rem;border-radius:12px;font-size:.9rem;font-weight:500;display:flex;flex-direction:column;gap:0;min-width:280px;max-width:380px;box-shadow:0 8px 32px rgba(0,0,0,.35);backdrop-filter:blur(16px);transform:translateX(110%);transition:transform .35s cubic-bezier(.34,1.3,.64,1),opacity .35s ease;opacity:0;pointer-events:none;overflow:hidden}
+.toast.show{transform:translateX(0);opacity:1;pointer-events:all}
+.toast.ok{background:rgba(0,200,90,.15);border:1px solid rgba(0,200,90,.4);color:#00e070}
+.toast.err{background:rgba(255,60,60,.13);border:1px solid rgba(255,60,60,.35);color:#ff6060}
+.toast-row{display:flex;align-items:center;gap:.7rem;padding-bottom:.6rem}
+.toast-icon{font-size:1.1rem;flex-shrink:0}
+.toast-close{margin-left:auto;font-size:.8rem;cursor:pointer;opacity:.6;background:none;border:none;color:inherit;padding:.1rem .3rem}
+.toast-bar{height:3px;width:100%;border-radius:2px;background:currentColor;opacity:.5;transform-origin:left;transform:scaleX(1)}
+.toast-bar.run{animation:toastDrain var(--dur,3.5s) linear forwards}
+@keyframes toastDrain{to{transform:scaleX(0)}}
+
+/* ── FOOTER ── */
+footer{background:var(--bg2);border-top:1px solid var(--faint);padding:2.8rem 0}
+.ft-row{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1.5rem}
+.ft-logo{font-family:'Space Mono',monospace;font-size:1.05rem;font-weight:700;background:var(--gm);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.ft-soc{display:flex;gap:.7rem}
+.ft-s{width:34px;height:34px;border-radius:50%;border:1px solid var(--cb);display:flex;align-items:center;justify-content:center;font-size:.82rem;color:var(--muted);transition:var(--tr)}
+.ft-s:hover{border-color:var(--e);color:var(--e);background:rgba(0,212,255,.08)}
+.ft-copy{text-align:center;padding-top:1.4rem;margin-top:1.4rem;border-top:1px solid var(--faint);font-size:.78rem;color:var(--muted)}
+
+/* ── FLOAT BUTTONS ── */
+.fwa{position:fixed;bottom:2rem;left:2rem;width:46px;height:46px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;font-size:1.25rem;color:#fff;box-shadow:0 4px 22px rgba(37,211,102,.4);z-index:900;transition:var(--tr)}
+.fwa:hover{transform:scale(1.1);box-shadow:0 6px 32px rgba(37,211,102,.6)}
+.fup{position:fixed;bottom:2rem;right:2rem;width:46px;height:46px;border-radius:50%;background:var(--glass);border:1px solid var(--cbh);display:flex;align-items:center;justify-content:center;font-size:.95rem;color:var(--e);backdrop-filter:blur(10px);z-index:901;transition:var(--tr);opacity:0;visibility:hidden;cursor:pointer}
+.fup.vis{opacity:1;visibility:visible}
+.fup:hover{border-color:var(--e);background:rgba(0,212,255,.14);transform:translateY(-3px);box-shadow:0 0 20px rgba(0,212,255,.3)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1100px){
+  .hero-grid{grid-template-columns:1fr;gap:3rem;text-align:center}
+  .photo-wrap{margin:0 auto}.photo-socials{display:none}
+  .badges,.hero-ctas{justify-content:center}
+  .hero-desc{margin:0 auto 2.4rem}
+  .orbit-sec{grid-template-columns:1fr;gap:2rem}
+  .orbit-wrap{margin:0 auto}
+  .about-grid,.contact-grid{grid-template-columns:1fr}
+  .cert-grid{grid-template-columns:repeat(2,1fr)}
 }
-
-/* ==============================================
-   FULL FIXED WHATSAPP FLOATING BUTTON
-   No purple underline, official WhatsApp theme by default
-   ============================================== */
-.whatsapp-wrapper {
-    position: fixed;
-    bottom: 3rem;
-    left: 3rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    z-index: 1000;
+@media(max-width:768px){
+  .nav-links,.nav-cta{display:none}.hbg{display:flex}
+  .hero-name{font-size:3rem}.photo-img{width:210px;height:210px}
+  .orbit-sec{grid-template-columns:1fr}.orbit-wrap{width:280px;height:280px;margin:0 auto}
+  .carousel-stage{height:auto}
+  .c-card{position:relative;opacity:1 !important;transform:none !important;pointer-events:all}
+  .vc-wrap{height:auto}
+  .vc-card{position:relative;opacity:1 !important;transform:none !important;pointer-events:all}
+  .cert-grid{grid-template-columns:1fr}
+  .fg-row{grid-template-columns:1fr}
+  .ft-row{flex-direction:column;align-items:flex-start}
+  .fwa{bottom:1.25rem;left:1.25rem;width:40px;height:40px}
+  .fup{bottom:1.25rem;right:1.25rem;width:40px;height:40px}
+  .m-card{width:300px}
+  .st-item{padding:1.2rem 2rem;min-width:130px}
+  .st-n{font-size:1.6rem}
 }
-
-/* PERMANENTLY REMOVE PURPLE UNDERLINE - OVERRIDES GLOBAL LINK STYLING */
-.whatsapp-wrapper a {
-    text-decoration: none !important;
-    position: relative;
-}
-.whatsapp-wrapper a::after {
-    display: none !important;
-}
-
-/* OFFICIAL WHATSAPP BRAND THEME ACTIVE BY DEFAULT */
-.whatsapp-btn {
-    width: 50px;
-    height: 50px;
-    background: #25D366; /* Official WhatsApp brand green */
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    box-shadow: 0 8px 25px rgba(37, 211, 102, 0.35);
-    border: 3px solid rgba(255, 255, 255, 0.15);
-    transition: all 0.3s ease;
-}
-
-/* Subtle hover enhancement with darker official WhatsApp green */
-.whatsapp-btn:hover {
-    transform: translateY(-5px) scale(1.05);
-    box-shadow: 0 12px 35px rgba(37, 211, 102, 0.55);
-    background: #128C7E; /* Darker official WhatsApp green for hover state */
-}
-
-/* White WhatsApp icon visible at all times */
-.whatsapp-btn i {
-    font-size: 1.5rem;
-    color: #FFFFFF;
-    transition: none !important;
-}
-
-.whatsapp-text {
-    color: var(--white);
-    font-size: 0.8rem;
-    font-weight: 500;
-    letter-spacing: 0.05em;
-    margin-top: 0.5rem;
-    text-align: center;
-    white-space: nowrap;
-}
-
-/* Mobile responsive adjustments */
-@media (max-width: 768px) {
-    .whatsapp-wrapper {
-        left: 1rem;
-        bottom: 1rem;
-    }
-    .whatsapp-btn {
-        width: 35px;
-        height: 35px;
-    }
-    .whatsapp-btn i {
-        font-size: 1.2rem;
-    }
-}
-
-
-        /* ===== NEW ANIMATION ELEMENTS - ADDED BELOW ===== */
-
-        /* Particle Canvas - completely non-intrusive background layer */
-        #particleCanvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -10;
-            pointer-events: none;
-            opacity: 0.4;
-        }
-
-/* Parallax Background - STATIC (no movement) */
-#parallaxBackground {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -5;
-    background: 
-        radial-gradient(circle at 0% 0%, var(--mid-purple) 0, transparent 50%),
-        radial-gradient(circle at 100% 0%, var(--accent-pink) 0, transparent 55%),
-        radial-gradient(circle at 50% 100%, var(--dark-purple-2) 0, #020617 70%);
-    pointer-events: none;
-}
-
-/* DELETE THIS ENTIRE BLOCK */
-@keyframes backgroundParallax {
-    0%, 100% { transform: translate(0, 0) scale(1); }
-    25% { transform: translate(-2%, -1%) scale(1.02); }
-    50% { transform: translate(2%, -2%) scale(1); }
-    75% { transform: translate(-1%, 1%) scale(1.01); }
-}
-
-        /* Mouse Spotlight - subtle flashlight effect */
-        #mouseSpotlight {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 1;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        #mouseSpotlight.active {
-            opacity: 0.6;
-        }
-
-        /* Custom Magnetic Cursor */
-        #customCursor {
-            position: fixed;
-            width: 20px;
-            height: 20px;
-            background: radial-gradient(circle, var(--accent-pink) 0%, var(--primary-purple) 100%);
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 9999;
-            opacity: 0;
-            transition: opacity 0.3s ease, width 0.3s ease, height 0.3s ease;
-            box-shadow: 0 0 20px var(--accent-pink), 0 0 40px var(--primary-purple);
-            mix-blend-mode: screen;
-        }
-
-        #customCursor.active {
-            opacity: 0.7;
-        }
-
-        #customCursor.hover {
-            width: 40px;
-            height: 40px;
-            opacity: 0.9;
-        }
-
-        /* Enhanced Card Glow */
-        .card-3d {
-            transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease, filter 0.35s ease;
-        }
-
-        .card-3d:hover {
-            filter: drop-shadow(0 0 15px rgba(236, 72, 153, 0.5));
-        }
-
-        /* Magnetic Snap Effect for Interactive Elements */
-        a, button, .contact-item, .hero-badge, .social-links a {
-            position: relative;
-            transition: transform 0.3s ease;
-        }
-
-        /* Background Pulse Enhancement */
-        body::after {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(168, 85, 247, 0.05), transparent 40%);
-            z-index: -1;
-            pointer-events: none;
-            opacity: 0;
-            transition: opacity 0.5s ease;
-        }
-
-        body:hover::after {
-            opacity: 1;
-        }
-
-        /* Unified Hover Effect for All Cards (Except Projects & Recommendations) */
-        .skill-card.card-3d,
-        .timeline-content.card-3d,
-        .award-card.card-3d,
-        .about-content.card-3d {
-            border: 2px solid transparent;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-
-        .skill-card.card-3d:hover,
-        .timeline-content.card-3d:hover,
-        .award-card.card-3d:hover,
-        .about-content.card-3d:hover {
-            transform: translateY(-10px);
-            border-color: #ff007f;
-            box-shadow: 0 15px 40px rgba(255, 0, 127, 0.4), 
-                        0 0 15px rgba(138, 43, 226, 0.3);
-        }
-
-        /* Mobile Detection - hide cursor effects on touch devices */
-        @media (hover: none) {
-            #customCursor, #mouseSpotlight, #particleCanvas {
-                display: none;
-            }
-            body:hover::after {
-                opacity: 0;
-            }
-        }
-    </style>
+@media(max-width:480px){.wrap{padding:0 1.25rem}.sec{padding:5rem 0}}
+/* ── SECTION BACKGROUNDS ── */
+.has-sbg{position:relative;overflow:hidden}
+.has-sbg>.wrap,.has-sbg>.marquee-wrap{position:relative;z-index:1}
+.sbg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;display:block}
+</style>
 </head>
 <body>
-    <!-- NEW ANIMATION ELEMENTS - ADDED AT TOP OF BODY -->
-    <canvas id="particleCanvas"></canvas>
-    <div id="parallaxBackground"></div>
-    <div id="mouseSpotlight"></div>
-    <div id="customCursor"></div>
 
-    <!-- Progress Bar -->
-    <div class="progress-bar" id="progressBar"></div>
+<div class="blob blob1"></div>
+<div class="blob blob2"></div>
+<div class="blob blob3"></div>
+<canvas id="bgCanvas"></canvas>
 
-    <!-- Navigation -->
-    <nav id="navbar">
-        <div class="nav-container">
-            <div class="logo">TS</div>
-            <ul class="nav-links" id="navLinks">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">Overview</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#awards">Awards</a></li>
-                <li><a href="#education">Education</a></li>
-                <li><a href="#recommendations">Recommendations</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-            <div class="mobile-menu-toggle" id="mobileMenuToggle">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="hero-content">
-            <div class="hero-layout">
-                <div class="hero-text">
-                    <h1>Talha Sharif</h1>
-                    <p class="title">SQA Engineer | Test Automation Engineer</p>
-                    <p class="tagline">
-                        ISTQB-Certified QA Engineer with 4+ years of experience architecting scalable test strategies, building robust automation frameworks, and validating complex data pipelines.
-                    </p>
-                    <div class="hero-badges">
-                        <span class="hero-badge"><i class="fas fa-certificate"></i> ISTQB Certified</span>
-                        <span class="hero-badge"><i class="fas fa-robot"></i> Test Automation</span>
-                        <span class="hero-badge"><i class="fas fa-database"></i> Data & ETL Testing</span>
-                        <span class="hero-badge"><i class="fas fa-mobile-alt"></i> Web Testing</span>
-                        <span class="hero-badge"><i class="fas fa-mobile-alt"></i> Mobile Testing</span>
-                        <span class="hero-badge"><i class="fas fa-brain"></i> AI/ML Testing</span>
-                        <span class="hero-badge"><i class="fas fa-users"></i> Agile & Scrum</span>
-                    </div>
-                    <div class="contact-info">
-                        <a href="mailto:talha.sharif001@gmail.com" class="contact-item">
-                            <i class="fas fa-envelope"></i> Email
-                        </a>
-                        <a href="tel:+923104506164" class="contact-item">
-                            <i class="fas fa-phone"></i> +92 310 4506164
-                        </a>
-                        <a href="https://www.linkedin.com/in/talha-sharif1/" target="_blank" class="contact-item">
-                            <i class="fab fa-linkedin"></i> LinkedIn
-                        </a>
-                        <a href="https://github.com/Talha3367" target="_blank" class="contact-item">
-                            <i class="fab fa-github"></i> GitHub
-                        </a>
-                        <a href="#" class="contact-item">
-                            <i class="fas fa-map-marker-alt"></i> Pakistan (Open to Relocation)
-                        </a>
-                    </div>
-                </div>
-
-                <div class="hero-photo">
-                    <img src="talha.jpg" alt="Talha Sharif">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about">
-        <h2 class="section-title">Professional Overview</h2>
-        <div class="about-content card-3d">
-            <p class="about-text">
-                <strong>ISTQB-Certified Software QA Engineer with 4+ years of experience</strong> architecting scalable test strategies, building robust automation frameworks, and validating complex data pipelines. Proven track record of boosting release efficiency by 70%, achieving 90% regression coverage, and mentoring high-performing QA teams.
-            </p>
-            <br>
-            <p class="about-text">
-                I specialize in:
-            </p>
-            <ul class="skill-list" style="margin-top: 0.4rem;">
-                <li>Manual & Automated Testing for Web, Mobile (Android/iOS), and API</li>
-                <li>Data & ETL Validation ensuring 100% accuracy and 0% data loss</li>
-                <li>AI/ML Application Testing including LLMs, Chatbots, and Predictive Analytics</li>
-                <li>Performance Testing with JMeter for load and stress testing</li>
-                <li>Cross-functional collaboration in Agile/Scrum environments</li>
-                <li>Team leadership and mentoring QA professionals</li>
-            </ul>
-            <br>
-            <p class="about-text">
-                <strong>Key Achievements:</strong> Improved QA efficiency by 70%, increased automation coverage by 90%, delivered 30+ stakeholder demos, and managed QA team of 4 engineers.
-            </p>
-        </div>
-    </section>
-
-    <!-- Skills Section -->
-    <section id="skills">
-        <h2 class="section-title">Skills & Technical Toolkit</h2>
-        <div class="horizontal-skills-flow">
-            <div class="skill-card card-3d">
-                <h3><i class="fas fa-vial"></i> <span>Testing</span> <span>Expertise</span></h3> 
-                <p class="single-line-skills">
-                    • Manual Testing • Automated Testing • Mobile Testing (Android/iOS) • API Testing • Regression Testing • Smoke & Sanity Testing • UAT • Exploratory Testing • Integration Testing • Performance Testing • Database & ETL Testing • Data Pipeline Validation • Power BI Testing • End-to-End Testing • AI/ML Application Testing • Automotive HMI Testing
-                </p>
-            </div>
-            <div class="skill-card card-3d">
-                <h3><i class="fas fa-robot"></i> <span>Automation</span> <span>&</span> <span>Frameworks</span></h3>
-                <p class="single-line-skills">
-                    • Playwright • Selenium • Cypress • Appium • REST Assured • Page Object Model (POM) • BrowserStack • Sauce Labs • TestRail
-                </p>
-            </div>
-            <div class="skill-card card-3d">
-                <h3><i class="fas fa-plug"></i> <span>API</span> <span>&</span> <span>Backend</span> <span>Testing</span></h3>
-                <p class="single-line-skills">
-                    • REST Assured • Postman • Insomnia
-                </p>
-            </div>
-            <div class="skill-card card-3d">
-                <h3><i class="fas fa-tachometer-alt"></i> <span>Performance</span> <span>Tools</span></h3>
-                <p class="single-line-skills">
-                    • Apache JMeter
-                </p>
-            </div>
-            <div class="skill-card card-3d">
-                <h3><i class="fas fa-code-branch"></i> <span>CI/CD</span> <span>&</span> <span>DevOps</span></h3>
-                <p class="single-line-skills">
-                    • Jenkins • GitHub Actions • Azure DevOps • Git • GitHub • Power Automate
-                </p>
-            </div>
-            <div class="skill-card card-3d">
-                <h3><i class="fas fa-clipboard-check"></i> <span>Project</span> <span>Management</span></h3>
-                <p class="single-line-skills">
-                    • Jira • Agile & Scrum • Kanban • SDLC • Test Planning • Defect Lifecycle Management
-                </p>
-            </div>
-            <div class="skill-card card-3d">
-                <h3><i class="fas fa-code"></i> <span>Programming</span> <span>&</span> <span>Querying</span></h3>
-                <p class="single-line-skills">
-                    • Java • JavaScript • TypeScript • Python • SQL • HTML5 • CSS3
-                </p>
-            </div>
-            <div class="skill-card card-3d">
-                <h3><i class="fas fa-database"></i> <span>Databases</span> <span>&</span> <span>Platforms</span></h3>
-                <p class="single-line-skills">
-                   • Snowflake • MySQL • Azure Cosmos DB • SSMS • Power BI • Tableau • Azure Data Factory
-                </p>
-            </div>
-            <div class="skill-card card-3d">
-                <h3><i class="fas fa-mobile-alt"></i> <span>Mobile</span> <span>Testing</span> <span>Tools</span></h3>
-                <p class="single-line-skills">
-                    • Appium • Android Studio • TestFlight • iOS Simulator • BrowserStack
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Experience Section -->
-    <section id="experience">
-        <h2 class="section-title">Professional Experience</h2>
-        <div class="timeline">
-            <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div class="timeline-content card-3d">
-                    <div class="timeline-date">Aug 2023 – Present</div>
-                    <div class="timeline-title">Software Quality Assurance Engineer</div>
-                    <div class="timeline-company">Stewart Title (NYSE: STC) — Lahore, Pakistan</div>
-                    <div class="timeline-description">
-                        Orchestrated end-to-end QA for SPECTR platform managing 27M+ title policies and 160M+ parcels, covering 99.9% of U.S. population.
-                    </div>
-                    <div class="achievements">
-                        <ul>
-                            <li>Directed testing across 60+ sprints, 25+ features, and 500+ user stories, driving 70% improvement in test cycle efficiency</li>
-                            <li>Architected Playwright and REST Assured automation suites, boosting regression coverage by 90% and reducing execution time by 65%</li>
-                            <li>Executed data validation and ETL testing ensuring source-to-target accuracy with 0% data loss</li>
-                            <li>Supervised QA team of 4 engineers, ensuring high-quality deliverables and sprint alignment</li>
-                            <li>Partnered with Product Owners and Business Analysts achieving 100% requirement alignment</li>
-                            <li>Presented 30+ stakeholder-facing sprint demos and authored 50+ QA sign-off reports</li>
-                            <li>Contributed to Agile ceremonies including standups, retrospectives, and sprint planning</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div class="timeline-content card-3d">
-                    <div class="timeline-date">Jan 2022 – Jul 2023</div>
-                    <div class="timeline-title">Associate Software Quality Assurance Engineer</div>
-                    <div class="timeline-company">Techtics.AI — Lahore, Pakistan</div>
-                    <div class="timeline-description">
-                        Spearheaded end-to-end QA for HIPAA-compliant HealthTech SaaS platform across 10+ modules ensuring regulatory compliance.
-                    </div>
-                    <div class="achievements">
-                        <ul>
-                            <li>Engineered 100+ Playwright-based test scripts and 150+ Appium mobile tests, increasing automation coverage by 80%</li>
-                            <li>Reduced manual regression effort by 60% through strategic test automation</li>
-                            <li>Authored 500+ manual test cases achieving 100% functional coverage</li>
-                            <li>Improved defect detection rates by 25% through comprehensive testing strategies</li>
-                            <li>Streamlined defect lifecycle management using Jira, reducing resolution time by 35%</li>
-                            <li>Utilized Apache JMeter for performance testing, contributing to 40% improvement in platform responsiveness</li>
-                            <li>Facilitated 5+ internal knowledge transfer sessions, improving team onboarding by 15%</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section id="projects">
-        <h2 class="section-title">Featured Projects</h2>
-        <div class="projects-grid">
-            <div class="project-card card-3d">
-                <div class="project-header">
-                    <h3 class="project-title">SPECTR</h3>
-                    <p class="project-type">Enterprise Web Platform</p>
-                </div>
-                <div class="project-content">
-                    Validated centralized data platform aggregating 27M+ title policies and 160M+ U.S. parcels. Achieved 99.9% data accuracy through comprehensive ETL and API testing.
-                    <div class="project-tech">
-                        <span>Playwright</span>
-                        <span>REST Assured</span>
-                        <span>Snowflake</span>
-                        <span>Azure DevOps</span>
-                    </div>
-                </div>
-            </div>
-            <div class="project-card card-3d">
-                <div class="project-header">
-                    <h3 class="project-title">Intellixcore.AI</h3>
-                    <p class="project-type">AI/ML Platform</p>
-                </div>
-                <div class="project-content">
-                    Tested AI/ML platform featuring LLM chatbots, predictive analytics, image-to-text, text-to-speech, OCR, and recommendation systems. Validated MCP servers, AI agents, and function accuracy.
-                    <div class="project-tech">
-                        <span>Python</span>
-                        <span>Playwright</span>
-                        <span>Postman</span>
-                        <span>API Testing</span>
-                        <span>AI/ML</span>
-                    </div>
-                </div>
-            </div>
-            <div class="project-card card-3d">
-                <div class="project-header">
-                    <h3 class="project-title">Kilc.gg</h3>
-                    <p class="project-type">Web & Mobile App</p>
-                </div>
-                <div class="project-content">
-                    Executed functional and mobile testing for live streaming platform supporting multi-stream viewing. Ensured cross-device compatibility across Android and iOS.
-                    <div class="project-tech">
-                        <span>Appium</span>
-                        <span>Playwright</span>
-                        <span>BrowserStack</span>
-                        <span>Postman</span>
-                    </div>
-                </div>
-            </div>
-            <div class="project-card card-3d">
-                <div class="project-header">
-                    <h3 class="project-title">nAble IVF</h3>
-                    <p class="project-type">HealthTech SaaS</p>
-                </div>
-                <div class="project-content">
-                    Tested HIPAA-compliant EMR system for fertility clinics covering patient tracking, lab integration, billing, and secure portal. Achieved 100% regulatory compliance.
-                    <div class="project-tech">
-                        <span>Playwright</span>
-                        <span>Appium</span>
-                        <span>Postman</span>
-                        <span>JMeter</span>
-                    </div>
-                </div>
-            </div>
-            <div class="project-card card-3d">
-                <div class="project-header">
-                    <h3 class="project-title">Data Solutions</h3>
-                    <p class="project-type">Power BI Suite</p>
-                </div>
-                <div class="project-content">
-                    Validated enterprise analytics dashboards with automated data pipelines. Ensured 100% data accuracy between source databases and executive reports.
-                    <div class="project-tech">
-                        <span>SQL</span>
-                        <span>Power BI</span>
-                        <span>Power Automate</span>
-                        <span>SSMS</span>
-                    </div>
-                </div>
-            </div>
-            <div class="project-card card-3d">
-                <div class="project-header">
-                    <h3 class="project-title">AccountsChek</h3>
-                    <p class="project-type">BI Validation Platform</p>
-                </div>
-                <div class="project-content">
-                    Data validation and reporting platform for financial clients ensuring Tableau dashboards accurately reflect real-time enterprise database data.
-                    <div class="project-tech">
-                        <span>Power BI</span>
-                        <span>Tableau</span>
-                        <span>SQL</span>
-                    </div>
-                </div>
-            </div>
-            <div class="project-card card-3d">
-                <div class="project-header">
-                    <h3 class="project-title">Oaysis</h3>
-                    <p class="project-type">Mobile App</p>
-                </div>
-                <div class="project-content">
-                    Tested AI-powered social networking app with personalized feeds, AI chatbot, and subscription features. Validated across 20+ device configurations.
-                    <div class="project-tech">
-                        <span>Appium</span>
-                        <span>Android Studio</span>
-                        <span>TestFlight</span>
-                        <span>BrowserStack</span>
-                    </div>
-                </div>
-            </div>
-            <div class="project-card card-3d">
-                <div class="project-header">
-                    <h3 class="project-title">Citron</h3>
-                    <p class="project-type">Mobile App</p>
-                </div>
-                <div class="project-content">
-                    Validated personalized grocery and meal planning app with diet recommendations, cart management, and checkout flow. Achieved 98% user flow coverage.
-                    <div class="project-tech">
-                        <span>Appium</span>
-                        <span>Postman</span>
-                        <span>Android Studio</span>
-                        <span>iOS Simulator</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Awards Section -->
-    <section id="awards">
-        <h2 class="section-title">Certifications & Awards</h2>
-        <div class="awards-grid">
-            <div class="award-card card-3d">
-                <i class="fas fa-certificate"></i>
-                <h4>ISTQB CTFL Certified</h4>
-                <p>Certified Tester Foundation Level</p>
-            </div>
-            <div class="award-card card-3d">
-                <i class="fas fa-users-cog"></i>
-                <h4>Certified Scrum Master</h4>
-                <p>Agile & Scrum Methodology</p>
-            </div>
-            <div class="award-card card-3d">
-                <i class="fas fa-database"></i>
-                <h4>SQL for Testers</h4>
-                <p>LinkedIn Learning Certification</p>
-            </div>
-            <div class="award-card card-3d">
-                <i class="fas fa-star"></i>
-                <h4>Rising Star Award</h4>
-                <p>Stewart Title Recognition</p>
-            </div>
-            <div class="award-card card-3d">
-                <i class="fas fa-award"></i>
-                <h4>Spot Awards (3x)</h4>
-                <p>Excellence in Performance</p>
-            </div>
-            <div class="award-card card-3d">
-                <i class="fas fa-heart"></i>
-                <h4>Appreciation Awards</h4>
-                <p>Team Collaboration & Leadership</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Education Section -->
-    <section id="education">
-        <h2 class="section-title">Education & More</h2>
-        <div class="education-grid-with-space">
-            <div class="skill-card card-3d">
-                <h3><i class="fas fa-graduation-cap"></i> Education</h3>
-                <ul class="skill-list">
-                    <li><strong>Bachelor of Science in Information Technology</strong></li>
-                    <li class="no-bullet">University of the Punjab (2019–2023), Lahore</li>
-                    <li><strong>Intermediate in Pre-Engineering</strong></li>
-                    <li class="no-bullet">Punjab College of Science (2017–2019), Lahore</li>
-                </ul>
-            </div>
-            <div class="skill-card card-3d">
-                <h3><i class="fas fa-language"></i> Languages</h3>
-                <ul class="skill-list">
-                    <li><strong>English:</strong> Professional Fluency</li>
-                    <li><strong>Urdu:</strong> Native</li>
-                </ul>
-            </div>
-            <div class="skill-card card-3d">
-                <h3><i class="fas fa-users"></i> Volunteering & Leadership</h3>
-                <ul class="skill-list">
-                    <li>Mentored 10+ QA interns across multiple cohorts</li>
-                    <li>Event Manager for "Bring Your Child to Workplace"</li>
-                    <li>Brand Ambassador at University Job Fair</li>
-                </ul>
-            </div>
-            <div class="skill-card card-3d">
-                <h3><i class="fas fa-heart"></i> Hobbies & Interests</h3>
-                <ul class="hobby-list-grid">
-                    <li>• Hiking & Nature</li>
-                    <li>• Traveling & Photo</li>
-                    <li>• Gardening</li>
-                    <li>• Movies & Cinema</li>
-                    <li>• Tech Webinars</li>
-                    <li>• Online Trainings</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <!-- Recommendations Section -->
-    <section id="recommendations">
-        <h2 class="section-title">Recommendations</h2>
-        <div class="recommendations-container">
-            <div class="recommendation-card card-3d">
-                <i class="fas fa-quote-right quote-icon"></i>
-                <p class="recommendation-text">
-                    "I am really glad to recommend Talha. Within a year of joining he was basically leading the QA side of things.
-                    The amount he learned in such a short time was incredible. What I appreciated most was how easy he was to work with.
-                    He built great connections with everyone in the team and outside as well. He was the guy you could rely on –
-                    smart, quick, and always ready to jump in and help. Any team would be lucky to have him, both for his skills
-                    and for the kind of person he is."
-                </p>
-                <div class="recommender">
-                    <div class="recommender-info">
-                        <h4>Prasad Harake</h4>
-                        <p>Data Engineer | Snowflake | Stewart Title</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="recommendation-card card-3d">
-                <i class="fas fa-quote-right quote-icon"></i>
-                <p class="recommendation-text">
-                    "I'd like to recommend Talha Sharif, who previously worked with me as a QA Engineer at Stewart.
-                    He brings strong experience across automation, manual testing, API/UI testing, database validation,
-                    and ETL testing. Talha consistently delivered high-quality work, collaborated well with the team,
-                    and demonstrated solid problem-solving skills. He would be a valuable addition to any QA team."
-                </p>
-                <div class="recommender">
-                    <div class="recommender-info">
-                        <h4>Gandeeswar Maruthappan</h4>
-                        <p>Senior Data Engineer | Stewart Title</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="recommendation-card card-3d">
-                <i class="fas fa-quote-right quote-icon"></i>
-                <p class="recommendation-text">
-                    "I had the pleasure of working with Talha on the same QA team, and I can confidently say he's one of the most
-                    dedicated and passionate professionals I've met. His attention to detail, strong leadership skills, and natural
-                    ability to mentor others make him an exceptional QA engineer and an inspiring teammate. He's truly born to be in QA:
-                    committed, skilled, and always striving for excellence."
-                </p>
-                <div class="recommender">
-                    <div class="recommender-info">
-                        <h4>Haris Shahid</h4>
-                        <p>ISTQB® Certified | Quality Assurance Analyst | Stewart Title</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="recommendation-card card-3d">
-                <i class="fas fa-quote-right quote-icon"></i>
-                <p class="recommendation-text">
-                    "I've worked with Talha on the same project and I would definitely say that he is a skilled and reliable SQA professional
-                    with a sharp eye for detail and a strong commitment to quality. He consistently delivered excellent results and is a
-                    valuable asset to any QA team."
-                </p>
-                <div class="recommender">
-                    <div class="recommender-info">
-                        <h4>Khurram Shehzad</h4>
-                        <p>Sr. Test Automation Engineer | SDET | SQA Engineer</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="recommendation-card card-3d">
-                <i class="fas fa-quote-right quote-icon"></i>
-                <p class="recommendation-text">
-                    "I have had the pleasure of working closely with Talha and can confidently say that he is an exceptional team player
-                    and a valuable asset to any organization. He consistently demonstrates strong attention to detail and maintains a
-                    focused approach in all his tasks. Talha possesses excellent testing skills, both in manual and automated software
-                    testing, complemented by outstanding analytical abilities and critical thinking."
-                    <br><br>
-                    "His communication with stakeholders is clear, professional, and effective, ensuring smooth collaboration across teams.
-                    Beyond his technical expertise, Talha is a kind and approachable individual, making him not only a trusted colleague
-                    but also a great friend and mentor. Overall, his combination of technical proficiency, analytical mindset, and
-                    interpersonal skills make him an outstanding professional in the field of software testing."
-                </p>
-                <div class="recommender">
-                    <div class="recommender-info">
-                        <h4>M Usama Naeem</h4>
-                        <p>SQA Engineer | ETL Tester | SQL Expert</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="recommendation-card card-3d">
-                <i class="fas fa-quote-right quote-icon"></i>
-                <p class="recommendation-text">
-                    "I had the pleasure of working alongside Talha, and I can confidently say he has been an invaluable asset to our team.
-                    Talha's exceptional testing skills, attention to detail, and dedication consistently ensured the highest quality in our
-                    deliverables. His commitment went beyond just his role; he was always ready to go the extra mile to meet project goals."
-                    <br><br>
-                    "His clear and effective communication, both within the team and with stakeholders, played a key role in driving our
-                    projects forward smoothly. Talha's positive attitude, willingness to collaborate, and professionalism made him a delight
-                    to work with. He embraced every challenge as an opportunity for growth and helped foster a supportive and collaborative
-                    work environment."
-                </p>
-                <div class="recommender">
-                    <div class="recommender-info">
-                        <h4>Nixon Peter</h4>
-                        <p>Scrum Master / Project Management | Stewart Title</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="recommendation-card card-3d">
-                <i class="fas fa-quote-right quote-icon"></i>
-                <p class="recommendation-text">
-                    "I've had the pleasure of working closely with Talha. His deep understanding of quality processes and consistent
-                    commitment to delivering high standards have made a significant impact on our project's success. He is proactive in
-                    identifying potential issues early, collaborating seamlessly with developers, and always staying a step ahead when it
-                    comes to ensuring smooth and defect-free releases."
-                    <br><br>
-                    "If you're looking for someone who blends technical QA expertise with strong communication and team collaboration,
-                    I highly recommend Talha. He is an asset to any organization."
-                </p>
-                <div class="recommender">
-                    <div class="recommender-info">
-                        <h4>Omkar Kulkarni</h4>
-                        <p>PMP® Certified Project Manager | Stewart Title</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="recommendation-card card-3d">
-                <i class="fas fa-quote-right quote-icon"></i>
-                <p class="recommendation-text">
-                    "I've had the pleasure of working with Talha, a highly dedicated and detail-oriented QA Engineer. His strong analytical
-                    skills, commitment to quality, and proactive approach to identifying issues have consistently contributed to the success
-                    of our project."
-                </p>
-                <div class="recommender">
-                    <div class="recommender-info">
-                        <h4>Pranit Patil</h4>
-                        <p>Software Engineer | Stewart Title</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="recommendation-card card-3d">
-                <i class="fas fa-quote-right quote-icon"></i>
-                <p class="recommendation-text">
-                    "Talha acquired in-depth knowledge of the application within a short span of time and went on to become one of the star
-                    performers of the team. He is thorough in his analysis of the requirements and software testing, always striving to
-                    complete his work on time and with quality."
-                    <br><br>
-                    "He is a very good team player and maintains excellent rapport with all members of the team. He is an asset to any
-                    organization and can play a key role in the testing of any critical application."
-                </p>
-                <div class="recommender">
-                    <div class="recommender-info">
-                        <h4>Ketan Lovlekar</h4>
-                        <p>Director | Data Architect | AWS/GCP/Azure</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="recommendation-card card-3d">
-                <i class="fas fa-quote-right quote-icon"></i>
-                <p class="recommendation-text">
-                    "I highly recommend Talha for his exceptional growth and performance at Stewart. His dedication, attention to detail,
-                    and ability to collaborate effectively make him a valuable asset to any team. He is proactive and a valuable team member,
-                    and I am confident he will continue to excel in his career."
-                </p>
-                <div class="recommender">
-                    <div class="recommender-info">
-                        <h4>Alia Liaqat</h4>
-                        <p>Test Automation Engineer | QA Engineer | SDET</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="recommendation-card card-3d">
-                <i class="fas fa-quote-right quote-icon"></i>
-                <p class="recommendation-text">
-                    "He is a friendly, energetic, and easily adaptable person. He is very eager to learn new technologies, especially in SQA
-                    automation, and is a fast learner of business processes in the project. It is very nice to work with him."
-                </p>
-                <div class="recommender">
-                    <div class="recommender-info">
-                        <h4>Sivakumar Thangapandy</h4>
-                        <p>Data Architect | Snowflake | Azure Data Engineer</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="recommendation-card card-3d">
-                <i class="fas fa-quote-right quote-icon"></i>
-                <p class="recommendation-text">
-                    "Talha excels at all things that make up a great QA Engineer. His skills with SQL and Snowflake, along with his attention
-                    to detail and ability to quickly learn and adapt to the constantly changing landscape, have saved more than one production
-                    release. I truly appreciate his efforts."
-                </p>
-                <div class="recommender">
-                    <div class="recommender-info">
-                        <h4>Tyler Hirsch</h4>
-                        <p>Senior Data Analyst | Stewart Title</p>
-                    </div>
-                </div>
-            </div>
-
-
-
-   <div class="recommendation-card card-3d">
-                <i class="fas fa-quote-right quote-icon"></i>
-                <p class="recommendation-text">
-                    "Talha has exceeded expectations as an SQA Engineer, showcasing a rare blend of dedication, initiative, and strong communication skills. His proactive approach to problem-solving, ability to effectively coordinate with stakeholders, and enthusiasm for learning make him a valuable asset to any team."
-
-"I confidently recommend him for future roles and believe he has the potential to excel in higher positions."
-                </p>
-                <div class="recommender">
-                    <div class="recommender-info">
-                        <h4>Hassan Riaz</h4>CSPO® | Senior Business Analyst | Stewart Title
-                        <p>CSPO® | Senior Business Analyst | Stewart Title</p>
-                    </div>
-                </div>
-            </div>
-
-
-       <div class="recommendation-card card-3d">
-                <i class="fas fa-quote-right quote-icon"></i>
-                <p class="recommendation-text">
-                    "I wholeheartedly recommend Talha as an SQA engineer. His attention to detail and commitment to ensuring top‑notch software quality have significantly boosted our project success. He's a team player, socially engaged, and quick to identify and fix issues, making him a crucial asset."
-
-"He always had a positive impact on the team. I'm confident he'd shine in any role requiring excellent software quality assurance."
-                </p>
-                <div class="recommender">
-                    <div class="recommender-info">
-                        <h4>Jawad Akram</h4>
-                        <p>ISTQB® Certified | CSM® | SQA Engineer @ NETSOL</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="recommendation-card card-3d">
-                <i class="fas fa-quote-right quote-icon"></i>
-                <p class="recommendation-text">
-                    "I have had the pleasure of working alongside Talha as a tester at Stewart Title on the Spectr project.
-                    I wholeheartedly recommend him for any testing role. Talha consistently impressed me with his dedication and work ethic."
-                    <br><br>
-                    "He is an exceptional tester who goes above and beyond to ensure the quality and reliability of our software products.
-                    His thorough testing approach and ability to identify potential issues have been instrumental in delivering bug-free
-                    releases on time. Talha possesses excellent communication skills and professionalism and is always willing to share his
-                    knowledge and expertise with others."
-                </p>
-                <div class="recommender">
-                    <div class="recommender-info">
-                        <h4>Nitin Matale</h4>
-                        <p>Senior .NET Backend Engineer | Azure Specialist</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="recommendation-card card-3d">
-                <i class="fas fa-quote-right quote-icon"></i>
-                <p class="recommendation-text">
-                    "I have had the pleasure of working closely with Talha on a challenging project, and I was genuinely impressed by his
-                    dedication and profound knowledge of QA processes. It's rare to come across someone as motivated and enthusiastic as him."
-                    <br><br>
-                    "What struck me the most is his unwavering commitment to continuous improvement. He actively sought ways to enhance our
-                    testing processes, leading to more efficient and effective workflows. Talha consistently put forth maximum effort on each
-                    story, showcasing both skill and diligence."
-                    <br><br>
-                    "Working alongside Talha is a pleasure; his knowledge and competence truly make him a standout QA Engineer. He maintained
-                    a positive attitude even in high-pressure situations, and his collaborative nature and effective communication made him an
-                    integral part of our development team."
-                </p>
-                <div class="recommender">
-                    <div class="recommender-info">
-                        <h4>Jaffar Ali</h4>
-                        <p>Senior Software Engineer — Full‑Stack Developer</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-<!-- ==============================================
-     WHATSAPP FLOATING BUTTON - FULL WORKING CODE
-     ============================================== -->
-<div class="whatsapp-wrapper">
-    <a href="https://wa.me/923104506164" target="_blank" rel="noopener noreferrer" class="whatsapp-btn">
-        <i class="fab fa-whatsapp"></i>
-    </a>
-    <span class="whatsapp-text">WhatsApp</span>
+<div id="preloader">
+  <div class="pl-logo">TS</div>
+  <div class="pl-bar"><div class="pl-fill"></div></div>
+  <div class="pl-txt">Loading Portfolio</div>
 </div>
 
-  <!-- BACK TO TOP BUTTON - FIXED POSITION -->
-    <div class="back-to-top-wrapper" id="backToTopWrapper">
-        <div class="back-to-top" id="backToTop" onclick="scrollToTop()">
-            <i class="fas fa-arrow-up"></i>
-        </div>
-        <span class="back-to-top-text">Back to Top</span>
+<div id="bar"></div>
+<div class="cur" id="cur"></div>
+<div class="cur-r" id="curR"></div>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="nav-i">
+    <a href="#home" class="nav-logo">Talha Sharif</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#certifications">Awards</a></li>
+      <li><a href="#testimonials">Reviews</a></li>
+    </ul>
+    <div class="nav-acts">
+      <button class="theme-btn" id="themBtn"><i class="fas fa-moon" id="themIco"></i></button>
+      <a href="#contact" class="nav-cta">Let's Talk</a>
     </div>
+    <div class="hbg" id="hbg"><span></span><span></span><span></span></div>
+  </div>
+</nav>
+<div class="mob-nav" id="mobNav">
+  <a href="#home">Home</a><a href="#about">About</a><a href="#skills">Skills</a>
+  <a href="#experience">Experience</a><a href="#projects">Projects</a>
+  <a href="#certifications">Awards</a><a href="#testimonials">Reviews</a>
+  <a href="#contact">Contact</a>
+</div>
 
-    <footer id="contact">
-        <div class="footer-content">
-            <h2>Let's Connect</h2>
-            <p>Open to discussing QA roles, test automation, and data-focused quality initiatives.</p>
-            <div class="social-links">
-                <a href="mailto:talha.sharif001@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
-                <a href="https://www.linkedin.com/in/talha-sharif1/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                <a href="https://github.com/Talha3367" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-                <a href="tel:+923104506164" title="Phone"><i class="fas fa-phone"></i></a>
-            </div>
-            <p style="margin-top: 2rem; opacity: 0.8; font-size: 0.85rem;">
-                © 2026 Talha Sharif. All rights reserved.
-            </p>
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-grid">
+    <div>
+      <div class="hero-tag"><span class="hero-dot"></span>Available for New Opportunities</div>
+      <h1 class="hero-name">Talha<br><span class="hl">Sharif</span></h1>
+      <p class="hero-role"><span class="tc" id="typedTxt"></span><span class="tk">|</span></p>
+      <p class="hero-desc"><strong>ISTQB-Certified Senior QA Engineer</strong> with 4.5+ years of experience ensuring enterprise-grade software quality across SaaS, HealthTech, FinTech, and AI/ML platforms. Proven record of shipping zero-defect releases through shift-left quality engineering and structured test strategies.</p>
+      <div class="hero-ctas">
+        <a href="#contact" class="btn-p"><i class="fas fa-paper-plane"></i>Get In Touch</a>
+        <a href="#projects" class="btn-o">View Projects <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <div class="badges">
+        <span class="bdg"><i class="fas fa-certificate"></i>ISTQB Certified</span>
+        <span class="bdg"><i class="fas fa-robot"></i>Test Automation</span>
+        <span class="bdg"><i class="fas fa-database"></i>Data &amp; ETL Testing</span>
+        <span class="bdg"><i class="fas fa-globe"></i>Web Testing</span>
+        <span class="bdg"><i class="fas fa-mobile-alt"></i>Mobile Testing</span>
+        <span class="bdg"><i class="fas fa-brain"></i>AI/ML Testing</span>
+        <span class="bdg"><i class="fas fa-users"></i>Agile &amp; Scrum</span>
+      </div>
+    </div>
+    <div class="photo-wrap">
+      <div class="photo-ring"></div>
+      <div class="photo-ring2"></div>
+      <img src="talha.jpg" alt="Talha Sharif" class="photo-img">
+      <div class="photo-socials">
+        <a href="mailto:talha.sharif001@gmail.com" class="ps-link"><i class="fas fa-envelope"></i></a>
+        <a href="https://www.linkedin.com/in/talha-sharif1/" target="_blank" class="ps-link"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/Talha3367" target="_blank" class="ps-link"><i class="fab fa-github"></i></a>
+        <a href="https://wa.me/923104506164" target="_blank" class="ps-link"><i class="fab fa-whatsapp"></i></a>
+        <a href="tel:+923104506164" class="ps-link"><i class="fas fa-phone"></i></a>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-hint"><div class="scroll-line"></div>Scroll</div>
+</section>
+
+<!-- STATS TICKER -->
+<div class="stats-ticker" id="statsRow">
+  <div class="stats-track" id="statsTrack"></div>
+</div>
+
+<!-- ABOUT -->
+<section class="sec" id="about">
+  <div class="wrap">
+    <div class="lbl rv">Professional Overview</div>
+    <h2 class="stitle rv">Who I <span>Am</span></h2>
+    <div class="about-grid">
+      <div class="rvl">
+        <p class="about-p"><strong>ISTQB-certified Senior QA Engineer with 4.5+ years of experience</strong> ensuring enterprise-grade software quality across SaaS, HealthTech, FinTech, and AI/ML platforms serving 99.9% of the U.S. population and processing 160M+ records. Proven record of reducing regression cycles, ensuring comprehensive test coverage, and shipping zero-defect releases through shift-left quality engineering, structured test strategies, and disciplined QA processes.</p>
+        <p class="about-p">I specialize in:</p>
+        <ul class="spec-list">
+          <li>Manual &amp; Automated Testing for Web, Mobile (Android/iOS), API &amp; Microservices</li>
+          <li>ETL &amp; Data Pipeline Validation ensuring source-to-target accuracy with zero data loss</li>
+          <li>AI/ML &amp; LLM Validation including chatbots, autonomous agents, and MCP servers</li>
+          <li>Performance, Load &amp; Stress Testing with Apache JMeter</li>
+          <li>Leading distributed QA teams in Agile/Scrum environments</li>
+          <li>Shift-left quality engineering embedded at every SDLC stage</li>
+        </ul>
+        <p class="about-p"><strong>Leadership &amp; Community:</strong> Mentored 20+ QA interns securing full-time roles. Brand Ambassador at University of the Punjab Job Fair, advising 300+ students on QA careers. Led Stewart Title's Bring Your Child to the Workplace initiative engaging 130+ attendees.</p>
+      </div>
+      <div class="about-side rvr">
+        <div class="ai-card">
+          <h4><i class="fas fa-user-circle"></i> Quick Info</h4>
+          <ul class="ai-list">
+            <li><i class="fas fa-map-marker-alt"></i>Lahore, Pakistan — Open to Relocation &amp; Remote</li>
+            <li><i class="fas fa-briefcase"></i>SQA Engineer @ Stewart Title (NYSE: STC)</li>
+            <li><i class="fas fa-graduation-cap"></i>BS Information Technology — University of the Punjab</li>
+            <li><i class="fas fa-certificate"></i>ISTQB CTFL Certified</li>
+            <li><i class="fas fa-users-cog"></i>Certified Scrum Master</li>
+            <li><i class="fas fa-envelope"></i>talha.sharif001@gmail.com</li>
+            <li><i class="fas fa-phone"></i>+92 310 4506164</li>
+          </ul>
         </div>
-    </footer>
+        <div class="ai-card">
+          <h4><i class="fas fa-star"></i> Key Achievements</h4>
+          <ul class="ai-list">
+            <li><i class="fas fa-check-circle"></i>Zero critical production defects across 24 months</li>
+            <li><i class="fas fa-check-circle"></i>90% regression automation coverage achieved</li>
+            <li><i class="fas fa-check-circle"></i>100% data accuracy in ETL &amp; Snowflake validation</li>
+            <li><i class="fas fa-check-circle"></i>20+ QA interns mentored into full-time roles</li>
+            <li><i class="fas fa-check-circle"></i>300+ students advised at University Job Fair</li>
+            <li><i class="fas fa-check-circle"></i>Rising Star Award — Stewart Title</li>
+            <li><i class="fas fa-check-circle"></i>Multiple Spot Awards &amp; E-Cards</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <script>
-        // ALL ORIGINAL JAVASCRIPT REMAINS EXACTLY THE SAME - NOTHING REMOVED OR MODIFIED
-        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
-        const navLinks = document.getElementById('navLinks');
-        mobileMenuToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                const targetId = this.getAttribute('href');
-                const target = document.querySelector(targetId);
-                if (target) {
-                    e.preventDefault();
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                    navLinks.classList.remove('active');
-                }
-            });
-        });
-        window.addEventListener('scroll', () => {
-            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            const scrolled = (winScroll / height) * 100;
-            document.getElementById('progressBar').style.width = scrolled + '%';
-        });
-        window.addEventListener('scroll', () => {
-            const navbar = document.getElementById('navbar');
-            if (window.scrollY > 80) {
-                navbar.style.background = 'rgba(12, 8, 30, 0.98)';
-                navbar.style.boxShadow = '0 5px 30px rgba(0, 0, 0, 0.5)';
-            } else {
-                navbar.style.background = 'rgba(12, 8, 30, 0.95)';
-                navbar.style.boxShadow = '0 3px 20px rgba(10, 10, 30, 0.75)';
-            }
-        });
-        const observerOptions = {
-            threshold: 0.05,
-            rootMargin: '0px 0px -10px 0px'
-        };
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, observerOptions);
-        document.querySelectorAll('.recommendation-card').forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(24px)';
-            el.style.transition = 'all 0.7s ease';
-            observer.observe(el);
-        });
-        document.querySelectorAll('section:not(.hero):not(#recommendations), .skill-card, .project-card, .timeline-item, .about-content, .award-card').forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(24px)';
-            el.style.transition = 'all 0.7s ease';
-            observer.observe(el);
-        });
-        const heroTitle = document.querySelector('.hero-text h1');
-        const originalText = heroTitle.textContent;
-        heroTitle.textContent = '';
-        let charIndex = 0;
-        function typeWriter() {
-            if (charIndex < originalText.length) {
-                heroTitle.textContent += originalText.charAt(charIndex);
-                charIndex++;
-                setTimeout(typeWriter, 90);
-            }
-        }
-        window.addEventListener('load', () => {
-            setTimeout(typeWriter, 450);
-        });
+<!-- SKILLS — orbit -->
+<section class="sec has-sbg" id="skills" style="background:var(--bg2)">
+  <canvas class="sbg" id="cvSkills"></canvas>
+  <div class="wrap">
+    <div class="lbl rv">Technical Toolkit</div>
+    <h2 class="stitle rv">Skills &amp; <span>Expertise</span></h2>
+    <p class="ssub rv">A comprehensive toolkit built over 4.5+ years across enterprise, mobile, AI, and data systems.</p>
+    <div class="orbit-sec rv">
+      <div class="orbit-wrap" id="orbitWrap">
+        <div class="orbit-ring-el"></div>
+        <div class="orbit-center">
+          <div class="oc-icon"><i id="ocIco" class="fas fa-vial"></i></div>
+          <div class="oc-name" id="ocTxt">Testing</div>
+        </div>
+      </div>
+      <div class="orbit-detail">
+        <div class="od-hd" id="odHd">Testing Expertise</div>
+        <div class="tags" id="orbitTags"></div>
+        <div class="od-nav">
+          <button class="c-arr" id="orbitPrev"><i class="fas fa-arrow-left"></i></button>
+          <span class="od-count" id="odCount">01 / 09</span>
+          <div class="od-prog"><div class="od-prog-fill" id="odFill"></div></div>
+          <button class="c-arr" id="orbitNext"><i class="fas fa-arrow-right"></i></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-        // ===== NEW ANIMATION SCRIPTS - ADDED BELOW =====
+<!-- EXPERIENCE -->
+<section class="sec" id="experience">
+  <div class="wrap">
+    <div class="lbl rv">Career Journey</div>
+    <h2 class="stitle rv">Professional <span>Experience</span></h2>
+    <div class="tl">
+      <div class="tl-item rv">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-meta"><span class="tl-date">Aug 2023 – Present</span><span class="tl-badge">Current Role</span></div>
+          <div class="tl-role">Software Quality Assurance Engineer</div>
+          <div class="tl-co">Stewart Title (NYSE: STC) — Remote, USA</div>
+          <div class="tl-desc">Led end-to-end quality engineering for SPECTR, an enterprise data intelligence platform managing 27M+ title policies and 160M+ U.S. parcels covering 99.9% of the U.S. population, achieving zero critical production defects across 24 months.</div>
+          <ul class="tl-ach">
+            <li>Architected hybrid Playwright and Selenium automation frameworks (Java/TypeScript, POM, data-driven) in Azure DevOps CI/CD pipelines — expanded regression coverage by 90%, cut execution time by 50%</li>
+            <li>Directed QA delivery across 60+ Agile sprints, 25+ enterprise features, and 500+ user stories, consistently meeting release SLAs</li>
+            <li>Engineered SQL-driven ETL and data pipeline validation suites against Snowflake and SQL Server, guaranteeing source-to-target accuracy and audit-ready transformation integrity</li>
+            <li>Mentored and managed a cross-functional team of 4 QA engineers, instituting code review standards and structured learning paths</li>
+            <li>Partnered with Product Owners, Business Analysts, and Developers to shift quality left — achieving 100% requirement alignment and measurable drop in late-stage rework</li>
+            <li>Delivered 30+ stakeholder-facing sprint demos and authored 50+ executive QA sign-off reports influencing go/no-go decisions</li>
+          </ul>
+        </div>
+      </div>
+      <div class="tl-item rv">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-meta"><span class="tl-date">Jan 2022 – Jul 2023</span><span class="tl-badge">Previous Role</span></div>
+          <div class="tl-role">Software Quality Assurance Engineer</div>
+          <div class="tl-co">Techtics.AI — Lahore, Pakistan</div>
+          <div class="tl-desc">Drove end-to-end QA strategy for a HIPAA-compliant HealthTech SaaS platform spanning 10+ modules, collaborating with engineering, product, and compliance teams to ensure regulatory adherence and platform stability.</div>
+          <ul class="tl-ach">
+            <li>Designed and automated 100+ Playwright web test cases and 150+ Appium mobile scripts (Android &amp; iOS) — increased automation coverage by 80%, reduced manual regression effort by 70%</li>
+            <li>Authored 500+ structured manual test cases mapped to traceability matrices, achieving 100% functional coverage and improving pre-release defect detection</li>
+            <li>Owned the full defect lifecycle in Jira — triage, prioritization, root-cause analysis, and verification — reducing mean time to resolution</li>
+            <li>Executed performance, load, and stress testing with Apache JMeter, contributing to 50% improvement in platform responsiveness under peak traffic</li>
+            <li>Facilitated 5+ knowledge-sharing sessions and onboarded junior QA engineers, accelerating ramp-up time across the team</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-        // Particle System
-        const particleCanvas = document.getElementById('particleCanvas');
-        const particleCtx = particleCanvas.getContext('2d');
-        let particles = [];
-        let mousePos = { x: null, y: null, radius: 100 };
+<!-- PROJECTS -->
+<section class="sec has-sbg" id="projects" style="background:var(--bg2)">
+  <canvas class="sbg" id="cvProjects"></canvas>
+  <div class="wrap">
+    <div class="lbl rv">Portfolio</div>
+    <h2 class="stitle rv">Featured <span>Projects</span></h2>
+    <p class="ssub rv">Mission-critical platforms, AI systems, and mobile apps I've quality-assured end-to-end.</p>
+    <div class="carousel-wrap rv">
+      <div class="carousel-stage" id="projStage"></div>
+      <div class="carousel-ctrl">
+        <div class="c-dots" id="projDots"></div>
+        <span class="c-pause-hint" id="projHint">Click card to pause</span>
+        <div class="c-arrows">
+          <button class="c-arr" id="projPrev"><i class="fas fa-arrow-left"></i></button>
+          <button class="c-arr" id="projNext"><i class="fas fa-arrow-right"></i></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-        function resizeCanvas() {
-            particleCanvas.width = window.innerWidth;
-            particleCanvas.height = window.innerHeight;
-        }
+<!-- CERTIFICATIONS — spinning badge grid -->
+<section class="sec" id="certifications">
+  <div class="wrap">
+    <div class="lbl rv">Recognition</div>
+    <h2 class="stitle rv">Certifications &amp; <span>Awards</span></h2>
+    <p class="ssub rv">Industry certifications and recognition earned across 4.5+ years of quality engineering excellence.</p>
+    <div class="cert-grid" id="certGrid"></div>
+  </div>
+</section>
 
-        class Particle {
-            constructor() {
-                this.x = Math.random() * particleCanvas.width;
-                this.y = Math.random() * particleCanvas.height;
-                this.size = Math.random() * 2 + 0.5;
-                this.speedX = Math.random() * 0.3 - 0.15;
-                this.speedY = Math.random() * 0.3 - 0.15;
-                this.opacity = Math.random() * 0.4 + 0.1;
-            }
+<!-- RECOMMENDATIONS -->
+<section class="sec marquee-sec has-sbg" id="testimonials">
+  <canvas class="sbg" id="cvTestimonials"></canvas>
+  <div class="wrap">
+    <div class="lbl rv">Social Proof</div>
+    <h2 class="stitle rv">What People <span>Say</span></h2>
+  </div>
+  <div class="marquee-wrap" style="margin-top:3.5rem">
+    <div class="marquee-row r1" id="mRow1"></div>
+    <div class="marquee-row r2" id="mRow2"></div>
+  </div>
+</section>
 
-            update() {
-                if (mousePos.x !== null && mousePos.y !== null) {
-                    const dx = mousePos.x - this.x;
-                    const dy = mousePos.y - this.y;
-                    const distance = Math.sqrt(dx * dx + dy * dy);
-                    
-                    if (distance < mousePos.radius) {
-                        const force = (mousePos.radius - distance) / mousePos.radius;
-                        const angle = Math.atan2(dy, dx);
-                        this.x -= Math.cos(angle) * force * 3;
-                        this.y -= Math.sin(angle) * force * 3;
-                    }
-                }
+<!-- CONTACT -->
+<section class="sec has-sbg" id="contact">
+  <canvas class="sbg" id="cvContact"></canvas>
+  <div class="wrap">
+    <div class="lbl rv">Get In Touch</div>
+    <h2 class="stitle rv">Let's <span>Connect</span></h2>
+    <p class="ssub rv">Open to QA roles, test automation consulting, and data-focused quality initiatives.</p>
+    <div class="contact-grid">
+      <div class="rvl">
+        <div class="vc-wrap" id="vcWrap"></div>
+        <div class="vc-ctrl">
+          <div class="vc-dots" id="vcDots"></div>
+          <span class="vc-hint">Click to pause · 30s hold</span>
+        </div>
+      </div>
+      <div class="form-card rvr">
+        <h3>Send a Message</h3>
+        <p>I'll get back to you within 24 hours.</p>
+        <form id="cForm">
+          <div class="fg-row">
+            <div class="fg"><label>Name</label><input type="text" id="fName" placeholder="Your name" required></div>
+            <div class="fg"><label>Email</label><input type="email" id="fEmail" placeholder="your@email.com" required></div>
+          </div>
+          <div class="fg"><label>Subject</label><input type="text" id="fSubject" placeholder="What is this about?"></div>
+          <div class="fg"><label>Message</label><textarea id="fMsg" placeholder="Tell me about the opportunity..." required></textarea></div>
+          <button type="submit" class="fsub" id="fBtn"><i class="fas fa-paper-plane"></i>Send Message</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
 
-                this.x += this.speedX;
-                this.y += this.speedY;
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="ft-row">
+      <div class="ft-logo">Talha Sharif</div>
+      <div class="ft-soc">
+        <a href="mailto:talha.sharif001@gmail.com" class="ft-s"><i class="fas fa-envelope"></i></a>
+        <a href="https://www.linkedin.com/in/talha-sharif1/" target="_blank" class="ft-s"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/Talha3367" target="_blank" class="ft-s"><i class="fab fa-github"></i></a>
+        <a href="https://wa.me/923104506164" target="_blank" class="ft-s"><i class="fab fa-whatsapp"></i></a>
+      </div>
+    </div>
+    <div class="ft-copy">© 2026 Talha Sharif. Crafted with precision — just like good test automation.</div>
+  </div>
+</footer>
 
-                if (this.x > particleCanvas.width) this.x = 0;
-                if (this.x < 0) this.x = particleCanvas.width;
-                if (this.y > particleCanvas.height) this.y = 0;
-                if (this.y < 0) this.y = particleCanvas.height;
-            }
+<div class="toast" id="toast"><div class="toast-row"><span class="toast-icon" id="toastIco"></span><span id="toastMsg"></span><button class="toast-close" id="toastClose">✕</button></div><div class="toast-bar" id="toastBar"></div></div>
+<a href="https://wa.me/923104506164" target="_blank" class="fwa"><i class="fab fa-whatsapp"></i></a>
+<button class="fup" id="fup"><i class="fas fa-arrow-up"></i></button>
 
-            draw() {
-                particleCtx.fillStyle = `rgba(168, 85, 247, ${this.opacity})`;
-                particleCtx.beginPath();
-                particleCtx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                particleCtx.fill();
-            }
-        }
+<script>
+/* == DATA ========================================== */
+const SKILL_CATS = [
+  {icon:'fas fa-vial',         name:'Testing Expertise'},
+  {icon:'fas fa-robot',        name:'Automation & Frameworks'},
+  {icon:'fas fa-plug',         name:'API & Backend'},
+  {icon:'fas fa-code-branch',  name:'CI/CD & DevOps'},
+  {icon:'fas fa-code',         name:'Programming'},
+  {icon:'fas fa-database',     name:'Data & Analytics'},
+  {icon:'fas fa-clipboard-check',name:'Project Mgmt'},
+  {icon:'fas fa-mobile-alt',   name:'Mobile Testing'},
+  {icon:'fas fa-tachometer-alt',name:'Performance'},
+];
+const SKILLS = [
+  ['Functional Testing','Regression Testing','Smoke & Sanity Testing','UAT','Exploratory Testing','Integration Testing','End-to-End Testing','API & Microservices Testing','ETL & Data Pipeline Validation','Database Testing','Mobile Testing (Android/iOS)','Cross-Browser Testing','Performance & Load Testing','AI/ML & LLM Validation','Chatbot Testing','Power BI/Tableau Report Testing','Accessibility Testing','Security Testing (basic)'],
+  ['Playwright','Selenium WebDriver','Cypress','Appium','RestAssured','TestNG','Cucumber (BDD)','Page Object Model (POM)','Data-Driven Testing','Keyword-Driven Testing','Hybrid Frameworks','BrowserStack','Sauce Labs','TestRail'],
+  ['Postman','REST Assured','Insomnia','Swagger/OpenAPI'],
+  ['Jenkins','GitHub Actions','Azure DevOps Pipelines','Docker','Git','GitHub','Power Automate','CI/CD Integration'],
+  ['Java','JavaScript','TypeScript','Python','SQL','HTML5','CSS3'],
+  ['Snowflake','Microsoft SQL Server (SSMS)','MySQL','Azure Cosmos DB','Power BI','Tableau','Power Automate','Azure Data Factory'],
+  ['Jira','TestRail','Azure DevOps Boards','Confluence','Zephyr','Xray','Agile/Scrum','Kanban','SAFe','SDLC','STLC','Shift-Left Testing','Risk-Based Testing','BDD','TDD awareness'],
+  ['Appium','Android Studio','TestFlight','iOS Simulator','BrowserStack','Sauce Labs'],
+  ['Apache JMeter','Load Testing','Stress Testing','Performance Benchmarking'],
+];
+const PROJECTS = [
+  {
+    type:'Enterprise Intelligence',name:'SPECTR',
+    desc:'Mission-critical platform aggregating 27M+ title policies and 160M+ U.S. parcel records  enterprise single source of truth for nationwide real estate underwriting decisions.',
+    did:['Architected hybrid Playwright + Selenium frameworks (POM, data-driven) in Azure DevOps CI/CD  90% regression coverage, 50% faster execution','Directed QA across 60+ Agile sprints and 500+ user stories, meeting all release SLAs with zero critical defects over 24 months','Engineered SQL-driven ETL and Snowflake pipeline validation ensuring source-to-target accuracy and audit-ready integrity','Mentored 4 QA engineers with code review standards and structured learning paths','Delivered 30+ stakeholder sprint demos and 50+ executive QA sign-off reports'],
+    stack:['Playwright','Selenium','Java/TypeScript','Azure DevOps','Snowflake','SQL Server','REST Assured'],
+  },
+  {
+    type:'AI/ML & LLM Platform',name:'Intellixcore.AI',
+    desc:'Advanced AI platform covering LLM evaluation, predictive analytics, OCR, text-to-speech, recommendation engines, and document intelligence for enterprise clients.',
+    did:['Defined end-to-end QA strategy for LLM accuracy, hallucination testing, and latency benchmarking','Validated AI chatbots, autonomous agents, MCP servers, and custom function integrations','Tested OCR, text-to-speech, recommendation engines, and document intelligence modules','Established regression baselines and accuracy thresholds for AI model versioning cycles'],
+    stack:['Python','Playwright','Postman','AI/ML Testing','LLM Validation','Chatbot Testing'],
+  },
+  {
+    type:'Live Streaming Platform',name:'Klic.gg',
+    desc:'Real-time application enabling concurrent multi-stream playback across web and native mobile, serving high-concurrency live streaming traffic.',
+    did:['Led full end-to-end functional, UI/UX, performance, and cross-platform testing (Android & iOS)','Validated smooth concurrent multi-stream playback under high-concurrency load','Executed cross-browser and cross-device compatibility across 20+ device/OS configurations'],
+    stack:['Appium','Playwright','BrowserStack','Postman','JMeter','Android Studio'],
+  },
+  {
+    type:'HealthTech SaaS (HIPAA)',name:'nAble IVF',
+    desc:'HIPAA-compliant EMR and practice-management suite for fertility clinics covering 10+ modules including patient tracking, lab workflows, billing, and secure portals.',
+    did:['Validated all 10+ modules for functional correctness and HIPAA compliance integrity across all releases','Authored 500+ structured manual test cases mapped to full traceability matrices','Executed performance and load testing with Apache JMeter  50% improvement in peak-traffic responsiveness','Designed 150+ Appium mobile scripts (Android & iOS), boosting automation coverage by 80%'],
+    stack:['Playwright','Appium','Postman','JMeter','TestRail','iOS Simulator'],
+  },
+  {
+    type:'Financial BI Validation',name:'AccountsChek',
+    desc:'Financial reporting and BI validation platform reconciling Tableau dashboards against enterprise databases for real-time executive KPI accuracy.',
+    did:['Engineered automated data reconciliation between Tableau dashboards and enterprise databases','Eliminated reporting discrepancies, guaranteeing real-time accuracy of financial KPIs','Validated ETL pipelines and scheduled data refresh workflows end-to-end'],
+    stack:['Power BI','Tableau','SQL','SSMS','Power Automate'],
+  },
+  {
+    type:'Multi-Client Analytics',name:'Data Solutions',
+    desc:'Multi-client Power BI analytics suite supporting operational, financial, and executive decision-making across several enterprise organisations.',
+    did:['Validated automated data pipelines and Power Automate scheduled workflows for multiple clients','Tested interactive dashboards and data-refresh accuracy across operational and financial domains','Ensured pipeline integrity and data accuracy under concurrent scheduled loads'],
+    stack:['SQL','Power BI','Power Automate','SSMS','Azure DevOps'],
+  },
+  {
+    type:'AI-Powered Mobile App',name:'Oaysis',
+    desc:'AI-driven social networking mobile app with personalised content, auto-generated watermarks, subscription flows, and chatbot integrations on iOS and Android.',
+    did:['Tested AI-driven personalization, watermark generation, and chatbot integrations on both platforms','Validated premium subscription lifecycle flows and feature-gating logic end-to-end','Achieved 98%+ user flow coverage across 20+ device configurations and OS versions'],
+    stack:['Appium','Android Studio','TestFlight','iOS Simulator','BrowserStack'],
+  },
+  {
+    type:'Mobile App',name:'Citron',
+    desc:'Personalised grocery and meal planning mobile app with AI diet recommendations, shopping lists, cart management, and checkout across Android and iOS.',
+    did:['Validated AI diet recommendations, shopping list management, cart flows, and checkout','Achieved 98% user flow coverage across Android and iOS device matrix','Executed cross-device compatibility testing across 20+ device and OS configurations'],
+    stack:['Appium','Postman','Android Studio','iOS Simulator','BrowserStack'],
+  },
+];
+const CERTS = [
+  {icon:'fas fa-certificate',name:'ISTQB CTFL Certified',org:'ISTQB  International Software Testing Qualifications Board',note:'Foundation-level certification covering software testing fundamentals, techniques, and best practices.'},
+  {icon:'fas fa-users-cog',name:'Certified Scrum Master',org:'Agile & Scrum Certification',note:'Certified in Agile/Scrum methodology, sprint management, and cross-functional team facilitation.'},
+  {icon:'fas fa-database',name:'SQL for Testers',org:'LinkedIn Learning',note:'Advanced SQL querying, data validation, and ETL testing for QA professionals.'},
+  {icon:'fas fa-star',name:'Rising Star Award',org:'Stewart Title (NYSE: STC)',note:'Awarded for exceptional performance, rapid skill growth, and outstanding contributions to the QA team.'},
+  {icon:'fas fa-award',name:'Multiple Spot Awards',org:'Stewart Title  Excellence Recognition',note:'Multiple spot awards and e-cards recognising consistently outstanding delivery, collaboration, and quality.'},
+  {icon:'fas fa-trophy',name:'Appreciation Awards',org:'Cross-Team Recognition',note:'Recognised by peers, managers, and stakeholders for leadership, mentorship, and team collaboration.'},
+];
+const STATS = [
+  {n:'4.5+',l:'Years Experience'},
+  {n:'90+', l:'% Regression Coverage'},
+  {n:'15+', l:'Projects Delivered'},
+  {n:'500+',l:'Test Cases Authored'},
+  {n:'20+', l:'QA Interns Mentored'},
+  {n:'300+',l:'Students Advised'},
+  {n:'60+', l:'Sprints Directed'},
+  {n:'27M+',l:'Records Validated'},
+  {n:'0',   l:'Critical Prod Defects'},
+  {n:'130+',l:'Event Attendees'},
+];
+const TESTIMONIALS = [
+  {q:'Within a year of joining he was basically leading the QA side of things. The amount he learned in such a short time was incredible. He was the guy you could rely on  smart, quick, and always ready to jump in and help.',name:'Prasad Harake',role:'Data Engineer | Snowflake | Stewart Title'},
+  {q:'He brings strong experience across automation, manual testing, API/UI testing, database validation, and ETL testing. Talha consistently delivered high-quality work and demonstrated solid problem-solving skills.',name:'Gandeeswar Maruthappan',role:'Senior Data Engineer | Stewart Title'},
+  {q:'His attention to detail, strong leadership skills, and natural ability to mentor others make him an exceptional QA engineer and an inspiring teammate. He\'s truly born to be in QA.',name:'Haris Shahid',role:'ISTQB� Certified | QA Analyst | Stewart Title'},
+  {q:'Talha excels at all things that make up a great QA Engineer. His skills with SQL and Snowflake, along with his attention to detail, have saved more than one production release.',name:'Tyler Hirsch',role:'Senior Data Analyst | Stewart Title'},
+  {q:'His deep understanding of quality processes and consistent commitment to delivering high standards have made a significant impact on our project\'s success. He is proactive in identifying potential issues early.',name:'Omkar Kulkarni',role:'PMP� Certified Project Manager | Stewart Title'},
+  {q:'Talha has exceeded expectations as an SQA Engineer, showcasing a rare blend of dedication, initiative, and strong communication skills. I confidently recommend him for future roles.',name:'Hassan Riaz',role:'CSPO� | Senior Business Analyst | Stewart Title'},
+  {q:'Talha acquired in-depth knowledge of the application within a short span of time and went on to become one of the star performers of the team. He is an asset to any organization.',name:'Ketan Lovlekar',role:'Director | Data Architect | AWS/GCP/Azure'},
+  {q:'Working alongside Talha is a pleasure; his knowledge truly makes him a standout QA Engineer. He maintained a positive attitude even in high-pressure situations.',name:'Jaffar Ali',role:'Senior Software Engineer  Full-Stack Developer'},
+  {q:'I wholeheartedly recommend Talha as an SQA engineer. His attention to detail and commitment to top-notch software quality have significantly boosted our project success.',name:'Jawad Akram',role:'ISTQB� Certified | CSM� | SQA Engineer @ NETSOL'},
+  {q:'He is an exceptional tester who goes above and beyond to ensure the quality and reliability of our software. His thorough testing approach was instrumental in bug-free releases.',name:'Nitin Matale',role:'Senior .NET Backend Engineer | Azure Specialist'},
+  {q:'What struck me the most is his unwavering commitment to continuous improvement. He actively sought ways to enhance testing processes, leading to more efficient workflows.',name:'Nixon Peter',role:'Scrum Master / Project Manager | Stewart Title'},
+  {q:'He is a friendly, energetic, and easily adaptable person. Very eager to learn new technologies in SQA automation and a fast learner of business processes. Very nice to work with.',name:'Sivakumar Thangapandy',role:'Data Architect | Snowflake | Azure Data Engineer'},
+  {q:'Talha\'s strong analytical skills, commitment to quality, and proactive approach to identifying issues have consistently contributed to the success of our project.',name:'Pranit Patil',role:'Software Engineer | Stewart Title'},
+  {q:'His dedication and profound knowledge of QA processes genuinely impressed me. His collaborative nature and effective communication made him an integral part of our development team.',name:'M Usama Naeem',role:'SQA Engineer | ETL Tester | SQL Expert'},
+  {q:'Talha\'s exceptional testing skills, attention to detail, and dedication consistently ensured the highest quality in our deliverables. He is an incredibly valuable asset to any team.',name:'Alia Liaqat',role:'Test Automation Engineer | QA Engineer | SDET'},
+  {q:'I highly recommend Talha for his exceptional growth and performance at Stewart. His dedication, attention to detail, and ability to collaborate effectively make him a valuable asset.',name:'Khurram Shehzad',role:'Sr. Test Automation Engineer | SDET | SQA Engineer'},
+];
+const CONTACT_CARDS = [
+  {icon:'fas fa-envelope',lbl:'Email',val:'talha.sharif001@gmail.com',sub:'I reply within 24 hours',href:'mailto:talha.sharif001@gmail.com'},
+  {icon:'fas fa-phone',lbl:'Phone',val:'+92 310 4506164',sub:'Available MonFri 9am6pm PKT',href:'tel:+923104506164'},
+  {icon:'fab fa-linkedin',lbl:'LinkedIn',val:'linkedin.com/in/talha-sharif1',sub:"Let's connect professionally",href:'https://www.linkedin.com/in/talha-sharif1/'},
+  {icon:'fab fa-github',lbl:'GitHub',val:'github.com/Talha3367',sub:'Explore my repositories',href:'https://github.com/Talha3367'},
+  {icon:'fab fa-whatsapp',lbl:'WhatsApp',val:'+92 310 4506164',sub:'Quick messages welcome',href:'https://wa.me/923104506164'},
+  {icon:'fas fa-map-marker-alt',lbl:'Location',val:'Lahore, Pakistan',sub:'Open to relocation worldwide',href:null},
+];
 
-        function initParticles() {
-            particles = [];
-            const particleCount = Math.min(80, Math.floor(window.innerWidth / 20));
-            for (let i = 0; i < particleCount; i++) {
-                particles.push(new Particle());
-            }
-        }
+/* == CANVAS ======================================== */
+const canvas = document.getElementById('bgCanvas');
+const ctx = canvas.getContext('2d');
+let W, H, nodes = [];
+const COUNT = () => window.innerWidth < 768 ? 60 : 130;
+function resizeCanvas() { W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
+class Node {
+  constructor() { this.reset(); }
+  reset() {
+    this.x = Math.random()*W; this.y = Math.random()*H;
+    this.vx = (Math.random()-.5)*.6; this.vy = (Math.random()-.5)*.6;
+    this.r = Math.random()*3+1.2;   // bigger nodes
+    this.a = Math.random()*.65+.25; // higher opacity
+  }
+  tick(mx,my) {
+    const dx=this.x-mx,dy=this.y-my,d=Math.sqrt(dx*dx+dy*dy);
+    if(d<140){this.x+=(dx/d)*2.5;this.y+=(dy/d)*2.5;}
+    this.x+=this.vx; this.y+=this.vy;
+    if(this.x<0||this.x>W)this.vx*=-1;
+    if(this.y<0||this.y>H)this.vy*=-1;
+  }
+  draw(l) {
+    ctx.beginPath();ctx.arc(this.x,this.y,this.r,0,Math.PI*2);
+    ctx.fillStyle = l ? `rgba(0,60,180,${this.a*.85})` : `rgba(0,210,255,${this.a})`;
+    ctx.fill();
+  }
+}
+function initNodes() { nodes = Array.from({length:COUNT()},()=>new Node()); }
+let mx=-9999,my=-9999;
+window.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});
+function drawCanvas() {
+  ctx.clearRect(0,0,W,H);
+  const l = document.documentElement.getAttribute('data-theme')==='light';
+  nodes.forEach(n=>{n.tick(mx,my);n.draw(l);});
+  for(let i=0;i<nodes.length;i++) for(let j=i+1;j<nodes.length;j++){
+    const dx=nodes[i].x-nodes[j].x,dy=nodes[i].y-nodes[j].y,d=Math.sqrt(dx*dx+dy*dy);
+    if(d<165){
+      const a=(1-d/165)*(l?.22:.35); // bolder lines
+      ctx.beginPath();ctx.moveTo(nodes[i].x,nodes[i].y);ctx.lineTo(nodes[j].x,nodes[j].y);
+      ctx.strokeStyle=l?`rgba(0,70,200,${a})`:`rgba(0,190,255,${a})`;
+      ctx.lineWidth=1.1; ctx.stroke();
+    }
+  }
+  requestAnimationFrame(drawCanvas);
+}
+resizeCanvas(); initNodes(); drawCanvas();
+window.addEventListener('resize',()=>{resizeCanvas();initNodes();});
 
-        function connectParticles() {
-            for (let i = 0; i < particles.length; i++) {
-                for (let j = i + 1; j < particles.length; j++) {
-                    const dx = particles[i].x - particles[j].x;
-                    const dy = particles[i].y - particles[j].y;
-                    const distance = Math.sqrt(dx * dx + dy * dy);
-
-                    if (distance < 120) {
-                        const opacity = (1 - distance / 120) * 0.15;
-                        particleCtx.strokeStyle = `rgba(168, 85, 247, ${opacity})`;
-                        particleCtx.lineWidth = 0.8;
-                        particleCtx.beginPath();
-                        particleCtx.moveTo(particles[i].x, particles[i].y);
-                        particleCtx.lineTo(particles[j].x, particles[j].y);
-                        particleCtx.stroke();
-                    }
-                }
-            }
-        }
-
-        function animateParticles() {
-            particleCtx.clearRect(0, 0, particleCanvas.width, particleCanvas.height);
-            particles.forEach(particle => {
-                particle.update();
-                particle.draw();
-            });
-            connectParticles();
-            requestAnimationFrame(animateParticles);
-        }
-
-        // Mouse tracking
-        window.addEventListener('mousemove', (e) => {
-            mousePos.x = e.clientX;
-            mousePos.y = e.clientY;
-            
-            document.documentElement.style.setProperty('--mouse-x', `${e.clientX}px`);
-            document.documentElement.style.setProperty('--mouse-y', `${e.clientY}px`);
-            
-            document.getElementById('mouseSpotlight').classList.add('active');
-        });
-
-        // Custom cursor
-        const customCursor = document.getElementById('customCursor');
-        let cursorX = 0, cursorY = 0;
-        let targetX = 0, targetY = 0;
-
-        window.addEventListener('mousemove', (e) => {
-            targetX = e.clientX;
-            targetY = e.clientY;
-            customCursor.classList.add('active');
-        });
-
-        const interactiveElements = document.querySelectorAll('a, button, .contact-item, .hero-badge, .social-links a, .project-tech span');
-
-        interactiveElements.forEach(el => {
-            el.addEventListener('mouseenter', () => {
-                customCursor.classList.add('hover');
-            });
-            el.addEventListener('mouseleave', () => {
-                customCursor.classList.remove('hover');
-            });
-        });
-
-        function animateCursor() {
-            cursorX += (targetX - cursorX) * 0.12;
-            cursorY += (targetY - cursorY) * 0.12;
-            customCursor.style.left = cursorX - 10 + 'px';
-            customCursor.style.top = cursorY - 10 + 'px';
-            requestAnimationFrame(animateCursor);
-        }
-
-        // Enhanced scroll reveal with stagger
-        const scrollObserver = new IntersectionObserver((entries) => {
-            entries.forEach((entry, index) => {
-                if (entry.isIntersecting) {
-                    setTimeout(() => {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0) scale(1)';
-                    }, index * 100);
-                    scrollObserver.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-
-        document.querySelectorAll('.recommendation-card, .skill-card, .project-card, .timeline-item, .award-card').forEach((el, index) => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(30px) scale(0.95)';
-            el.style.transition = 'all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)';
-            scrollObserver.observe(el);
-        });
-
-        // Initialize animations
-        function initAnimations() {
-            if (window.matchMedia('(hover: hover)').matches) {
-                resizeCanvas();
-                initParticles();
-                animateParticles();
-                animateCursor();
-                document.getElementById('mouseSpotlight').style.display = 'block';
-                particleCanvas.style.display = 'block';
-            } else {
-                document.getElementById('customCursor').style.display = 'none';
-                document.getElementById('mouseSpotlight').style.display = 'none';
-                particleCanvas.style.display = 'none';
-            }
-        }
-
-        window.addEventListener('load', initAnimations);
-        window.addEventListener('resize', () => {
-            if (window.matchMedia('(hover: hover)').matches) {
-                resizeCanvas();
-                initParticles();
-            }
-        });
-
-        window.addEventListener('mouseout', () => {
-            customCursor.classList.remove('active');
-            document.getElementById('mouseSpotlight').classList.remove('active');
-        });
-
-// BACK TO TOP BUTTON FUNCTIONALITY
-function scrollToTop() {
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-    });
+/* == CURSOR ======================================== */
+const curEl=document.getElementById('cur'),curR=document.getElementById('curR');
+let cx=0,cy=0,tx=0,ty=0;
+if(window.matchMedia('(hover:hover)').matches){
+  document.addEventListener('mousemove',e=>{tx=e.clientX;ty=e.clientY;curEl.style.left=tx+'px';curEl.style.top=ty+'px';});
+  (function lag(){cx+=(tx-cx)*.1;cy+=(ty-cy)*.1;curR.style.left=cx+'px';curR.style.top=cy+'px';requestAnimationFrame(lag);})();
+  document.querySelectorAll('a,button,.c-card,.m-card,.vc-card,.orbit-dot-btn,.cert-badge').forEach(el=>{
+    el.addEventListener('mouseenter',()=>{curEl.classList.add('big');curR.classList.add('big');});
+    el.addEventListener('mouseleave',()=>{curEl.classList.remove('big');curR.classList.remove('big');});
+  });
 }
 
-// Show/hide button based on scroll position
-const backToTopWrapper = document.getElementById('backToTopWrapper');
-window.addEventListener('scroll', () => {
-    if (window.pageYOffset > 200) {
-        backToTopWrapper.classList.add('visible');
-    } else {
-        backToTopWrapper.classList.remove('visible');
-    }
+/* == THEME ======================================== */
+let dark=true;
+document.getElementById('themBtn').addEventListener('click',()=>{
+  dark=!dark;
+  document.documentElement.setAttribute('data-theme',dark?'dark':'light');
+  document.getElementById('themIco').className=dark?'fas fa-moon':'fas fa-sun';
 });
-    </script>
+
+/* == NAV ========================================== */
+const nav=document.getElementById('nav'),hbg=document.getElementById('hbg'),mobNav=document.getElementById('mobNav');
+hbg.addEventListener('click',()=>{hbg.classList.toggle('open');mobNav.classList.toggle('open');});
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const t=document.querySelector(a.getAttribute('href'));
+    if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'});mobNav.classList.remove('open');hbg.classList.remove('open');}
+  });
+});
+window.addEventListener('scroll',()=>{
+  nav.classList.toggle('sc',window.scrollY>60);
+  document.getElementById('bar').style.width=(window.scrollY/(document.body.scrollHeight-window.innerHeight)*100)+'%';
+  document.getElementById('fup').classList.toggle('vis',window.scrollY>300);
+  const secs=['home','about','skills','experience','projects','certifications','testimonials','contact'];
+  let ac='';
+  secs.forEach(id=>{const el=document.getElementById(id);if(el&&el.getBoundingClientRect().top<=80)ac=id;});
+  document.querySelectorAll('.nav-links a').forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+ac));
+});
+
+/* == BACK TO TOP ================================== */
+document.getElementById('fup').addEventListener('click',()=>{window.scrollTo({top:0,behavior:'smooth'});});
+
+/* == TYPED ======================================== */
+const ROLES=['Senior SQA Engineer','Test Automation Engineer','ETL & Data Tester','AI/ML QA Specialist','Quality Engineering Lead'];
+let ri=0,ci=0,del=false;
+const tEl=document.getElementById('typedTxt');
+function type(){
+  const r=ROLES[ri];
+  if(!del){tEl.textContent=r.slice(0,++ci);if(ci===r.length){del=true;setTimeout(type,2200);return;}}
+  else{tEl.textContent=r.slice(0,--ci);if(!ci){del=false;ri=(ri+1)%ROLES.length;}}
+  setTimeout(type,del?55:85);
+}
+setTimeout(type,2400);
+setInterval(()=>{const k=document.querySelector('.hero-role .tk');if(k)k.style.opacity=k.style.opacity==='0'?'1':'0';},530);
+
+/* == REVEAL ======================================P */
+const rvObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');rvObs.unobserve(e.target);}});
+},{threshold:.07,rootMargin:'0px 0px -30px 0px'});
+function initReveal(){document.querySelectorAll('.rv,.rvl,.rvr').forEach(el=>rvObs.observe(el));}
+
+/* == STATS TICKER ================================P */
+function buildStatsTicker() {
+  const track = document.getElementById('statsTrack');
+  if (!track) return;
+  const all = [...STATS, ...STATS]; // duplicate for loop
+  all.forEach(s => {
+    const item = document.createElement('div');
+    item.className = 'st-item';
+    item.innerHTML = `<span class="st-n">${s.n}</span><span class="st-l">${s.l}</span>`;
+    track.appendChild(item);
+  });
+}
+
+/* == IX TICKER ==================================== */
+function buildIXTicker(trackId, words, speed) {
+  const track = document.getElementById(trackId);
+  if (!track) return;
+  const all = [...words, ...words];
+  all.forEach((w, i) => {
+    if (i > 0) { const sep = document.createElement('span'); sep.className='ix-sep'; sep.textContent=''; track.appendChild(sep); }
+    const word = document.createElement('span'); word.className='ix-word'; word.textContent=w; track.appendChild(word);
+  });
+  if (speed) track.style.animationDuration = speed;
+}
+
+/* == ORBIT ======================================== */
+let orbitIdx=0, orbitTimer=null, orbitPaused=false;
+function buildOrbit() {
+  const wrap = document.getElementById('orbitWrap');
+  if (!wrap) return;
+  const r=140,cx=160,cy=160;
+  SKILL_CATS.forEach((cat,i) => {
+    const angle = (i/SKILL_CATS.length)*2*Math.PI - Math.PI/2;
+    const x = cx + r*Math.cos(angle), y = cy + r*Math.sin(angle);
+    const btn = document.createElement('button');
+    btn.className='orbit-dot-btn'; btn.style.left=x+'px'; btn.style.top=y+'px';
+    btn.innerHTML=`<i class="${cat.icon}"></i>`; btn.title=cat.name;
+    btn.addEventListener('click',()=>{orbitGo(i);orbitPaused=true;setTimeout(()=>{orbitPaused=false;},30000);});
+    wrap.appendChild(btn);
+  });
+  document.getElementById('orbitPrev').addEventListener('click',()=>orbitGo(orbitIdx-1));
+  document.getElementById('orbitNext').addEventListener('click',()=>orbitGo(orbitIdx+1));
+  orbitGo(0);
+  const obs=new IntersectionObserver(entries=>{
+    if(entries[0].isIntersecting){orbitTimer=setInterval(()=>{if(!orbitPaused)orbitGo(orbitIdx+1);},5000);obs.disconnect();}
+  },{threshold:.3});
+  obs.observe(wrap);
+}
+function orbitGo(idx) {
+  orbitIdx=((idx%SKILL_CATS.length)+SKILL_CATS.length)%SKILL_CATS.length;
+  const cat=SKILL_CATS[orbitIdx];
+  document.getElementById('ocIco').className=cat.icon;
+  const short=cat.name.replace(/&.*/,'').trim();
+  document.getElementById('ocTxt').textContent=short.length>11?short.slice(0,11):short;
+  document.getElementById('odHd').textContent=cat.name;
+  document.getElementById('odCount').textContent=String(orbitIdx+1).padStart(2,'0')+' / '+String(SKILL_CATS.length).padStart(2,'0');
+  const fill=document.getElementById('odFill');if(fill)fill.style.width=((orbitIdx+1)/SKILL_CATS.length*100)+'%';
+  document.querySelectorAll('.orbit-dot-btn').forEach((btn,i)=>btn.classList.toggle('active',i===orbitIdx));
+  const tagsEl=document.getElementById('orbitTags'); tagsEl.innerHTML='';
+  SKILLS[orbitIdx].forEach((s,i)=>{
+    const span=document.createElement('span'); span.className='tag'; span.textContent=s;
+    span.style.animationDelay=(i*.065+Math.random()*.03)+'s';
+    span.style.animationPlayState='running';
+    tagsEl.appendChild(span);
+  });
+}
+
+/* == CAROUSEL CLASS ==============================P */
+class Carousel {
+  constructor({stageId,dotsId,prevId,nextId,hintId,items,buildFn,interval=3500}){
+    this.stage=document.getElementById(stageId);this.dotsC=document.getElementById(dotsId);
+    this.interval=interval;this.cur=0;this.paused=false;this.timer=null;this.pauseTimer=null;
+    this.cards=items.map(item=>{const el=buildFn(item);this.stage.appendChild(el);return el;});
+    this.dots=items.map((_,i)=>{const d=document.createElement('button');d.className='c-dot';d.addEventListener('click',()=>this.go(i));this.dotsC.appendChild(d);return d;});
+    document.getElementById(prevId).addEventListener('click',()=>this.go(this.cur-1));
+    document.getElementById(nextId).addEventListener('click',()=>this.go(this.cur+1));
+    this.hint=document.getElementById(hintId);
+    this.cards.forEach(c=>c.addEventListener('click',()=>this.onPause()));
+    this.go(0);
+    const obs=new IntersectionObserver(entries=>{if(entries[0].isIntersecting){this.start();obs.disconnect();}},{threshold:.3});
+    obs.observe(this.stage);
+  }
+  go(idx){
+    const prev=this.cur;
+    this.cur=((idx%this.cards.length)+this.cards.length)%this.cards.length;
+    this.cards[prev].classList.remove('active');this.cards[prev].classList.add('prev');
+    this.cards[this.cur].classList.add('active');
+    setTimeout(()=>this.cards[prev].classList.remove('prev'),650);
+    this.dots.forEach((d,i)=>d.classList.toggle('on',i===this.cur));
+  }
+  start(){clearInterval(this.timer);this.timer=setInterval(()=>{if(!this.paused)this.go(this.cur+1);},this.interval);}
+  onPause(){
+    this.paused=true;if(this.hint)this.hint.textContent='Paused  resuming in 8s';
+    clearTimeout(this.pauseTimer);
+    this.pauseTimer=setTimeout(()=>{this.paused=false;if(this.hint)this.hint.textContent='Click card to pause';},8000);
+  }
+}
+
+/* == VERT CAROUSEL ================================ */
+class VCarousel {
+  constructor(wrapId,dotsId,items){
+    this.wrap=document.getElementById(wrapId);this.dotsC=document.getElementById(dotsId);
+    this.cur=0;this.paused=false;this.timer=null;this.pauseTimer=null;
+    if(!this.wrap)return;
+    this.cards=items.map(item=>{
+      const el=item.href?document.createElement('a'):document.createElement('div');
+      el.className='vc-card';
+      if(item.href){el.href=item.href;if(item.href.startsWith('http'))el.target='_blank';}
+      el.innerHTML=`<div class="vc-icon"><i class="${item.icon}"></i></div><div><div class="vc-lbl">${item.lbl}</div><div class="vc-val">${item.val}</div><div class="vc-sub">${item.sub}</div></div>`;
+      el.addEventListener('click',()=>this.onPause());
+      this.wrap.appendChild(el);return el;
+    });
+    this.dots=items.map((_,i)=>{const d=document.createElement('button');d.className='vc-dot';d.addEventListener('click',()=>this.go(i));this.dotsC.appendChild(d);return d;});
+    this.go(0);
+    const obs=new IntersectionObserver(entries=>{if(entries[0].isIntersecting){this.start();obs.disconnect();}},{threshold:.3});
+    obs.observe(this.wrap);
+  }
+  go(idx){
+    const prev=this.cur;this.cur=((idx%this.cards.length)+this.cards.length)%this.cards.length;
+    this.cards[prev].classList.remove('active');this.cards[prev].classList.add('prev');
+    this.cards[this.cur].classList.add('active');
+    setTimeout(()=>this.cards[prev].classList.remove('prev'),650);
+    this.dots.forEach((d,i)=>d.classList.toggle('on',i===this.cur));
+  }
+  start(){clearInterval(this.timer);this.timer=setInterval(()=>{if(!this.paused)this.go(this.cur+1);},3500);}
+  onPause(){this.paused=true;clearTimeout(this.pauseTimer);this.pauseTimer=setTimeout(()=>{this.paused=false;},30000);}
+}
+
+/* == BUILD CERTS (spinning badge grid) ============ */
+function buildCerts() {
+  const grid = document.getElementById('certGrid');
+  if (!grid) return;
+  CERTS.forEach((c, i) => {
+    const wrap = document.createElement('div');
+    wrap.className = 'cert-badge-wrap rv';
+    wrap.style.transitionDelay = (i * 0.13) + 's';
+    const badge = document.createElement('div');
+    badge.className = 'cert-badge';
+    badge.innerHTML = `<div class="cert-inner">
+      <div class="cert-ic"><i class="${c.icon}"></i></div>
+      <div class="cert-nm">${c.name}</div>
+      <div class="cert-og">${c.org}</div>
+      <div class="cert-nt">${c.note}</div>
+    </div>`;
+    wrap.appendChild(badge);
+    grid.appendChild(wrap);
+  });
+}
+
+/* == MARQUEE ====================================== */
+function buildMarquee() {
+  function makeCard(t) {
+    const el=document.createElement('div');el.className='m-card';
+    el.innerHTML=`<div class="m-quote">${t.q}</div><div class="m-name">${t.name}</div><div class="m-role">${t.role}</div>`;
+    return el;
+  }
+  const row1=document.getElementById('mRow1'),row2=document.getElementById('mRow2');
+  const half=Math.ceil(TESTIMONIALS.length/2);
+  [...TESTIMONIALS.slice(0,half),...TESTIMONIALS.slice(0,half)].forEach(t=>row1.appendChild(makeCard(t)));
+  [...TESTIMONIALS.slice(half),...TESTIMONIALS.slice(half)].forEach(t=>row2.appendChild(makeCard(t)));
+}
+
+/* == TOAST ======================================== */
+const TOAST_DUR=3500;
+let toastTimer=null;
+function showToast(msg,type='ok'){
+  const t=document.getElementById('toast');
+  const bar=document.getElementById('toastBar');
+  document.getElementById('toastIco').textContent=type==='ok'?'':'';
+  document.getElementById('toastMsg').textContent=msg;
+  t.className='toast '+type+' show';
+  // reset & restart drain bar
+  bar.classList.remove('run');
+  bar.style.setProperty('--dur',TOAST_DUR+'ms');
+  void bar.offsetWidth; // force reflow to restart animation
+  bar.classList.add('run');
+  clearTimeout(toastTimer);
+  toastTimer=setTimeout(()=>{t.classList.remove('show');},TOAST_DUR);
+}
+document.getElementById('toastClose').addEventListener('click',()=>{
+  document.getElementById('toast').classList.remove('show');
+  clearTimeout(toastTimer);
+});
+
+/* == CONTACT FORM ================================P */
+const EJS_PUBLIC  = 'YOUR_PUBLIC_KEY';
+const EJS_SERVICE = 'YOUR_SERVICE_ID';
+const EJS_TMPL    = 'YOUR_TEMPLATE_ID';
+function initForm() {
+  if(EJS_PUBLIC!=='YOUR_PUBLIC_KEY') emailjs.init({publicKey:EJS_PUBLIC});
+  const form=document.getElementById('cForm'),btn=document.getElementById('fBtn');
+  form.addEventListener('submit',async e=>{
+    e.preventDefault();
+    btn.innerHTML='<i class="fas fa-spinner fa-spin"></i> Sending...';btn.disabled=true;
+    const params={
+      from_name:document.getElementById('fName').value,
+      from_email:document.getElementById('fEmail').value,
+      subject:document.getElementById('fSubject').value||'Portfolio Contact',
+      message:document.getElementById('fMsg').value,to_name:'Talha',
+    };
+    if(EJS_PUBLIC==='YOUR_PUBLIC_KEY'){
+      try{
+        const res=await fetch('https://formsubmit.co/ajax/talha.sharif001@gmail.com',{
+          method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},
+          body:JSON.stringify({name:params.from_name,email:params.from_email,subject:params.subject,message:params.message,_captcha:'false'})
+        });
+        const json=await res.json();
+        if(json.success==='true'||json.success===true){
+          showToast('Message sent! I\'ll reply within 24 hours.','ok');form.reset();
+        }else throw new Error();
+      }catch{
+        showToast('Could not send — please email talha.sharif001@gmail.com directly.','err');
+      }
+    }else{
+      try{
+        await emailjs.send(EJS_SERVICE,EJS_TMPL,params);
+        showToast('Message sent! I\'ll reply within 24 hours.','ok');form.reset();
+      }catch{
+        showToast('Could not send  please email talha.sharif001@gmail.com directly.','err');
+      }
+    }
+    btn.innerHTML='<i class="fas fa-paper-plane"></i> Send Message';btn.disabled=false;
+  });
+}
+
+/* == INIT ========================================P */
+// Script is at end of body — DOM already ready, no need to wait for window.load
+setTimeout(()=>{
+  const _pl=document.getElementById('preloader');
+  if(_pl)_pl.classList.add('out');
+  try{initAll();}catch(e){console.error(e);}
+},1900);
+function initAll(){
+  buildStatsTicker();
+  buildOrbit();
+  new Carousel({
+    stageId:'projStage',dotsId:'projDots',prevId:'projPrev',nextId:'projNext',hintId:'projHint',
+    items:PROJECTS,interval:3500,
+    buildFn(p){
+      const el=document.createElement('div');el.className='c-card';
+      const didHtml=p.did?`<div class="c-sh">What I Did</div><ul class="c-did">${p.did.map(d=>`<li>${d}</li>`).join('')}</ul>`:'';
+      el.innerHTML=`
+        <div><div class="c-type">${p.type}</div><div class="c-name">${p.name}</div></div>
+        <div class="c-body">
+          <div class="c-col-main">
+            <div class="c-sh">Overview</div>
+            <div class="c-desc">${p.desc}</div>
+            ${didHtml}
+          </div>
+          <div class="c-col-side">
+            <div class="c-sh">Tools Used</div>
+            <div class="c-stack">${p.stack.map(s=>`<span>${s}</span>`).join('')}</div>
+          </div>
+        </div>`;
+      return el;
+    }
+  });
+  buildCerts();
+  new VCarousel('vcWrap','vcDots',CONTACT_CARDS);
+  buildMarquee();
+  initForm();
+  initReveal(); // must run AFTER all dynamic .rv elements are built
+}
+
+/* ── SECTION BG: SKILLS → Starfield (Demo C) ── */
+(function(){
+  const cv=document.getElementById('cvSkills');if(!cv)return;
+  const sec=cv.parentElement,ctx2=cv.getContext('2d');
+  let W,H,stars=[];
+  const LAYERS=[
+    {n:350,rMin:.4,rMax:1,  aMin:.3,aMax:.7, spd:.008,col:'0,212,255'},
+    {n:180,rMin:.8,rMax:1.8,aMin:.45,aMax:.85,spd:.018,col:'0,180,255'},
+    {n:60, rMin:1.5,rMax:3, aMin:.6,aMax:1,  spd:.035,col:'0,255,240'},
+  ];
+  function initStars(){stars=[];LAYERS.forEach((l,li)=>{for(let i=0;i<l.n;i++)stars.push({x:Math.random(),y:Math.random(),r:l.rMin+Math.random()*(l.rMax-l.rMin),a:l.aMin+Math.random()*(l.aMax-l.aMin),spd:l.spd,layer:li,col:l.col,twinkle:Math.random()*Math.PI*2,ts:.015+Math.random()*.03});});}
+  function rsz(){W=cv.width=sec.offsetWidth;H=cv.height=sec.offsetHeight;initStars();}
+  rsz();window.addEventListener('resize',rsz);
+  let smx=.5,smy=.5,stx=.5,sty=.5;
+  document.addEventListener('mousemove',e=>{const r=cv.getBoundingClientRect();stx=(e.clientX-r.left)/W;sty=(e.clientY-r.top)/H;});
+  let active=false;
+  new IntersectionObserver(es=>{active=es[0].isIntersecting;},{threshold:.01}).observe(sec);
+  (function loop(){requestAnimationFrame(loop);if(!active)return;
+    smx+=(stx-smx)*.04;smy+=(sty-smy)*.04;
+    ctx2.clearRect(0,0,W,H);
+    stars.forEach(s=>{
+      s.twinkle+=s.ts;const tw=.65+.35*Math.sin(s.twinkle);
+      const ox=(smx-.5)*s.spd*W*2,oy=(smy-.5)*s.spd*H*2;
+      const px=((s.x*W)+ox+W)%W,py=((s.y*H)+oy+H)%H;
+      const al=s.a*tw;
+      if(s.layer>0){const hr=s.r*(s.layer===2?4:2.8);const g=ctx2.createRadialGradient(px,py,0,px,py,hr);g.addColorStop(0,`rgba(${s.col},${al*.5})`);g.addColorStop(1,'transparent');ctx2.beginPath();ctx2.arc(px,py,hr,0,Math.PI*2);ctx2.fillStyle=g;ctx2.fill();}
+      ctx2.beginPath();ctx2.arc(px,py,s.r,0,Math.PI*2);ctx2.fillStyle=`rgba(${s.col},${al})`;ctx2.fill();
+    });
+    if(Math.random()<.004){const sx=Math.random()*W,sy=Math.random()*H*.5,len=60+Math.random()*120;const g=ctx2.createLinearGradient(sx,sy,sx+len,sy+len*.5);g.addColorStop(0,'rgba(0,212,255,0)');g.addColorStop(.4,'rgba(0,212,255,.7)');g.addColorStop(1,'rgba(0,212,255,0)');ctx2.beginPath();ctx2.moveTo(sx,sy);ctx2.lineTo(sx+len,sy+len*.5);ctx2.strokeStyle=g;ctx2.lineWidth=1.2;ctx2.stroke();}
+  })();
+})();
+
+/* ── SECTION BG: PROJECTS → Molecule Network (Demo A) ── */
+(function(){
+  const cv=document.getElementById('cvProjects');if(!cv)return;
+  const sec=cv.parentElement,ctx2=cv.getContext('2d');
+  let W,H,nodes=[];
+  const BOND=95,REPEL=120,REPEL_FORCE=3.8;
+  function mkNode(hub){return{x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*(hub?.35:.5),vy:(Math.random()-.5)*(hub?.35:.5),r:hub?3.5+Math.random()*2.5:1.2+Math.random()*1.8,a:hub?.8+Math.random()*.2:.5+Math.random()*.4,hub,col:hub?'0,212,255':Math.random()<.55?'0,212,255':Math.random()<.5?'0,102,255':'0,255,247'};}
+  function initNodes(){nodes=[];for(let i=0;i<18;i++)nodes.push(mkNode(true));for(let i=0;i<220;i++)nodes.push(mkNode(false));}
+  function rsz(){W=cv.width=sec.offsetWidth;H=cv.height=sec.offsetHeight;initNodes();}
+  rsz();window.addEventListener('resize',rsz);
+  let pmx=W/2,pmy=H/2;
+  document.addEventListener('mousemove',e=>{const r=cv.getBoundingClientRect();pmx=e.clientX-r.left;pmy=e.clientY-r.top;});
+  let active=false;
+  new IntersectionObserver(es=>{active=es[0].isIntersecting;},{threshold:.01}).observe(sec);
+  (function loop(){requestAnimationFrame(loop);if(!active)return;
+    ctx2.clearRect(0,0,W,H);
+    for(let i=0;i<nodes.length;i++)for(let j=i+1;j<nodes.length;j++){const a=nodes[i],b=nodes[j];const dx=a.x-b.x,dy=a.y-b.y,d=Math.sqrt(dx*dx+dy*dy);if(d<BOND){const str=(1-d/BOND),isHub=a.hub||b.hub;ctx2.beginPath();ctx2.moveTo(a.x,a.y);ctx2.lineTo(b.x,b.y);ctx2.strokeStyle=`rgba(0,${isHub?200:170},255,${str*(isHub?.5:.3)})`;ctx2.lineWidth=isHub?1.4:.7;ctx2.stroke();}}
+    nodes.forEach(n=>{const dx=n.x-pmx,dy=n.y-pmy,d=Math.sqrt(dx*dx+dy*dy);if(d<REPEL&&d>1){n.vx+=(dx/d)*REPEL_FORCE*(1-d/REPEL)*.08;n.vy+=(dy/d)*REPEL_FORCE*(1-d/REPEL)*.08;}n.vx*=.985;n.vy*=.985;n.x+=n.vx;n.y+=n.vy;if(n.x<n.r){n.x=n.r;n.vx*=-.8;}if(n.x>W-n.r){n.x=W-n.r;n.vx*=-.8;}if(n.y<n.r){n.y=n.r;n.vy*=-.8;}if(n.y>H-n.r){n.y=H-n.r;n.vy*=-.8;}const gw=ctx2.createRadialGradient(n.x,n.y,n.r*.1,n.x,n.y,n.r*3.5);gw.addColorStop(0,`rgba(${n.col},${n.a*.4})`);gw.addColorStop(1,`rgba(${n.col},0)`);ctx2.beginPath();ctx2.arc(n.x,n.y,n.r*3.5,0,Math.PI*2);ctx2.fillStyle=gw;ctx2.fill();ctx2.beginPath();ctx2.arc(n.x,n.y,n.r,0,Math.PI*2);ctx2.fillStyle=`rgba(${n.col},${n.a})`;ctx2.fill();if(n.hub){ctx2.beginPath();ctx2.arc(n.x-n.r*.3,n.y-n.r*.35,n.r*.32,0,Math.PI*2);ctx2.fillStyle='rgba(255,255,255,.35)';ctx2.fill();}});
+  })();
+})();
+
+/* ── SECTION BG: TESTIMONIALS → Physics Bubbles (Demo B) ── */
+(function(){
+  const cv=document.getElementById('cvTestimonials');if(!cv)return;
+  const sec=cv.parentElement,ctx2=cv.getContext('2d');
+  let W,H;
+  const COLS=['0,212,255','0,102,255','0,255,247','0,153,187','0,68,200','80,200,255'];
+  function rsz(){W=cv.width=sec.offsetWidth;H=cv.height=sec.offsetHeight;}
+  rsz();window.addEventListener('resize',rsz);
+  class Bubble{
+    constructor(x,y){this.x=x??Math.random()*W;this.y=y??Math.random()*H;this.r=3+Math.random()*9;this.vx=(Math.random()-.5)*.55;this.vy=(Math.random()-.5)*.4-.2;this.a=.25+Math.random()*.45;this.col=COLS[Math.floor(Math.random()*COLS.length)];this.wobble=Math.random()*Math.PI*2;this.ws=.018+Math.random()*.025;this.life=0;this.maxLife=200+Math.random()*250;}
+    update(){this.life++;this.wobble+=this.ws;this.vx+=Math.sin(this.wobble)*.01;this.vy-=.0025;this.vx*=.992;this.vy*=.992;this.x+=this.vx;this.y+=this.vy;if(this.x<-20)this.x=W+10;if(this.x>W+20)this.x=-10;return this.y<-30||this.life>this.maxLife;}
+    draw(){const f=Math.min(this.life/25,1)*Math.min((this.maxLife-this.life)/25,1),al=this.a*f;const og=ctx2.createRadialGradient(this.x,this.y,0,this.x,this.y,this.r*2.6);og.addColorStop(0,`rgba(${this.col},${al*.35})`);og.addColorStop(1,'transparent');ctx2.beginPath();ctx2.arc(this.x,this.y,this.r*2.6,0,Math.PI*2);ctx2.fillStyle=og;ctx2.fill();const g=ctx2.createRadialGradient(this.x-this.r*.32,this.y-this.r*.35,this.r*.06,this.x,this.y,this.r);g.addColorStop(0,`rgba(255,255,255,${al*.35})`);g.addColorStop(.45,`rgba(${this.col},${al*.7})`);g.addColorStop(1,`rgba(${this.col},${al*.18})`);ctx2.beginPath();ctx2.arc(this.x,this.y,this.r,0,Math.PI*2);ctx2.fillStyle=g;ctx2.fill();ctx2.strokeStyle=`rgba(${this.col},${al*.55})`;ctx2.lineWidth=.8;ctx2.stroke();ctx2.beginPath();ctx2.arc(this.x-this.r*.28,this.y-this.r*.3,this.r*.22,0,Math.PI*2);ctx2.fillStyle=`rgba(255,255,255,${al*.25})`;ctx2.fill();}
+  }
+  let bubbles=[];for(let i=0;i<180;i++)bubbles.push(new Bubble(Math.random()*W,Math.random()*H));
+  let active=false;
+  new IntersectionObserver(es=>{active=es[0].isIntersecting;},{threshold:.01}).observe(sec);
+  (function loop(){requestAnimationFrame(loop);if(!active)return;
+    ctx2.clearRect(0,0,W,H);
+    if(bubbles.length<180)bubbles.push(new Bubble());
+    bubbles=bubbles.filter(b=>{const dead=b.update();if(!dead)b.draw();return!dead;});
+  })();
+})();
+
+/* ── SECTION BG: CONTACT → Aurora Curtains (Demo D) ── */
+(function(){
+  const cv=document.getElementById('cvContact');if(!cv)return;
+  const sec=cv.parentElement,ctx2=cv.getContext('2d');
+  let W,H;
+  function rsz(){W=cv.width=sec.offsetWidth;H=cv.height=sec.offsetHeight;}
+  rsz();window.addEventListener('resize',rsz);
+  const COLS2=60;
+  function drawAurora(t){
+    const sw=W/COLS2;
+    for(let i=0;i<COLS2;i++){const x=i*sw,phase=i*.18+t,height=0.25+0.45*Math.abs(Math.sin(phase*.7+Math.sin(t*.4)*.8)),yTop=H*(0.08+0.12*Math.sin(phase*.5+t*.3)),yBot=yTop+H*height,hue1=185+20*Math.sin(phase*.3),hue2=200+25*Math.cos(phase*.4+1),br=0.45+0.35*Math.abs(Math.sin(phase*.9));const g=ctx2.createLinearGradient(0,yTop,0,yBot);g.addColorStop(0,`hsla(${hue1},100%,60%,0)`);g.addColorStop(.15,`hsla(${hue1},100%,${Math.floor(br*80)}%,${br*.55})`);g.addColorStop(.5,`hsla(${hue2},100%,${Math.floor(br*65)}%,${br*.45})`);g.addColorStop(.82,`hsla(${hue1+15},100%,50%,${br*.25})`);g.addColorStop(1,`hsla(${hue2},100%,40%,0)`);ctx2.save();ctx2.globalCompositeOperation='screen';ctx2.fillStyle=g;ctx2.fillRect(x,yTop,sw+1,yBot-yTop);ctx2.restore();}
+  }
+  const auroraStars=Array.from({length:300},()=>({x:Math.random(),y:Math.random(),r:.5+Math.random()*1.5,a:.35+Math.random()*.55,phase:Math.random()*Math.PI*2,spd:.02+Math.random()*.04}));
+  let active=false;
+  new IntersectionObserver(es=>{active=es[0].isIntersecting;},{threshold:.01}).observe(sec);
+  let t=0;
+  (function loop(){requestAnimationFrame(loop);if(!active)return;t+=.012;
+    ctx2.fillStyle='rgba(2,13,26,.98)';ctx2.fillRect(0,0,W,H);
+    drawAurora(t);ctx2.save();ctx2.globalAlpha=.45;drawAurora(t*.7+1.5);ctx2.restore();
+    auroraStars.forEach(s=>{const tw=.5+.5*Math.sin(t*s.spd*8+s.phase),px=s.x*W,py=s.y*H;if(s.r>1){ctx2.beginPath();ctx2.arc(px,py,s.r*2.5,0,Math.PI*2);ctx2.fillStyle=`rgba(180,230,255,${s.a*tw*.15})`;ctx2.fill();}ctx2.beginPath();ctx2.arc(px,py,s.r,0,Math.PI*2);ctx2.fillStyle=`rgba(200,235,255,${s.a*tw})`;ctx2.fill();});
+  })();
+})();
+</script>
 </body>
 </html>
